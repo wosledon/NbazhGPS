@@ -1,0 +1,11 @@
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\netstandard2.0\NbazhGPS.Protocol.deps.json
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\netstandard2.0\NbazhGPS.Protocol.dll
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\netstandard2.0\NbazhGPS.Protocol.pdb
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\netstandard2.0\NbazhGPS.Protocol.xml
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.0\NbazhGPS.Protocol.csproj.AssemblyReference.cache
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.0\NbazhGPS.Protocol.GeneratedMSBuildEditorConfig.editorconfig
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.0\NbazhGPS.Protocol.AssemblyInfoInputs.cache
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.0\NbazhGPS.Protocol.AssemblyInfo.cs
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.0\NbazhGPS.Protocol.csproj.CoreCompileInputs.cache
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.0\NbazhGPS.Protocol.dll
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.0\NbazhGPS.Protocol.pdb

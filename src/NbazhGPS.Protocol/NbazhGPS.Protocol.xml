@@ -1,0 +1,1773 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NbazhGPS.Protocol</name>
+    </assembly>
+    <members>
+        <member name="T:NbazhGPS.Protocol.Buffers.NbazhGpsBufferWriter">
+            <summary>
+            
+            ref System.Buffers.Writer
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Buffers.NbazhGpsBufferWriter.BeforeCodingWrittenPosition">
+            <summary>
+            编码之前的写入位置
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.NbazhGpsErrorCode">
+            <summary>
+            异常错误码
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsErrorCode.CrcVerifyFail">
+            <summary>
+            Crc校验失败
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsErrorCode.HeaderParseError">
+            <summary>
+            消息头解析错误
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsErrorCode.BodiesParseError">
+            <summary>
+            消息体解析错误
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsErrorCode.LatOrLngError">
+            <summary>
+            经纬度错误
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds">
+            <summary>
+            消息Id
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.登陆包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.Gps定位包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.心跳包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.终端在线指令回复">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.报警数据">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.Gps地址请求包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.Lbs地址请求包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.在线指令">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.校时包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.信息传输通用包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.中文地址回复包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.英文地址回复包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.串口透传包">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.串口透传服务器下发">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageType">
+            <summary>
+            包类型
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageType.Type1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageType.Type2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.TimeZones">
+            <summary>
+            时区
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.TimeZones.东">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.TimeZones.西">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Exceptions.NbazhGpsException">
+            <summary>
+            异常处理
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Exceptions.NbazhGpsException.ErrorCode">
+            <summary>
+            统一错误码
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.CrcExtensions">
+            <summary>
+            Crc扩展
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.CrcExtensions.AuthCrc(System.Byte[],System.UInt16)">
+            <summary>
+            校验Crc
+            </summary>
+            <param name="buffer"></param>
+            <param name="crc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.CrcExtensions.AuthCrc(System.Span{System.Byte},System.UInt16)">
+            <summary>
+            校验Crc
+            </summary>
+            <param name="buffer"></param>
+            <param name="crc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.CrcExtensions.AuthCrc(System.ReadOnlySpan{System.Byte},System.UInt16)">
+            <summary>
+            校验Crc
+            </summary>
+            <param name="buffer"></param>
+            <param name="crc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.CrcExtensions.ToCrc(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            转化Crc
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions">
+            <summary>
+            ref:"www.codeproject.com/tips/447938/high-performance-csharp-byte-array-to-hex-string-t"
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ToHexString(System.Byte[])">
+            <summary>
+            16进制数组转16进制字符串
+            </summary>
+            <param name="source"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ToHexBytes(System.String)">
+            <summary>
+            16进制字符串转16进制数组
+            </summary>
+            <param name="hexString"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadHexStringLittle(System.ReadOnlySpan{System.Byte},System.Int32@,System.Int32)">
+            <summary>
+            从内存块中读取16进制字符串
+            </summary>
+            <param name="read">   </param>
+            <param name="offset"> </param>
+            <param name="len">    </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.WriteHexStringLittle(System.Byte[],System.Int32,System.String,System.Int32)">
+            <summary>
+            将16进制字符串写入对应数组中
+            </summary>
+            <param name="bytes">  </param>
+            <param name="offset"> </param>
+            <param name="data">   </param>
+            <param name="len">    </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadNumber(System.Byte,System.String)">
+            <summary>
+            </summary>
+            <param name="value">  </param>
+            <param name="format"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadNumber(System.Int32,System.String)">
+            <summary>
+            </summary>
+            <param name="value">  </param>
+            <param name="format"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadNumber(System.UInt32,System.String)">
+            <summary>
+            </summary>
+            <param name="value">  </param>
+            <param name="format"> </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadNumber(System.Int64,System.String)">
+            <summary>
+            </summary>
+            <param name="value">  </param>
+            <param name="format"> </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadNumber(System.UInt64,System.String)">
+            <summary>
+            </summary>
+            <param name="value">  </param>
+            <param name="format"> </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadNumber(System.Int16,System.String)">
+            <summary>
+            </summary>
+            <param name="value">  </param>
+            <param name="format"> </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadNumber(System.UInt16,System.String)">
+            <summary>
+            </summary>
+            <param name="value">  </param>
+            <param name="format"> </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadBinary(System.UInt16)">
+            <summary>
+            </summary>
+            <param name="value"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadBinary(System.Int16)">
+            <summary>
+            </summary>
+            <param name="value"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadBinary(System.UInt32)">
+            <summary>
+            </summary>
+            <param name="value"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadBinary(System.Int32)">
+            <summary>
+            </summary>
+            <param name="value"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions.ReadBinary(System.Byte)">
+            <summary>
+            </summary>
+            <param name="value"> </param>
+            <returns> </returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.HexUtil">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.HexUtil.DoHexDump(System.ReadOnlySpan{System.Byte},System.Int32,System.Int32)">
+            <summary>
+            </summary>
+            <param name="buffer">    </param>
+            <param name="fromIndex"> </param>
+            <param name="length">    </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.HexUtil.DoHexDump(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            </summary>
+            <param name="array">     </param>
+            <param name="fromIndex"> </param>
+            <param name="length">    </param>
+            <returns> </returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions">
+            <summary>
+            枚举扩展
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.ToValue``1(``0)">
+            <summary>
+            转为整型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.ToUInt16Value``1(``0)">
+            <summary>
+            转为 u16 整型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.ToByteValue``1(``0)">
+            <summary>
+            转为Byte
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.ToValueString``1(``0)">
+            <summary>
+            转为整型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.ToEnum``1(System.String)">
+            <summary>
+            字符转枚举
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.GetName(System.Enum)">
+            <summary>
+            获取枚举字符串
+            </summary>
+            <param name="valueEnum"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.GetDescription(System.Enum)">
+            <summary>
+            获取DescriptionAttribute特性枚举值的描述
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.IsEnumValid``1(System.Int32)">
+            <summary>
+            验证是否是枚举类型
+            </summary>
+            <typeparam name="TEnum"></typeparam>
+            <param name="enumValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.GetDescriptionAttributeDictionary(System.Enum)">
+            <summary>
+            获取DescriptionAttribute特性枚举及描述
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.GetDisplayName(System.Enum)">
+            <summary>
+            获取DisplayNameAttribute特性枚举值的描述
+            </summary>
+            <param name="value">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.GetDisplayNameAttributeDictionary(System.Enum)">
+            <summary>
+            获取DisplayNameAttribute特性枚举及描述
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.GetAttribute``1(System.Enum)">
+            <summary>
+            获取枚举对应特性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsEnumExtensions.GetEnumTypes``1(System.UInt32,System.Int32,System.Boolean)">
+            <summary>
+            根据值获取对应枚举类型集合
+            </summary>
+            <typeparam name="T">具体枚举类型</typeparam>
+            <param name="value">枚举值</param>
+            <param name="digit">位数(8,16,32)</param>
+            <param name="ignoreUnknown">是否忽略未知数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.NbazhGpsMessagePackFormatterResolverExtensions">
+            <summary>
+            动态序列化扩展
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsMessagePackFormatterResolverExtensions.NbazhDynamicSerialize(System.Object,NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,System.Object)">
+            <summary>
+            动态序列化
+            </summary>
+            <param name="objFormatter"></param>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsMessagePackFormatterResolverExtensions.NbazhDynamicDeserialize(System.Object,NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            动态反序列化
+            </summary>
+            <param name="objFormatter"></param>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.TimeZoneLanguageExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.TimeZoneLanguageExtensions.FormatTimeZoneLanguageTime(System.UInt16)">
+            <summary>
+            
+            </summary>
+            <param name="tzl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.TimeZoneLanguageExtensions.FormatTimeZoneLanguageZone(System.Int32)">
+            <summary>
+            进一步划分时区, 如: 东八区又1/4时区
+            </summary>
+            <param name="tzl"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Formatters.INbazhGpsFormatterFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Formatters.INbazhGpsFormatterFactory.FormatterDict">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Formatters.INbazhGpsFormatterFactory.SetMap``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TINbazhGpsFormatter"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Formatters.INbazhGpsMessagePackageFormatter`1">
+            <summary>
+            序列化器
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Formatters.INbazhGpsMessagePackageFormatter`1.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,`0)">
+            <summary>
+            序列化
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Formatters.INbazhGpsMessagePackageFormatter`1.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16(System.Byte[])">
+            <summary>
+            包长度 - 信息序列号的值
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16ForPackage(System.Span{System.Byte})">
+            <summary>
+            包长度 - 信息序列号的值
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16ForHeader(System.Span{System.Byte})">
+            <summary>
+            包长度 - 信息序列号的值
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16(System.Span{System.Byte})">
+            <summary>
+            包长度 - 信息序列号的值
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            包长度 - 信息序列号的值
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Interfaces.INbazhGpsAnalyze">
+            <summary>
+            分析器
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Interfaces.INbazhGpsDescription">
+            <summary>
+            消息描述接口
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsDescription.Description">
+            <summary>
+            消息描述
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Interfaces.INbazhGpsExternalRegister">
+            <summary>
+            外部注册
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Interfaces.INbazhGpsExternalRegister.Register(System.Reflection.Assembly)">
+            <summary>
+            
+            </summary>
+            <param name="externalAssembly"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Interfaces.INbazhGpsFormatter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Interfaces.INbazhGpsHeader">
+            <summary>
+            头部
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsHeader.MsgId">
+            <summary>
+            消息Id
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsHeader.Length">
+            <summary>
+            包长度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsHeader.Bodies">
+            <summary>
+            消息内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsHeader.MsgNum">
+            <summary>
+            消息流水号
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsHeader.Crc">
+            <summary>
+            错误校验
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsHeader.PackageType">
+            <summary>
+            协议类型
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Interfaces.INbazhGpsMsgIdFactory">
+            <summary>
+            消息工厂接口
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsMsgIdFactory.Map">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Interfaces.INbazhGpsMsgIdFactory.TryGetValue(System.UInt16,System.Object@)">
+            <summary>
+            
+            </summary>
+            <param name="msgId"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Interfaces.INbazhGpsMsgIdFactory.SetMap``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TNbazhGpsBodies"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Interfaces.INbazhGpsPackage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsPackage.Begin">
+            <summary>
+            起始位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsPackage.Header">
+            <summary>
+            头数据
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsPackage.Bodies">
+            <summary>
+            数据体
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsPackage.PackageType">
+            <summary>
+            协议类型
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Interfaces.INbazhGpsPackage.End">
+            <summary>
+            停止位
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory.FormatterDict">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory.SetMap``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TINbazhGpsFormatter"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory.Register(System.Reflection.Assembly)">
+            <summary>
+            
+            </summary>
+            <param name="externalAssembly"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory">
+            <summary>
+            消息工厂
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.Register(System.Reflection.Assembly)">
+            <summary>
+            
+            </summary>
+            <param name="externalAssembly"></param>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.Map">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.TryGetValue(System.UInt16,System.Object@)">
+            <summary>
+            
+            </summary>
+            <param name="msgId"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.SetMap``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TNbazhGpsBodies"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X01">
+            <summary>
+            登录包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X01.MsgId">
+            <summary>
+            消息Id
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X01.TerminalId">
+            <summary>
+            终端Id
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X01.TerminalType">
+            <summary>
+            终端类型标识码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X01.TimeZoneLanguage">
+            <summary>
+            时区语言
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X01.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X01.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X01)">
+            <summary>
+            </summary>
+            <param name="writer"> </param>
+            <param name="value">  </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X01.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X01.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader">
+            <summary>
+            消息读取器
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.Reader">
+            <summary>
+            读取Buffer
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.SrcBuffer">
+            <summary>
+            原始数据
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReaderCount">
+            <summary>
+            读取到的数量
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.Type">
+            <summary>
+            包类型
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.#ctor(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            </summary>
+            <param name="srcBuffer"> </param>
+            <param name="type">      </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.Decode(System.Span{System.Byte})">
+            <summary>
+            解码时算出校验和
+            </summary>
+            <param name="allocateBuffer"> </param>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.CheckCrcVerify">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadStart">
+            <summary>
+            读取标识头
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadEnd">
+            <summary>
+            读取标识尾
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadInt16">
+            <summary>
+            读取有符号位的两字节数值类型
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadUInt16">
+            <summary>
+            读取无符号位的两字节数值类型
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadInt32">
+            <summary>
+            读取有符号位的四字节数值类型
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadUInt32">
+            <summary>
+            读取无符号位的四字节数值类型
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadInt64">
+            <summary>
+            读取有符号位的八字节数值类型
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadUInt64">
+            <summary>
+            读取无符号位的八字节数值类型
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadByte">
+            <summary>
+            读取一个字节
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadChar">
+            <summary>
+            读取一个字符
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualByte">
+            <summary>
+            虚拟读取一个字节，不计入内存偏移量
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualArray(System.Int32)">
+            <summary>
+            虚拟读取一个数组，不计入内存偏移量
+            </summary>
+            <param name="count"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualUInt16">
+            <summary>
+            虚拟读取无符号位的两字节数值类型，不计入内存偏移量
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualInt16">
+            <summary>
+            虚拟读取有符号位的两字节数值类型，不计入内存偏移量
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualUInt32">
+            <summary>
+            虚拟读取无符号位的四字节数值类型，不计入内存偏移量
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualInt32">
+            <summary>
+            虚拟读取有符号位的四字节数值类型，不计入内存偏移量
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualUInt64">
+            <summary>
+            虚拟读取无符号位的八字节数值类型，不计入内存偏移量
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadVirtualInt64">
+            <summary>
+            虚拟读取有符号位的八字节数值类型，不计入内存偏移量
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetReadOnlySpan(System.Int32)">
+            <summary>
+            读取数量大小的内存块
+            </summary>
+            <param name="count"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetVirtualReadOnlySpan(System.Int32)">
+            <summary>
+            虚拟读取数量大小的内存块，不计入内存偏移量
+            </summary>
+            <param name="count"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadBigNumber(System.Int32)">
+            <summary>
+            读取数字编码 大端模式、高位在前
+            </summary>
+            <param name="len"> </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadArray(System.Int32)">
+            <summary>
+            读取固定大小的内存块
+            </summary>
+            <param name="len"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadArray(System.Int32,System.Int32)">
+            <summary>
+            读取固定大小的内存块
+            </summary>
+            <param name="start"> </param>
+            <param name="end">   </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadAscii(System.Int32)">
+            <summary>
+            读取ASCII编码
+            </summary>
+            <param name="len"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadHex(System.Int32)">
+            <summary>
+            读取16进制编码
+            </summary>
+            <param name="len"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadBcd(System.Int32,System.Boolean)">
+            <summary>
+            读取BCD编码
+            </summary>
+            <param name="len">  </param>
+            <param name="trim"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadTimeZoneLanguage">
+            <summary>
+            读取时区语言
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadContent">
+            <summary>
+            读取数据体内存块
+            </summary>
+            <param name="count"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadContent(System.Int32)">
+            <summary>
+            读取数据体内存块
+            </summary>
+            <param name="count"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadCurrentRemainContentLength">
+            <summary>
+            读取剩余数据体内容长度
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.Skip(System.Int32)">
+            <summary>
+            跳过多少字节
+            </summary>
+            <param name="count"> </param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter">
+            <summary>
+            消息写入器
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.Type">
+            <summary>
+            数据包类型
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.#ctor(System.Span{System.Byte},NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            
+            </summary>
+            <param name="buffer">内存块</param>
+            <param name="type">数据包类型, 默认类型1</param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.SetPackageType(NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            设置包类型
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.FlushAndGetEncodingArray">
+            <summary>
+            编码后的数组
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.FlushAndGetEncodingReadOnlySpan">
+            <summary>
+            编码后的内存块
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.FlushAndGetRealReadOnlySpan">
+            <summary>
+            获取实际写入的内存块
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.FlushAndGetRealArray">
+            <summary>
+            获取实际写入的数组
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteStart">
+            <summary>
+            写入头标识
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteStart(NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            写入头标识
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteEnd">
+            <summary>
+            写入尾标识
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.Nil(System.Int32@)">
+            <summary>
+            写入空标识,0x00
+            </summary>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.Skip(System.Int32@,System.Int32@)">
+            <summary>
+            跳过多少字节数
+            </summary>
+            <param name="count"></param>
+            <param name="position">跳过前的内存位置</param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.Skip(System.Int32@,System.Int32@,System.Byte@)">
+            <summary>
+            跳过多少字节数
+            </summary>
+            <param name="count"></param>
+            <param name="position">跳过前的内存位置</param>
+            <param name="fullValue">用什么数值填充跳过的内存块</param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteChar(System.Char@)">
+            <summary>
+            写入一个字符
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteByte(System.Byte@)">
+            <summary>
+            写入一个字节
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteInt16(System.Int16@)">
+            <summary>
+            写入两个字节的有符号数值类型
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteUInt16(System.UInt16@)">
+            <summary>
+            写入两个字节的无符号数值类型
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteInt32(System.Int32@)">
+            <summary>
+            写入四个字节的有符号数值类型
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteUInt32(System.UInt32@)">
+            <summary>
+            写入四个字节的无符号数值类型
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteUInt64(System.UInt64@)">
+            <summary>
+            写入八个字节的无符号数值类型
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteInt64(System.Int64@)">
+            <summary>
+            写入八个字节的有符号数值类型
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteArray(System.ReadOnlySpan{System.Byte}@)">
+            <summary>
+            写入数组
+            </summary>
+            <param name="src"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteUInt16Return(System.UInt16@,System.Int32@)">
+            <summary>
+            根据内存定位,反写两个字节的无符号数值类型
+            </summary>
+            <param name="value"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteInt16Return(System.Int16@,System.Int32@)">
+            <summary>
+            根据内存定位,反写两个字节的有符号数值类型
+            </summary>
+            <param name="value"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteInt32Return(System.Int32@,System.Int32@)">
+            <summary>
+            根据内存定位,反写四个字节的有符号数值类型
+            </summary>
+            <param name="value"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteUInt32Return(System.UInt32@,System.Int32@)">
+            <summary>
+            根据内存定位,反写四个字节的无符号数值类型
+            </summary>
+            <param name="value"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteInt64Return(System.Int64@,System.Int32@)">
+            <summary>
+            根据内存定位,反写八个字节的有符号数值类型
+            </summary>
+            <param name="value"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteUInt64Return(System.UInt64@,System.Int32@)">
+            <summary>
+            根据内存定位,反写八个字节的无符号数值类型
+            </summary>
+            <param name="value"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteByteReturn(System.Byte@,System.Int32@)">
+            <summary>
+            根据内存定位,反写1个字节的数值类型
+            </summary>
+            <param name="value"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteBcdReturn(System.String@,System.Int32@,System.Int32@)">
+            <summary>
+            根据内存定位,反写BCD编码数据
+            </summary>
+            <param name="value"></param>
+            <param name="len"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteArrayReturn(System.ReadOnlySpan{System.Byte}@,System.Int32@)">
+            <summary>
+            根据内存定位,反写一组数组数据
+            </summary>
+            <param name="src"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.IntToBcd(System.Int32)">
+            <summary>
+            整型数据转为BCD BYTE
+            为了兼容int类型，不使用byte做参数
+            支持0xFF一个字节的转换
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.IntToBcd(System.Int32,System.Span{System.Byte},System.Int32)">
+            <summary>
+            整型数据转为BCD BYTE[]
+            </summary>
+            <param name="value">整数值</param>
+            <param name="list">bytes</param>
+            <param name="count">字节数>=整数值</param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.IntToBcd(System.Int64,System.Span{System.Byte},System.Int32)">
+            <summary>
+            整型数据转为BCD BYTE[]
+            </summary>
+            <param name="value">整数值</param>
+            <param name="list">bytes</param>
+            <param name="byteCount">字节数>=整数值</param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteBcd(System.Int64@,System.Int32@)">
+            <summary>
+            写入BCD编码数据
+            </summary>
+            <param name="value">整数值</param>
+            <param name="byteCount">字节数>=整数值</param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteBcd(System.Int32@,System.Int32@)">
+            <summary>
+            写入BCD编码数据
+            </summary>
+            <param name="value">整数值</param>
+            <param name="count">字节数>=整数值</param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteXor(System.Int32@,System.Int32@)">
+            <summary>
+            将指定内存块进行或运算并写入一个字节
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteXor(System.Int32@)">
+            <summary>
+            将指定内存块进行或运算并写入一个字节
+            </summary>
+            <param name="start"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteXor">
+            <summary>
+            将内存块进行或运算并写入一个字节
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteCrcForHeader">
+            <summary>
+            写入Crc
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteCrcForPackage">
+            <summary>
+            写入Crc
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteCrc">
+            <summary>
+            写入Crc
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteBcd(System.String@,System.Int32@)">
+            <summary>
+            写入BCD编码数据
+            </summary>
+            <param name="value"></param>
+            <param name="len"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteHex(System.String,System.Int32@)">
+            <summary>
+            写入Hex编码数据
+            </summary>
+            <param name="value"></param>
+            <param name="len"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteAscii(System.String@)">
+            <summary>
+            写入ASCII编码数据
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteBigNumber(System.String@,System.Int32)">
+            <summary>
+            写入数值类型，数字编码 大端模式、高位在前
+            </summary>
+            <param name="value"></param>
+            <param name="len"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.GetCurrentPosition">
+            <summary>
+            获取当前内存块写入的位置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteEncode">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.NbazhGpsArrayPool">
+            <summary>
+            内存池
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.NbazhGpsArrayPool.ArrayPool">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsArrayPool.Rent(System.Int32)">
+            <summary>
+            申请
+            </summary>
+            <param name="minimumLength"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.NbazhGpsBodies">
+            <summary>
+            抽象数据体
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsBodies.SkipSerialization">
+            <summary>
+            跳过数据体序列化
+            默认不跳过
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsBodies.MsgId">
+            <summary>
+            消息Id
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsBodies.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.NbazhGpsHeader">
+            <summary>
+            头部
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsHeader.#ctor">
+            <summary>
+            默认 type1
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsHeader.#ctor(NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeader.Length">
+            <summary>
+            包长度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeader.MsgId">
+            <summary>
+            消息Id
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeader.Bodies">
+            <summary>
+            消息内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeader.MsgNum">
+            <summary>
+            消息流水号
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeader.Crc">
+            <summary>
+            错误校验
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeader.PackageType">
+            <summary>
+            协议类型
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsHeader.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.NbazhGpsHeader)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsHeader.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsHeader.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.NbazhGpsHeaderPackage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeaderPackage.Begin">
+            <summary>
+            起始符
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeaderPackage.Header">
+            <summary>
+            头数据
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeaderPackage.Bodies">
+            <summary>
+            数据体
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeaderPackage.Crc">
+            <summary>
+            Crc
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeaderPackage.End">
+            <summary>
+            结束符
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeaderPackage.PackageType">
+            <summary>
+            包类型
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsHeaderPackage.OriginalData">
+            <summary>
+            原数据
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsHeaderPackage.#ctor(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.NbazhGpsPackage">
+            <summary>
+            Nbazh数据包
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.#ctor(NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            
+            </summary>
+            <param name="type">协议类型</param>
+        </member>
+        <member name="F:NbazhGPS.Protocol.NbazhGpsPackage.EndFlag">
+            <summary>
+            结束标记
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsPackage.Begin">
+            <summary>
+            起始位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsPackage.Header">
+            <summary>
+            头数据
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsPackage.Bodies">
+            <summary>
+            数据体
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsPackage.End">
+            <summary>
+            停止位
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.GetBeginFlag(NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            获取起始位
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.SetBeginFlag(NbazhGPS.Protocol.Enums.PackageType)">
+            <summary>
+            设置头尾
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsPackage.PackageType">
+            <summary>
+            协议类型
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.NbazhGpsPackage)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.NbazhGpsSerializer">
+            <summary>
+            序列化器
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor(NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory,NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory)">
+            <summary>
+            
+            </summary>
+            <param name="nbazhGpsMsgIdFactory"></param>
+            <param name="nbazhGpsFormatterFactory"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Serialize(NbazhGPS.Protocol.NbazhGpsPackage,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="package"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.SerializeReadOnlySpan(NbazhGPS.Protocol.NbazhGpsPackage,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="package"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Serialize``1(``0,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.SerializeReadOnlySpan``1(``0,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="bytes"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.CheckPackageType(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.HeaderDeserialize(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            用于负载或者分布式的时候，在网关只需要解到头部。
+            根据头部的消息Id进行分发处理，可以防止小部分性能损耗。
+            </summary>
+            <param name="bytes"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Type,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+            <param name="type"></param>
+            <param name="packageType"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+            <param name="packageType"></param>
+            <param name="options"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze``1(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="bytes"></param>
+            <param name="packageType"></param>
+            <param name="options"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze(System.UInt16,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+            <summary>
+            用于分包组合
+            </summary>
+            <param name="msgid">对应消息id</param>
+            <param name="bytes">组合的数据体</param>
+            <param name="packageType">对应版本号</param>
+            <param name="options">序列化选项</param>
+            <param name="minBufferSize">默认65535</param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer(System.UInt16,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+            <summary>
+            用于分包组合
+            </summary>
+            <param name="msgid">对应消息id</param>
+            <param name="bytes">组合的数据体</param>
+            <param name="packageType">对应版本号</param>
+            <param name="options">序列化选项</param>
+            <param name="minBufferSize">默认65535</param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+            <param name="packageType"></param>
+            <param name="options"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer``1(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="bytes"></param>
+            <param name="packageType"></param>
+            <param name="options"></param>
+            <param name="minBufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.TimeZoneLanguageModel">
+            <summary>
+            时区语言
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.HighParts">
+            <summary>
+            高位, 1.5字节
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.LowParts">
+            <summary>
+            低位, 0.5字节
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.TimeZoneTime">
+            <summary>
+            时区时间
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.TimeZone">
+            <summary>
+            时区东西
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.ReservedBits">
+            <summary>
+            保留位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.LanguageChoose2">
+            <summary>
+            语言选择位 bit1
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.LanguageChoose1">
+            <summary>
+            语言选择位 bit0
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.Serialize">
+            <summary>
+            序列化时区语言
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.Deserialize(System.UInt16)">
+            <summary>
+            反序列化时区语言
+            </summary>
+            <param name="timeZone"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.Deserialize(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            反序列化时区语言
+            </summary>
+            <param name="timeZone"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.ToString">
+            <summary>
+            </summary>
+            <returns> </returns>
+        </member>
+    </members>
+</doc>

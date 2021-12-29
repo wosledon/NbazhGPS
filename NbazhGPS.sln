@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{17F4C99A-1FD2-42A9-B036-C8756F05BE24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{29EFE3E9-0161-4010-839B-8FC0B71E38EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbazhGPS.Protocol", "src\NbazhGPS.Protocol\NbazhGPS.Protocol.csproj", "{60C362B9-9A67-41D6-9B24-8110D9A2B693}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbazhGPS.Protocol.Test", "test\NbazhGPS.Protocol.Test\NbazhGPS.Protocol.Test.csproj", "{8D845431-0197-444D-8F52-4B26222EE256}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{78251066-1D33-4FA0-8263-EB4D604F14E3}"
+	ProjectSection(SolutionItems) = preProject
+		doc\gps定位器（汽车、电动车、摩托车）简明通讯协议1.1.2_kks带串口通讯 - 副本.pdf = doc\gps定位器（汽车、电动车、摩托车）简明通讯协议1.1.2_kks带串口通讯 - 副本.pdf
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60C362B9-9A67-41D6-9B24-8110D9A2B693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C362B9-9A67-41D6-9B24-8110D9A2B693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C362B9-9A67-41D6-9B24-8110D9A2B693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C362B9-9A67-41D6-9B24-8110D9A2B693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D845431-0197-444D-8F52-4B26222EE256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D845431-0197-444D-8F52-4B26222EE256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D845431-0197-444D-8F52-4B26222EE256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D845431-0197-444D-8F52-4B26222EE256}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{60C362B9-9A67-41D6-9B24-8110D9A2B693} = {17F4C99A-1FD2-42A9-B036-C8756F05BE24}
+		{8D845431-0197-444D-8F52-4B26222EE256} = {29EFE3E9-0161-4010-839B-8FC0B71E38EE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB40FC5E-9E65-464E-8412-63FB5C662011}
+	EndGlobalSection
+EndGlobal
