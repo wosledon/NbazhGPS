@@ -110,7 +110,7 @@ namespace NbazhGPS.Protocol.Test.MessageBodyTest
         {
             NbazhGpsSerializer nbazhGpsSerializer = new NbazhGpsSerializer();
 
-            //78 78 11 01 07 52 53 36 78 90 02 42 70 00 32 01 00 05 12 79 0D 0A
+            //7979 0011 01 0752533678900242 7000 3201 0005 75CC 0D0A
 
             var hex = "7979001101075253367890024270003201000575CC0D0A".ToHexBytes();
 

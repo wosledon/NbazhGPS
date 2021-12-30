@@ -72,25 +72,14 @@ namespace NbazhGPS.Protocol.Models
             }
 
             HighParts = (ushort)(high >> 4);
-            if (TimeZone == TimeZones.西)
-            {
-                LowParts |= TimeZoneFlag;
-            }
+            if (TimeZone == TimeZones.西) LowParts |= TimeZoneFlag;
 
-            if (ReservedBits)
-            {
-                LowParts |= ReservedBitsFlag;
-            }
+            if (ReservedBits) LowParts |= ReservedBitsFlag;
 
-            if (LanguageChoose2)
-            {
-                LowParts |= LanguageChoose2Flag;
-            }
+            if (LanguageChoose2) LowParts |= LanguageChoose2Flag;
 
-            if (LanguageChoose1)
-            {
-                LowParts |= LanguageChoose1Flag;
-            }
+            if (LanguageChoose1) LowParts |= LanguageChoose1Flag;
+
             LowParts = (ushort)(LowParts << 12);
             Data = (ushort)(HighParts | LowParts);
             return Data;

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Extensions;
+using NbazhGPS.Protocol.Models;
 
 namespace NbazhGPS.Protocol.MessagePack
 {
