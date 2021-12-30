@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Buffers.Binary;
 using System.Text;
+using NbazhGPS.Protocol.BasicTypes;
 using NbazhGPS.Protocol.Buffers;
 using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Extensions;
@@ -206,6 +207,14 @@ namespace NbazhGPS.Protocol.MessagePack
         {
             var bytes = new byte[] { (byte)(value >> 16), (byte)(value >> 8), (byte)(value) };
             WriteArray(bytes);
+        }
+        /// <summary>
+        /// 写入UInt24
+        /// </summary>
+        /// <param name="value"></param>
+        public void WriteUInt24(in UInt24 value)
+        {
+            WriteArray(value.ToBytes);
         }
         /// <summary>
         /// 写入数组

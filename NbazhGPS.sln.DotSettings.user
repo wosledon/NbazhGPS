@@ -23,4 +23,5 @@
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
-	<s:Boolean x:Key="/Default/UserDictionary/Words/=Nbazh/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Nbazh/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=RSSI/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

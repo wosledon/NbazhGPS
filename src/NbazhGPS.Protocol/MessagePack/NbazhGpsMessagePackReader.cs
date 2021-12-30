@@ -4,6 +4,7 @@ using System.Buffers.Binary;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using NbazhGPS.Protocol.BasicTypes;
 using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Extensions;
 using NbazhGPS.Protocol.Models;
@@ -234,6 +235,24 @@ namespace NbazhGPS.Protocol.MessagePack
         {
             var spans = GetReadOnlySpan(3);
             return (spans[0] << 16) + (spans[1] << 8) + spans[2];
+        }
+
+        /// <summary>
+        /// 读取三字节
+        /// </summary>
+        /// <returns></returns>
+        public UInt24 ReadUInt24()
+        {
+            return new UInt24(GetReadOnlySpan(3));
+        }
+
+        /// <summary>
+        /// 虚拟的获取三字节
+        /// </summary>
+        /// <returns></returns>
+        public UInt24 GetVirtualUInt24()
+        {
+            return new UInt24(GetVirtualReadOnlySpan(3));
         }
         /// <summary>
         /// 虚拟的获取三字节
