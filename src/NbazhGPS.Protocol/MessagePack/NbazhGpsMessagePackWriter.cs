@@ -198,6 +198,15 @@ namespace NbazhGPS.Protocol.MessagePack
             _writer.Advance(8);
         }
         /// <summary>
+        /// 写入三个字节
+        /// </summary>
+        /// <param name="value"></param>
+        public void WriteByte3(in int value)
+        {
+            var bytes = new byte[] { (byte)(value >> 16), (byte)(value >> 8), (byte)(value) };
+            WriteArray(bytes);
+        }
+        /// <summary>
         /// 写入数组
         /// </summary>
         /// <param name="src"></param>

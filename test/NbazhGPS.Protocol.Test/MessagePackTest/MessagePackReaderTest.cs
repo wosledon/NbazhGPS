@@ -46,5 +46,11 @@ namespace NbazhGPS.Protocol.Test.MessagePackTest
             time = 845;
             _testOutputHelper.WriteLine(time.FormatTimeZoneLanguageTime());
         }
+
+        [Fact]
+        public void Test4()
+        {
+            DateTime d = new DateTime(21, 12, 30, 14, 30, 0);
+        }
     }
 }

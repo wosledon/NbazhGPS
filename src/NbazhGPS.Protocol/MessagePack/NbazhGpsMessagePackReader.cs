@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Buffers;
 using System.Buffers.Binary;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using NbazhGPS.Protocol.Enums;
@@ -226,6 +227,25 @@ namespace NbazhGPS.Protocol.MessagePack
         }
 
         /// <summary>
+        /// 读取三字节
+        /// </summary>
+        /// <returns></returns>
+        public int ReadByte3()
+        {
+            var spans = GetReadOnlySpan(3);
+            return (spans[0] << 16) + (spans[1] << 8) + spans[2];
+        }
+        /// <summary>
+        /// 虚拟的获取三字节
+        /// </summary>
+        /// <returns></returns>
+        public int GetVirtualByte3()
+        {
+            var spans = GetVirtualReadOnlySpan(3);
+            return (spans[0] << 16) + (spans[1] << 8) + spans[2];
+        }
+
+        /// <summary>
         /// 读取数量大小的内存块
         /// </summary>
         /// <param name="count"> </param>
@@ -330,6 +350,40 @@ namespace NbazhGPS.Protocol.MessagePack
             {
                 return bcdSb.ToString();
             }
+        }
+
+        /// <summary>
+        /// 读取六字节日期,yyMMddHHmmss
+        /// </summary>
+        public DateTime? ReadDateTime6()
+        {
+            //DateTime d;
+            try
+            {
+                var readOnlySpan = GetReadOnlySpan(6);
+                var formatter = new DateTimeFormatInfo();
+                formatter.ShortDatePattern = "yy/MM/dd HH:mm:ss";
+                return Convert.ToDateTime(
+                    $"{readOnlySpan[0]}-{readOnlySpan[1]}-{readOnlySpan[2]} {readOnlySpan[3]}:{readOnlySpan[4]}:{readOnlySpan[5]}"
+                    , formatter);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 16进制的BCD BYTE转成整型
+        /// </summary>
+        /// <param name="value">16进制的BCD BYTE转成整型</param>
+        /// <returns></returns>
+        public int BcdToInt(byte value)
+        {
+            int high = value >> 4;
+            int low = value & 0xF;
+            int number = 10 * high + low;
+            return number;
         }
 
         /// <summary>
