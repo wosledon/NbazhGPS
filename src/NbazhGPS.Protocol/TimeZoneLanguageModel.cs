@@ -27,7 +27,7 @@ namespace NbazhGPS.Protocol
         /// <summary>
         /// 时区时间
         /// </summary>
-        public ushort TimeZoneTime { get; set; } = 0;
+        public float TimeZoneTime { get; set; } = 0;
 
         /// <summary>
         /// 时区东西
@@ -77,6 +77,11 @@ namespace NbazhGPS.Protocol
                 LowParts |= TimeZoneFlag;
             }
 
+            if (ReservedBits)
+            {
+                LowParts |= ReservedBitsFlag;
+            }
+
             if (LanguageChoose2)
             {
                 LowParts |= LanguageChoose2Flag;
@@ -99,13 +104,14 @@ namespace NbazhGPS.Protocol
         public TimeZoneLanguageModel Deserialize(ushort timeZone)
         {
             Data = timeZone;
-            HighParts = (ushort)(Data << 4 >> 4);
-            TimeZoneTime = (ushort)(HighParts / 100);
+            HighParts = (ushort)((ushort)(Data << 4) >> 4);
+            TimeZoneTime = ((float)HighParts / 100);
 
             LowParts = (byte)(Data >> 12);
-            TimeZone = (TimeZones)(LowParts ^ (ushort)TimeZones.东);
-            LanguageChoose2 = (LowParts ^ LanguageChoose2Flag) >= 1;
-            LanguageChoose1 = (LowParts ^ LanguageChoose1Flag) >= 1;
+            TimeZone = (LowParts & (ushort)TimeZones.东) > 0 ? TimeZones.东 : TimeZones.西;
+            ReservedBits = (LowParts & ReservedBitsFlag) >= 1;
+            LanguageChoose2 = (LowParts & LanguageChoose2Flag) >= 1;
+            LanguageChoose1 = (LowParts & LanguageChoose1Flag) >= 1;
 
             return this;
         }
@@ -117,14 +123,15 @@ namespace NbazhGPS.Protocol
         /// <returns> </returns>
         public TimeZoneLanguageModel Deserialize(ReadOnlySpan<byte> timeZone)
         {
-            Data = (ushort)(timeZone[0] << 8 + timeZone[1]);
-            HighParts = (ushort)(Data << 4 >> 4);
+            Data = (ushort)((timeZone[0] << 8) + timeZone[1]);
+            HighParts = (ushort)((ushort)(Data << 4) >> 4);
             TimeZoneTime = (ushort)(HighParts / 100);
 
             LowParts = (byte)(Data >> 12);
-            TimeZone = (TimeZones)(LowParts ^ (ushort)TimeZones.东);
-            LanguageChoose2 = (LowParts ^ LanguageChoose2Flag) >= 1;
-            LanguageChoose1 = (LowParts ^ LanguageChoose1Flag) >= 1;
+            TimeZone = (LowParts & (ushort)TimeZones.东) > 0 ? TimeZones.东 : TimeZones.西;
+            ReservedBits = (LowParts & ReservedBitsFlag) >= 1;
+            LanguageChoose2 = (LowParts & LanguageChoose2Flag) >= 1;
+            LanguageChoose1 = (LowParts & LanguageChoose1Flag) >= 1;
 
             return this;
         }

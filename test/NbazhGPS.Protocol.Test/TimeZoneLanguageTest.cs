@@ -35,5 +35,30 @@ namespace NbazhGPS.Protocol.Test
 
             _testOutputHelper.WriteLine(new TimeZoneLanguageModel().Deserialize(tzl).ToString());
         }
+
+        [Fact]
+        public void Test3()
+        {
+            ushort tzl = 0x3201;
+            var t = new TimeZoneLanguageModel().Deserialize(tzl);
+
+            _testOutputHelper.WriteLine(t.ToString());
+        }
+
+        [Fact]
+        public void Test4()
+        {
+            var tzl = new TimeZoneLanguageModel()
+            {
+                TimeZoneTime = 5.13f,
+                TimeZone = TimeZones.西,
+                ReservedBits = true,
+                LanguageChoose2 = false,
+                LanguageChoose1 = false,
+            };
+
+            _testOutputHelper.WriteLine(Convert.ToString(tzl.Serialize(), 2));
+            _testOutputHelper.WriteLine(tzl.Serialize().ToString("X8"));
+        }
     }
 }

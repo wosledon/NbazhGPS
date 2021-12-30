@@ -11,9 +11,12 @@ namespace NbazhGPS.Protocol.Internals
     /// </summary>
     public class NbazhGpsMsgIdFactory: INbazhGpsMsgIdFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public NbazhGpsMsgIdFactory()
         {
-            Map = new Dictionary<ushort, object>();
+            Map = new Dictionary<byte, object>();
             InitMap(Assembly.GetExecutingAssembly());
         }
 
@@ -23,10 +26,10 @@ namespace NbazhGPS.Protocol.Internals
             foreach (var type in types)
             {
                 var instance = Activator.CreateInstance(type);
-                ushort msgId = 0;
+                byte msgId = 0;
                 try
                 {
-                    msgId = (ushort)type.GetProperty(nameof(NbazhGpsBodies.MsgId))!.GetValue(instance);
+                    msgId = (byte)type.GetProperty(nameof(NbazhGpsBodies.MsgId))!.GetValue(instance);
                 }
                 catch (Exception ex)
                 {
@@ -54,14 +57,14 @@ namespace NbazhGPS.Protocol.Internals
         /// <summary>
         /// 
         /// </summary>
-        public IDictionary<ushort, object> Map { get; }
+        public IDictionary<byte, object> Map { get; }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="msgId"></param>
         /// <param name="instance"></param>
         /// <returns></returns>
-        public bool TryGetValue(ushort msgId, out object instance)
+        public bool TryGetValue(byte msgId, out object instance)
         {
             return Map.TryGetValue(msgId, out instance);
         }
@@ -74,7 +77,7 @@ namespace NbazhGPS.Protocol.Internals
         {
             Type type = typeof(TNbazhGpsBodies);
             var instance = Activator.CreateInstance(type);
-            var msgId = (ushort)type.GetProperty(nameof(NbazhGpsBodies.MsgId))!.GetValue(instance);
+            var msgId = (byte)type.GetProperty(nameof(NbazhGpsBodies.MsgId))!.GetValue(instance);
             if (Map.ContainsKey(msgId))
             {
                 throw new ArgumentException($"{type.FullName} {msgId} An element with the same key already exists.");

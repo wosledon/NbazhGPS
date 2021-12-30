@@ -440,7 +440,7 @@
             
             </summary>
         </member>
-        <member name="M:NbazhGPS.Protocol.Extensions.TimeZoneLanguageExtensions.FormatTimeZoneLanguageTime(System.UInt16)">
+        <member name="M:NbazhGPS.Protocol.Extensions.TimeZoneLanguageExtensions.FormatTimeZoneLanguageTime(System.Single)">
             <summary>
             
             </summary>
@@ -602,7 +602,7 @@
             
             </summary>
         </member>
-        <member name="M:NbazhGPS.Protocol.Interfaces.INbazhGpsMsgIdFactory.TryGetValue(System.UInt16,System.Object@)">
+        <member name="M:NbazhGPS.Protocol.Interfaces.INbazhGpsMsgIdFactory.TryGetValue(System.Byte,System.Object@)">
             <summary>
             
             </summary>
@@ -680,6 +680,11 @@
             消息工厂
             </summary>
         </member>
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.Register(System.Reflection.Assembly)">
             <summary>
             
@@ -691,7 +696,7 @@
             
             </summary>
         </member>
-        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.TryGetValue(System.UInt16,System.Object@)">
+        <member name="M:NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory.TryGetValue(System.Byte,System.Object@)">
             <summary>
             
             </summary>
@@ -1656,7 +1661,7 @@
             <param name="minBufferSize"></param>
             <returns></returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze(System.UInt16,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze(System.Byte,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
             用于分包组合
             </summary>
@@ -1667,7 +1672,7 @@
             <param name="minBufferSize">默认65535</param>
             <returns></returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer(System.UInt16,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer(System.Byte,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
             用于分包组合
             </summary>

@@ -10,14 +10,14 @@ namespace NbazhGPS.Protocol.Interfaces
         /// <summary>
         /// 
         /// </summary>
-        IDictionary<ushort, object> Map { get; }
+        IDictionary<byte, object> Map { get; }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="msgId"></param>
         /// <param name="instance"></param>
         /// <returns></returns>
-        bool TryGetValue(ushort msgId, out object instance);
+        bool TryGetValue(byte msgId, out object instance);
         /// <summary>
         /// 
         /// </summary>

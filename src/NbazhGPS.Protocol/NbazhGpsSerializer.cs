@@ -305,7 +305,7 @@ namespace NbazhGPS.Protocol
         /// <param name="options">序列化选项</param>
         /// <param name="minBufferSize">默认65535</param>
         /// <returns></returns>
-        public string Analyze(ushort msgid, ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 65535)
+        public string Analyze(byte msgid, ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 65535)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
             
@@ -344,7 +344,7 @@ namespace NbazhGPS.Protocol
         /// <param name="options">序列化选项</param>
         /// <param name="minBufferSize">默认65535</param>
         /// <returns></returns>
-        public byte[] AnalyzeJsonBuffer(ushort msgid, ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 65535)
+        public byte[] AnalyzeJsonBuffer(byte msgid, ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 65535)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
             try

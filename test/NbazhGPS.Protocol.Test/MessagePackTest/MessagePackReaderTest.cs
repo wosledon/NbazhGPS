@@ -37,7 +37,7 @@ namespace NbazhGPS.Protocol.Test.MessagePackTest
         [Fact]
         public void Test3()
         {
-            ushort time = 8;
+            float time = 8;
             _testOutputHelper.WriteLine(time.FormatTimeZoneLanguageTime());
 
             time = 1245;
