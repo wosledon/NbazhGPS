@@ -2,7 +2,7 @@
 using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Extensions;
 
-namespace NbazhGPS.Protocol
+namespace NbazhGPS.Protocol.Models
 {
     /// <summary>
     /// 时区语言

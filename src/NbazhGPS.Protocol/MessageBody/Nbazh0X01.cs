@@ -3,6 +3,7 @@ using NbazhGPS.Protocol.Extensions;
 using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
+using NbazhGPS.Protocol.Models;
 
 namespace NbazhGPS.Protocol.MessageBody
 {
