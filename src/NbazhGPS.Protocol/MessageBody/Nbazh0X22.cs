@@ -81,7 +81,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 里程
         /// </summary>
-        public uint Mileage { get; set; }
+        public uint? Mileage { get; set; } = null;
         /// <summary>
         /// 是否支持里程
         /// </summary>
@@ -107,9 +107,9 @@ namespace NbazhGPS.Protocol.MessageBody
             writer.WriteByte(value.AccState.ToByteValue());
             writer.WriteByte(value.DataReportingMode.ToByteValue());
             writer.WriteByte(GpsRealTimeHeadIn);
-            if (IsSupportMileage)
+            if (value.Mileage.HasValue)
             {
-                writer.WriteUInt32(value.Mileage);
+                writer.WriteUInt32(value.Mileage.Value);
             }
         }
         /// <summary>
