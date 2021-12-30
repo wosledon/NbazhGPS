@@ -3,7 +3,7 @@
     /// <summary>
     /// Acc状态
     /// </summary>
-    public enum AccState
+    public enum AccState: byte
     {
         /// <summary>
         /// 

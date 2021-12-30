@@ -3,6 +3,7 @@ using System.Buffers.Binary;
 using System.Text;
 using NbazhGPS.Protocol.Buffers;
 using NbazhGPS.Protocol.Enums;
+using NbazhGPS.Protocol.Extensions;
 using NbazhGPS.Protocol.Helpers;
 
 namespace NbazhGPS.Protocol.MessagePack
@@ -592,6 +593,34 @@ namespace NbazhGPS.Protocol.MessagePack
                 number = number >> 8;
             }
             _writer.Advance(len);
+        }
+        /// <summary>
+        /// 写入六个字节的可空日期类型,yyMMddHHmmss
+        /// </summary>
+        /// <param name="value"></param>
+        public void WriteDateTime6(in DateTime? value)
+        {
+            var span = _writer.Free;
+            if (value == null)
+            {
+                span[0] = 0;
+                span[1] = 0;
+                span[2] = 0;
+                span[3] = 0;
+                span[4] = 0;
+                span[5] = 0;
+            }
+            else
+            {
+                byte yy = Convert.ToByte(value.Value.Year.ToString().Substring(2, 2));
+                span[0] = yy;
+                span[1] = value.Value.Month.ToByteValue();
+                span[2] = value.Value.Day.ToByteValue();
+                span[3] = value.Value.Hour.ToByteValue();
+                span[4] = value.Value.Minute.ToByteValue();
+                span[5] = value.Value.Second.ToByteValue();
+            }
+            _writer.Advance(6);
         }
         /// <summary>
         /// 获取当前内存块写入的位置
