@@ -4,6 +4,39 @@
         <name>NbazhGPS.Protocol</name>
     </assembly>
     <members>
+        <member name="T:NbazhGPS.Protocol.BasicTypes.UInt24">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.BasicTypes.UInt24.#ctor(System.UInt32)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.BasicTypes.UInt24.#ctor(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.BasicTypes.UInt24.#ctor(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+        </member>
+        <member name="P:NbazhGPS.Protocol.BasicTypes.UInt24.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.BasicTypes.UInt24.ToBytes">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:NbazhGPS.Protocol.Buffers.NbazhGpsBufferWriter">
             <summary>
             
@@ -13,6 +46,131 @@
         <member name="P:NbazhGPS.Protocol.Buffers.NbazhGpsBufferWriter.BeforeCodingWrittenPosition">
             <summary>
             编码之前的写入位置
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.AccState">
+            <summary>
+            Acc状态
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.AccState.高">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.AccState.低">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.DataReportingMode">
+            <summary>
+            数据上报模式
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.GsmSignalStrength">
+            <summary>
+            GSM信号强度
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.GsmSignalStrength.无信号">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.GsmSignalStrength.信号极弱">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.GsmSignalStrength.信号较弱">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.GsmSignalStrength.信号良好">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.GsmSignalStrength.信号强">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.GpsLocatedFunc">
+            <summary>
+            GPS实时/差分定位
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.GpsLocatedFunc.Gps实时定位">
+            <summary>
+            实时GPS定位
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.GpsLocatedFunc.Gps差分定位">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.IsGpsLocated">
+            <summary>
+            GPS定位已否
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.IsGpsLocated.已定位">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.IsGpsLocated.未定位">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.EorWLon">
+            <summary>
+            东经或者西经
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EorWLon.东经">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EorWLon.西经">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.SorNLat">
+            <summary>
+            南纬或者北纬
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.SorNLat.南纬">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.SorNLat.北纬">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.LanguageExtensionPortStatus">
+            <summary>
+            语言/扩展口状态
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.LanguageExtensionPortStatus.中文">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.LanguageExtensionPortStatus.英文">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.Enums.NbazhGpsErrorCode">
@@ -131,6 +289,46 @@
             
             </summary>
         </member>
+        <member name="T:NbazhGPS.Protocol.Enums.VoltageLevel">
+            <summary>
+            电压等级
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.VoltageLevel.无电">
+            <summary>
+            关机
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.VoltageLevel.电量极低">
+            <summary>
+            不足以打电话发短信等
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.VoltageLevel.电量很低">
+            <summary>
+            低电警报
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.VoltageLevel.电量低">
+            <summary>
+            可正常使用
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.VoltageLevel.电量中">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.VoltageLevel.电量高">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.VoltageLevel.电量极高">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:NbazhGPS.Protocol.Exceptions.NbazhGpsException">
             <summary>
             异常处理
@@ -175,6 +373,25 @@
             转化Crc
             </summary>
             <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.HeadingAndStatusExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.HeadingAndStatusExtensions.ToHeadingAndStatus(System.UInt16)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.HeadingAndStatusExtensions.HeadingAndStatusToUInt16(NbazhGPS.Protocol.Models.HeadingAndStatus)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
             <returns></returns>
         </member>
         <member name="T:NbazhGPS.Protocol.Extensions.NbazhGpsBinaryExtensions">
@@ -433,6 +650,18 @@
             </summary>
             <param name="objFormatter"></param>
             <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Extensions.TerminalInfoExtensions">
+            <summary>
+            终端信息内容扩展
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Extensions.TerminalInfoExtensions.ToTerminalInfo(System.Byte)">
+            <summary>
+            将 byte 转为终端信息内容
+            </summary>
+            <param name="data"></param>
             <returns></returns>
         </member>
         <member name="T:NbazhGPS.Protocol.Extensions.TimeZoneLanguageExtensions">
@@ -759,6 +988,339 @@
             <param name="reader"> </param>
             <param name="writer"> </param>
         </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X13">
+            <summary>
+            心跳包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.TerminalInfo">
+            <summary>
+            终端信息内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.VoltageLevel">
+            <summary>
+            电量等级
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.GsmSignalStrength">
+            <summary>
+            GSM信号强度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.LanguageExtensionPortStatus">
+            <summary>
+            语言/扩展口状态
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X13)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X22">
+            <summary>
+            GPS定位包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.DateTime">
+            <summary>
+            日期时间
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.GpsSatelliteCount">
+            <summary>
+            Gps卫星数
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Lon">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Lat">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Speed">
+            <summary>
+            速度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.HeadingAndStatus">
+            <summary>
+            航向, 状态
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.MCC">
+            <summary>
+            国家代号
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.MNC">
+            <summary>
+            移动网号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.LAC">
+            <summary>
+            位置区码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.CellId">
+            <summary>
+            移动基站
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.AccState">
+            <summary>
+            Acc状态
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.DataReportingMode">
+            <summary>
+            数据上报模式
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.GpsRealTimeHeadIn">
+            <summary>
+            GPS实时补传
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Mileage">
+            <summary>
+            里程
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.MessageBody.Nbazh0X22.IsSupportMileage">
+            <summary>
+            是否支持里程
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X22)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X28">
+            <summary>
+            LBS多基站扩展信息包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.DateTime">
+            <summary>
+            日期时间
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.MCC">
+            <summary>
+            国家代号
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.MNC">
+            <summary>
+            移动网号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.LAC">
+            <summary>
+            位置区域码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.CellId">
+            <summary>
+            移动基站
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.RSSI">
+            <summary>
+            小区信号强度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC1">
+            <summary>
+            LAC
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI1">
+            <summary>
+            CellId
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI1">
+            <summary>
+            RSSI
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI23">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC4">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI4">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI4">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC5">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI5">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI5">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC6">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI6">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI6">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.TimeAdvanceAmount">
+            <summary>
+            时间提前量
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.LanguageExtensionPortStatus">
+            <summary>
+            语言
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X28)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
         <member name="T:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader">
             <summary>
             消息读取器
@@ -909,6 +1471,30 @@
             </summary>
             <returns> </returns>
         </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadByte3">
+            <summary>
+            读取三字节
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadUInt24">
+            <summary>
+            读取三字节
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetVirtualUInt24">
+            <summary>
+            虚拟的获取三字节
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetVirtualByte3">
+            <summary>
+            虚拟的获取三字节
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetReadOnlySpan(System.Int32)">
             <summary>
             读取数量大小的内存块
@@ -965,6 +1551,18 @@
             <param name="len">  </param>
             <param name="trim"> </param>
             <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadDateTime6">
+            <summary>
+            读取六字节日期,yyMMddHHmmss
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.BcdToInt(System.Byte)">
+            <summary>
+            16进制的BCD BYTE转成整型
+            </summary>
+            <param name="value">16进制的BCD BYTE转成整型</param>
+            <returns></returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadTimeZoneLanguage">
             <summary>
@@ -1126,6 +1724,18 @@
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteInt64(System.Int64@)">
             <summary>
             写入八个字节的有符号数值类型
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteByte3(System.Int32@)">
+            <summary>
+            写入三个字节
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteUInt24(NbazhGPS.Protocol.BasicTypes.UInt24@)">
+            <summary>
+            写入UInt24
             </summary>
             <param name="value"></param>
         </member>
@@ -1298,6 +1908,12 @@
             <param name="value"></param>
             <param name="len"></param>
         </member>
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteDateTime6(System.Nullable{System.DateTime}@)">
+            <summary>
+            写入六个字节的可空日期类型,yyMMddHHmmss
+            </summary>
+            <param name="value"></param>
+        </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.GetCurrentPosition">
             <summary>
             获取当前内存块写入的位置
@@ -1308,6 +1924,165 @@
             <summary>
             编码
             </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Models.HeadingAndStatus">
+            <summary>
+            航向以及状态
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.HeadingAndStatus.GpsLocatedFunc">
+            <summary>
+            实时GPS
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.HeadingAndStatus.IsGpsLocated">
+            <summary>
+            GPS定位已否
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.HeadingAndStatus.EorWLon">
+            <summary>
+            东经或者西经
+            </summary>
+            <remarks>true: 西经 false: 东经</remarks>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.HeadingAndStatus.SorNLat">
+            <summary>
+            南纬或者北纬
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.HeadingAndStatus.Heading">
+            <summary>
+            航向
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Models.TerminalInfo">
+            <summary>
+            终端信息内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.OilAndElectricityDisConnected">
+            <summary>
+            油电断开
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.GpsConnected">
+            <summary>
+            GPS已定位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.ExtensionBits5">
+            <summary>
+            扩展位 bit5
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.ExtensionBits4">
+            <summary>
+            扩展位 bit4
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.ExtensionBits3">
+            <summary>
+            扩展位 bit3
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.PowerChargingConnected">
+            <summary>
+            已接电源充电
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.AccHigh">
+            <summary>
+            true: ACC High false: ACC Low
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TerminalInfo.Fortification">
+            <summary>
+            设防
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Models.TerminalInfo.ToByte">
+            <summary>
+            转为字节
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Models.TerminalInfo.ToObject(System.Byte)">
+            <summary>
+            转为对象
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Models.TimeZoneLanguageModel">
+            <summary>
+            时区语言
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.HighParts">
+            <summary>
+            高位, 1.5字节
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.LowParts">
+            <summary>
+            低位, 0.5字节
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.TimeZoneTime">
+            <summary>
+            时区时间
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.TimeZone">
+            <summary>
+            时区东西
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.ReservedBits">
+            <summary>
+            保留位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.LanguageChoose2">
+            <summary>
+            语言选择位 bit1
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.LanguageChoose1">
+            <summary>
+            语言选择位 bit0
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.Serialize">
+            <summary>
+            序列化时区语言
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.Deserialize(System.UInt16)">
+            <summary>
+            反序列化时区语言
+            </summary>
+            <param name="timeZone"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.Deserialize(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            反序列化时区语言
+            </summary>
+            <param name="timeZone"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Models.TimeZoneLanguageModel.ToString">
+            <summary>
+            </summary>
+            <returns> </returns>
         </member>
         <member name="T:NbazhGPS.Protocol.NbazhGpsArrayPool">
             <summary>
@@ -1703,76 +2478,6 @@
             <param name="options"></param>
             <param name="minBufferSize"></param>
             <returns></returns>
-        </member>
-        <member name="T:NbazhGPS.Protocol.TimeZoneLanguageModel">
-            <summary>
-            时区语言
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.Data">
-            <summary>
-            数据
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.HighParts">
-            <summary>
-            高位, 1.5字节
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.LowParts">
-            <summary>
-            低位, 0.5字节
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.TimeZoneTime">
-            <summary>
-            时区时间
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.TimeZone">
-            <summary>
-            时区东西
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.ReservedBits">
-            <summary>
-            保留位
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.LanguageChoose2">
-            <summary>
-            语言选择位 bit1
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.TimeZoneLanguageModel.LanguageChoose1">
-            <summary>
-            语言选择位 bit0
-            </summary>
-        </member>
-        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.Serialize">
-            <summary>
-            序列化时区语言
-            </summary>
-            <returns> </returns>
-        </member>
-        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.Deserialize(System.UInt16)">
-            <summary>
-            反序列化时区语言
-            </summary>
-            <param name="timeZone"> </param>
-            <returns> </returns>
-        </member>
-        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.Deserialize(System.ReadOnlySpan{System.Byte})">
-            <summary>
-            反序列化时区语言
-            </summary>
-            <param name="timeZone"> </param>
-            <returns> </returns>
-        </member>
-        <member name="M:NbazhGPS.Protocol.TimeZoneLanguageModel.ToString">
-            <summary>
-            </summary>
-            <returns> </returns>
         </member>
     </members>
 </doc>

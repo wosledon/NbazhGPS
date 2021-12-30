@@ -1,5 +1,6 @@
 ﻿using System;
 using NbazhGPS.Protocol.Enums;
+using NbazhGPS.Protocol.Models;
 using Xunit;
 using Xunit.Abstractions;
 

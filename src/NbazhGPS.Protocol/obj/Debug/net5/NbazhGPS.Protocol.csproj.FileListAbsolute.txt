@@ -2,7 +2,6 @@ E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\net5\NbazhGPS.Protocol.deps
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\net5\NbazhGPS.Protocol.dll
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\net5\ref\NbazhGPS.Protocol.dll
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\bin\Debug\net5\NbazhGPS.Protocol.pdb
-E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.csproj.AssemblyReference.cache
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.GeneratedMSBuildEditorConfig.editorconfig
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.AssemblyInfoInputs.cache
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.AssemblyInfo.cs

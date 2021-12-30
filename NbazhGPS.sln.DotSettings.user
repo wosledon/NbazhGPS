@@ -1,26 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5751a290_002Dfbbe_002D4a1b_002D8584_002D5d7d37f6079e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Or&gt;&#xD;
-    &lt;Test&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.NbazhGpsHeaderTest.Test1&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.NbazhGpsHeaderTest&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X01Test.Test2&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X01Test&lt;/TestId&gt;&#xD;
-    &lt;/Test&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.NbazhGpsHeaderTest.Test2&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.NbazhGpsHeaderTest.Test3&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.NbazhGpsHeaderTest.Test4&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.TimeZoneLanguageTest.Test1&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.TimeZoneLanguageTest.Test2&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.TimeZoneLanguageTest.Test3&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X01Test.Test1&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.TimeZoneLanguageTest.Test4&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X01Test.Test2&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X01Test.Test3&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X01Test.Test4&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
-  &lt;/Or&gt;&#xD;
+  &lt;Project Location="E:\CCSource\NbazhGPS\test\NbazhGPS.Protocol.Test" Presentation="&amp;lt;test&amp;gt;\&amp;lt;NbazhGPS.Protocol.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Nbazh/@EntryIndexedValue">True</s:Boolean>

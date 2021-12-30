@@ -185,7 +185,7 @@ namespace NbazhGPS.Protocol
             };
             packet.Header.MsgId = reader.ReadByte();
             packet.PackageType = reader.Type;
-            if (packet.Header.Length > 0)
+            if (packet.Header.Length - 5 > 0)
             {
                 if (factory.TryGetValue(packet.Header.MsgId, out var instance))
                 {

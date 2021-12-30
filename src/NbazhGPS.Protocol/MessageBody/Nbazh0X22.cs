@@ -86,15 +86,6 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 是否支持里程
         /// </summary>
         public bool IsSupportMileage = false;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="isSupportMileage">是否支持里程</param>
-        /// <remarks>默认不支持里程</remarks>
-        public Nbazh0X22(bool isSupportMileage = false)
-        {
-            IsSupportMileage = isSupportMileage;
-        }
 
         /// <summary>
         /// 
@@ -128,8 +119,9 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <returns></returns>
         public Nbazh0X22 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
-            Nbazh0X22 nb0X022 = new Nbazh0X22(reader.SrcBuffer.Length > 30)
+            Nbazh0X22 nb0X022 = new Nbazh0X22()
             {
+                IsSupportMileage = reader.SrcBuffer.Length > 30,
                 DateTime = reader.ReadDateTime6(),
                 GpsSatelliteCount = reader.ReadByte(),
                 Lon = (double)reader.ReadUInt32() / 1800000,
