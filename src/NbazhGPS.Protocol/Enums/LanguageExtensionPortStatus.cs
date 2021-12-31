@@ -3,7 +3,7 @@
     /// <summary>
     /// 语言/扩展口状态
     /// </summary>
-    public enum LanguageExtensionPortStatus: ushort
+    public enum LanguageExtensionPortStatus: byte
     {
         /// <summary>
         /// 
