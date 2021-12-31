@@ -1888,6 +1888,37 @@
             <param name="reader"></param>
             <param name="writer"></param>
         </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X80">
+            <summary>
+            在线指令
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X80.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X80)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X97">
             <summary>
             服务器报警包英文地址回复
