@@ -25,7 +25,11 @@ namespace NbazhGPS.Protocol
         {
             return ArrayPool.Rent(minimumLength);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="clearArray"></param>
         public static void Return(byte[] array, bool clearArray = false)
         {
             ArrayPool.Return(array, clearArray);

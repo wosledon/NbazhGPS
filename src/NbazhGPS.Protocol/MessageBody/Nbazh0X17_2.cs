@@ -1,56 +1,46 @@
-﻿using System;
-using System.Text.Json;
+﻿using System.Text.Json;
+using NbazhGPS.Protocol.BasicTypes;
 using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Extensions;
 using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
-using NbazhGPS.Protocol.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.MessageBody
 {
     /// <summary>
-    /// GPS地址请求包
+    /// LBS地址请求包
     /// </summary>
-    public class Nbazh0X2A : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X2A>, INbazhGpsAnalyze
+    // ReSharper disable once InconsistentNaming
+    public class Nbazh0X17_2 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X17_2>, INbazhGpsAnalyze
     {
         /// <summary>
         /// 
         /// </summary>
-        public override byte MsgId => 0x2A;
+        public override byte MsgId => 0x17;
 
         /// <summary>
         /// 
         /// </summary>
-        public override string Description => "GPS地址请求包";
+        public override string Description => "LBS地址请求包";
         /// <summary>
-        /// 日期时间
+        /// 国家代号
         /// </summary>
-        public DateTime? DateTime;
-
+        public ushort MCC { get; set; }
         /// <summary>
-        /// Gps卫星数
+        /// 移动网号码
         /// </summary>
-        public byte GpsSatelliteCount { get; set; }
-
+        public byte MNC { get; set; }
         /// <summary>
-        /// 经度
+        /// 位置区码
         /// </summary>
-        public decimal Lon { get; set; }
+        public ushort LAC { get; set; }
         /// <summary>
-        /// 纬度
+        /// 移动基站
         /// </summary>
-        public decimal Lat { get; set; }
-        /// <summary>
-        /// 速度
-        /// </summary>
-        public byte Speed { get; set; }
-        /// <summary>
-        /// 航向, 状态
-        /// </summary>
-        public HeadingAndStatus HeadingAndStatus { get; set; }
+        public UInt24 CellId { get; set; }
         /// <summary>
         /// 电话号码
         /// </summary>
@@ -66,19 +56,17 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public LanguageExtensionPortStatus LanguageExtensionPortStatus { get; set; }
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="value"></param>
-        public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X2A value)
+        public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X17_2 value)
         {
-            writer.WriteDateTime6(value.DateTime);
-            writer.WriteByte(value.GpsSatelliteCount);
-            writer.WriteUInt32((uint)(value.Lon * 1800000));
-            writer.WriteUInt32((uint)(Lat * 1800000));
-            writer.WriteUInt16(value.HeadingAndStatus.ToUInt16());
+            writer.WriteUInt16(value.MCC);
+            writer.WriteByte(value.MNC);
+            writer.WriteUInt16(value.LAC);
+            writer.WriteUInt24(value.CellId);
             writer.WriteAscii(value.TelephoneNumber, 21);
             writer.WriteByte(value.Alarm.ToByteValue());
             writer.WriteByte(value.LanguageExtensionPortStatus.ToByteValue());
@@ -88,22 +76,20 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        public Nbazh0X2A Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X17_2 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
-            Nbazh0X2A nb0X2A = new Nbazh0X2A()
+            Nbazh0X17_2 nb0X17 = new Nbazh0X17_2()
             {
-                DateTime = reader.ReadDateTime6(),
-                GpsSatelliteCount = reader.ReadByte(),
-                Lon = (decimal)reader.ReadUInt32() / 1800000,
-                Lat = (decimal)reader.ReadUInt32() / 1800000,
-                Speed = reader.ReadByte(),
-                HeadingAndStatus = reader.ReadUInt16().ToHeadingAndStatus(),
+                MCC = reader.ReadUInt16(),
+                MNC = reader.ReadByte(),
+                LAC = reader.ReadUInt16(),
+                CellId = reader.ReadUInt24(),
                 TelephoneNumber = reader.ReadAscii(21),
                 Alarm = (Alarm0X26)reader.ReadByte(),
                 LanguageExtensionPortStatus = (LanguageExtensionPortStatus)reader.ReadByte()
             };
 
-            return nb0X2A;
+            return nb0X17;
         }
         /// <summary>
         /// 

@@ -116,7 +116,7 @@ namespace NbazhGPS.Protocol.MessageBody
             writer.WriteUInt32((uint)(Lon * 1800000));
             writer.WriteUInt32((uint)(value.Lat * 1800000));
             writer.WriteByte(value.Speed);
-            writer.WriteUInt16(value.HeadingAndStatus.HeadingAndStatusToUInt16());
+            writer.WriteUInt16(value.HeadingAndStatus.ToUInt16());
             writer.WriteByte(value.LBSLength);
             writer.WriteUInt16(value.MCC);
             writer.WriteByte(value.MNC);

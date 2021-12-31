@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace NbazhGPS.Protocol.Helpers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class CrcHelper
     {
         

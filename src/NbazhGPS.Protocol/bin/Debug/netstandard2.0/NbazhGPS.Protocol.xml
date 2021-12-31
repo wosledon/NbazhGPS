@@ -592,7 +592,7 @@
             <param name="data"></param>
             <returns></returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.Extensions.HeadingAndStatusExtensions.HeadingAndStatusToUInt16(NbazhGPS.Protocol.Models.HeadingAndStatus)">
+        <member name="M:NbazhGPS.Protocol.Extensions.HeadingAndStatusExtensions.ToUInt16(NbazhGPS.Protocol.Models.HeadingAndStatus)">
             <summary>
             
             </summary>
@@ -931,6 +931,11 @@
             </summary>
             <param name="reader"></param>
             <returns></returns>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Helpers.CrcHelper">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16(System.Byte[])">
             <summary>
@@ -1305,6 +1310,11 @@
             电话号码
             </summary>
         </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Flag3">
+            <summary>
+            分隔符3
+            </summary>
+        </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X17)">
             <summary>
             </summary>
@@ -1322,6 +1332,77 @@
             </summary>
             <param name="reader"> </param>
             <param name="writer"> </param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2">
+            <summary>
+            LBS地址请求包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.MCC">
+            <summary>
+            国家代号
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.MNC">
+            <summary>
+            移动网号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.LAC">
+            <summary>
+            位置区码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.CellId">
+            <summary>
+            移动基站
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.TelephoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Alarm">
+            <summary>
+            报警
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.LanguageExtensionPortStatus">
+            <summary>
+            语言
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X17_2)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X22">
             <summary>
@@ -1726,6 +1807,159 @@
             <param name="reader"></param>
             <param name="writer"></param>
         </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X2A">
+            <summary>
+            GPS地址请求包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.DateTime">
+            <summary>
+            日期时间
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.GpsSatelliteCount">
+            <summary>
+            Gps卫星数
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Lon">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Lat">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Speed">
+            <summary>
+            速度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.HeadingAndStatus">
+            <summary>
+            航向, 状态
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.TelephoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Alarm">
+            <summary>
+            报警
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.LanguageExtensionPortStatus">
+            <summary>
+            语言
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X2A)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X97">
+            <summary>
+            服务器报警包英文地址回复
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.MsgId">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Description">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.CommandLength">
+            <summary>
+            指令长度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.ServerFlagBits">
+            <summary>
+            服务器标志位
+            </summary>
+            <remarks> 服务器标志位用于标志是哪个报警的标志 </remarks>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.ALARMSMS">
+            <summary>
+            报警编码标志
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Flag1">
+            <summary>
+            分隔符1
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.AddressContent">
+            <summary>
+            地址内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Flag2">
+            <summary>
+            分隔符2
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.TelephoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Flag3">
+            <summary>
+            分隔符3
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X97)">
+            <summary>
+            </summary>
+            <param name="writer"> </param>
+            <param name="value">  </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
+        </member>
         <member name="T:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader">
             <summary>
             消息读取器
@@ -1979,7 +2213,6 @@
             <summary>
             读取数据体内存块
             </summary>
-            <param name="count"> </param>
             <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadContent(System.Int32)">
@@ -2563,6 +2796,13 @@
             </summary>
             <param name="minimumLength"></param>
             <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.NbazhGpsArrayPool.Return(System.Byte[],System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="array"></param>
+            <param name="clearArray"></param>
         </member>
         <member name="T:NbazhGPS.Protocol.NbazhGpsBodies">
             <summary>
