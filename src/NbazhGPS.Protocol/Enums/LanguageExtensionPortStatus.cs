@@ -8,6 +8,10 @@
         /// <summary>
         /// 
         /// </summary>
+        不需要平台回复 = 0x00,
+        /// <summary>
+        /// 
+        /// </summary>
         中文 = 0x01,
         /// <summary>
         /// 

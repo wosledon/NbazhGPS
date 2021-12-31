@@ -1,6 +1,8 @@
 ﻿using System;
 using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Extensions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.Models
 {
@@ -32,6 +34,7 @@ namespace NbazhGPS.Protocol.Models
         /// <summary>
         /// 时区东西
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public TimeZones TimeZone { get; set; } = TimeZones.东;
 
         /// <summary>

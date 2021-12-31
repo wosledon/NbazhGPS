@@ -6,6 +6,8 @@ using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
 using NbazhGPS.Protocol.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.MessageBody
 {
@@ -36,11 +38,11 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 经度
         /// </summary>
-        public double Lon { get; set; }
+        public decimal Lon { get; set; }
         /// <summary>
         /// 纬度
         /// </summary>
-        public double Lat { get; set; }
+        public decimal Lat { get; set; }
         /// <summary>
         /// 速度
         /// </summary>
@@ -72,6 +74,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 数据上报模式
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public DataReportingMode DataReportingMode { get; set; }
         /// <summary>
         /// GPS实时补传
@@ -124,8 +127,8 @@ namespace NbazhGPS.Protocol.MessageBody
                 IsSupportMileage = reader.SrcBuffer.Length > 30,
                 DateTime = reader.ReadDateTime6(),
                 GpsSatelliteCount = reader.ReadByte(),
-                Lon = (double)reader.ReadUInt32() / 1800000,
-                Lat = (double)reader.ReadUInt32() / 1800000,
+                Lon = (decimal)reader.ReadUInt32() / 1800000,
+                Lat = (decimal)reader.ReadUInt32() / 1800000,
                 Speed = reader.ReadByte(),
                 HeadingAndStatus = reader.ReadUInt16().ToHeadingAndStatus(),
                 MCC = reader.ReadUInt16(),

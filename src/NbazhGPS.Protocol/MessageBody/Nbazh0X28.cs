@@ -6,6 +6,8 @@ using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.MessageBody
 {
@@ -125,6 +127,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 语言
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public LanguageExtensionPortStatus LanguageExtensionPortStatus { get; set; } 
 
         /// <summary>

@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Text.Json;
+using NbazhGPS.Protocol.BasicTypes;
 using NbazhGPS.Protocol.Enums;
+using NbazhGPS.Protocol.Extensions;
 using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
 using NbazhGPS.Protocol.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.MessageBody
 {
@@ -34,11 +38,11 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 经度
         /// </summary>
-        public double Lon { get; set; }
+        public decimal Lon { get; set; }
         /// <summary>
         /// 纬度
         /// </summary>
-        public double Lat { get; set; }
+        public decimal Lat { get; set; }
         /// <summary>
         /// 速度
         /// </summary>
@@ -67,7 +71,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 移动基站
         /// </summary>
-        public int CellId { get; set; }
+        public UInt24 CellId { get; set; }
         /// <summary>
         /// 终端信息
         /// </summary>
@@ -75,11 +79,23 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 电压等级
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public VoltageLevel VoltageLevel { get; set; }
         /// <summary>
         /// GSM信号等级
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public GsmSignalStrength GsmSignalStrength { get; set; }
+        /// <summary>
+        /// 报警
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Alarm0X26 Alarm { get; set; }
+        /// <summary>
+        /// 语言
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LanguageExtensionPortStatus LanguageExtensionPortStatus { get; set; }
         /// <summary>
         /// 里程
         /// </summary>
@@ -95,7 +111,26 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <param name="value"></param>
         public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X26 value)
         {
-            throw new System.NotImplementedException();
+            writer.WriteDateTime6(value.DateTime);
+            writer.WriteByte(value.GpsSatelliteCount);
+            writer.WriteUInt32((uint)(Lon * 1800000));
+            writer.WriteUInt32((uint)(value.Lat * 1800000));
+            writer.WriteByte(value.Speed);
+            writer.WriteUInt16(value.HeadingAndStatus.HeadingAndStatusToUInt16());
+            writer.WriteByte(value.LBSLength);
+            writer.WriteUInt16(value.MCC);
+            writer.WriteByte(value.MNC);
+            writer.WriteUInt16(value.LAC);
+            writer.WriteUInt24(value.CellId);
+            writer.WriteByte(value.TerminalInfo.ToByte());
+            writer.WriteByte(VoltageLevel.ToByteValue());
+            writer.WriteByte(value.GsmSignalStrength.ToByteValue());
+            writer.WriteByte(value.Alarm.ToByteValue());
+            writer.WriteByte(value.LanguageExtensionPortStatus.ToByteValue());
+            if (value.Mileage.HasValue)
+            {
+                writer.WriteUInt32(value.Mileage.Value);
+            }
         }
         /// <summary>
         /// 
@@ -104,7 +139,29 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <returns></returns>
         public Nbazh0X26 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
-            throw new System.NotImplementedException();
+            Nbazh0X26 nb0X26 = new Nbazh0X26()
+            {
+                IsSupportMileage = reader.SrcBuffer.Length > 30,
+                DateTime = reader.ReadDateTime6(),
+                GpsSatelliteCount = reader.ReadByte(),
+                Lon = (decimal)reader.ReadUInt32() / 1800000,
+                Lat = (decimal)reader.ReadUInt32() / 1800000,
+                Speed = reader.ReadByte(),
+                HeadingAndStatus = reader.ReadUInt16().ToHeadingAndStatus(),
+                LBSLength = reader.ReadByte(),
+                MCC = reader.ReadUInt16(),
+                MNC = reader.ReadByte(),
+                LAC = reader.ReadUInt16(),
+                CellId = reader.ReadUInt24(),
+                TerminalInfo = reader.ReadByte().ToTerminalInfo0X26(),
+                VoltageLevel = (VoltageLevel)reader.ReadByte(),
+                GsmSignalStrength = (GsmSignalStrength)reader.ReadByte(),
+                Alarm = (Alarm0X26)reader.ReadByte(),
+                LanguageExtensionPortStatus = (LanguageExtensionPortStatus)reader.ReadByte(),
+                Mileage = IsSupportMileage ? reader.ReadUInt32() : 0
+            };
+
+            return nb0X26;
         }
         /// <summary>
         /// 
