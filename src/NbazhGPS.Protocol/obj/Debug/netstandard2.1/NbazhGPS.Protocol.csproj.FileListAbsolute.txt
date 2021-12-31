@@ -7,3 +7,4 @@ E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.1\NbazhGPS.Pro
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.1\NbazhGPS.Protocol.csproj.CoreCompileInputs.cache
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.1\NbazhGPS.Protocol.dll
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.1\NbazhGPS.Protocol.pdb
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\netstandard2.1\NbazhGPS.Protocol.csproj.AssemblyReference.cache

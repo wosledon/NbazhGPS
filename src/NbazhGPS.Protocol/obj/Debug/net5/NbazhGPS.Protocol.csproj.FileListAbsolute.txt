@@ -9,3 +9,4 @@ E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.cspr
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.dll
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\ref\NbazhGPS.Protocol.dll
 E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.pdb
+E:\CCSource\NbazhGPS\src\NbazhGPS.Protocol\obj\Debug\net5\NbazhGPS.Protocol.csproj.AssemblyReference.cache

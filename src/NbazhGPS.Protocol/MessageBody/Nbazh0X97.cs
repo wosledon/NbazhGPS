@@ -6,9 +6,9 @@ using NbazhGPS.Protocol.MessagePack;
 namespace NbazhGPS.Protocol.MessageBody
 {
     /// <summary>
-    /// 服务器报警包中文地址回复
+    /// 服务器报警包英文地址回复
     /// </summary>
-    public class Nbazh0X17 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X17>, INbazhGpsAnalyze
+    public class Nbazh0X97 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X97>, INbazhGpsAnalyze
     {
         /// <summary>
         /// </summary>
@@ -16,7 +16,7 @@ namespace NbazhGPS.Protocol.MessageBody
 
         /// <summary>
         /// </summary>
-        public override string Description => "服务器报警包中文地址回复";
+        public override string Description => "服务器报警包英文地址回复";
 
         /// <summary>
         /// 指令长度
@@ -62,7 +62,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="writer"> </param>
         /// <param name="value">  </param>
-        public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X17 value)
+        public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X97 value)
         {
             writer.Skip(1, out var lengthPos);
             var skipLength = writer.GetCurrentPosition();
@@ -81,20 +81,20 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"> </param>
         /// <returns> </returns>
-        public Nbazh0X17 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X97 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
-            Nbazh0X17 nb0X17 = new Nbazh0X17()
+            Nbazh0X97 nb0X97 = new Nbazh0X97()
             {
                 CommandLength = reader.ReadByte(),
                 ServerFlagBits = reader.ReadUInt32(),
                 ALARMSMS = reader.ReadAscii(8),
                 Flag1 = reader.ReadAscii(2),
-                AddressContent = reader.ReadAscii(CommandLength-reader.ReaderCount-25),
+                AddressContent = reader.ReadAscii(CommandLength - reader.ReaderCount - 25),
                 Flag2 = reader.ReadAscii(2),
                 TelephoneNumber = reader.ReadAscii(21),
                 Flag3 = reader.ReadAscii(2)
             };
-            return nb0X17;
+            return nb0X97;
         }
 
         /// <summary>
