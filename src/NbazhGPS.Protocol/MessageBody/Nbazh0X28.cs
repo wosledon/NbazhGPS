@@ -41,7 +41,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 移动基站
         /// </summary>
-        public uint CellId { get; set; }
+        public UInt24 CellId { get; set; }
         /// <summary>
         /// 小区信号强度
         /// </summary>
@@ -53,7 +53,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// CellId
         /// </summary>
-        public uint NCI1 { get; set; }
+        public UInt24 NCI1 { get; set; }
         /// <summary>
         /// RSSI
         /// </summary>
@@ -81,7 +81,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 
         /// </summary>
-        public byte NRSSI23 { get; set; }
+        public byte NRSSI3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -134,7 +134,30 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <param name="value"></param>
         public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X28 value)
         {
-            throw new System.NotImplementedException();
+            writer.WriteDateTime6(value.DateTime);
+            writer.WriteUInt16(value.MCC);
+            writer.WriteByte(value.MNC);
+            writer.WriteUInt16(value.LAC);
+            writer.WriteUInt24(value.CellId);
+            writer.WriteByte(value.RSSI);
+            writer.WriteUInt16(NLAC1);
+            writer.WriteUInt24(value.NCI1);
+            writer.WriteByte(value.NRSSI1);
+            writer.WriteUInt16(NLAC2);
+            writer.WriteUInt24(value.NCI2);
+            writer.WriteByte(value.NRSSI2);
+            writer.WriteUInt16(NLAC3);
+            writer.WriteUInt24(value.NCI3);
+            writer.WriteByte(value.NRSSI3);
+            writer.WriteUInt16(NLAC4);
+            writer.WriteUInt24(value.NCI4);
+            writer.WriteByte(value.NRSSI4);
+            writer.WriteUInt16(NLAC5);
+            writer.WriteUInt24(value.NCI5);
+            writer.WriteByte(value.NRSSI5);
+            writer.WriteUInt16(NLAC6);
+            writer.WriteUInt24(value.NCI6);
+            writer.WriteByte(value.NRSSI6);
         }
         /// <summary>
         /// 
@@ -143,7 +166,35 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <returns></returns>
         public Nbazh0X28 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
-            throw new System.NotImplementedException();
+            Nbazh0X28 nb0X28 = new Nbazh0X28()
+            {
+                DateTime = reader.ReadDateTime6(),
+                MCC = reader.ReadUInt16(),
+                MNC = reader.ReadByte(),
+                LAC = reader.ReadUInt16(),
+                CellId = reader.ReadUInt24(),
+                RSSI = reader.ReadByte(),
+                NLAC1 = reader.ReadByte(),
+                NCI1 = reader.ReadUInt24(),
+                NRSSI1 = reader.ReadByte(),
+                NLAC2 = reader.ReadByte(),
+                NCI2 = reader.ReadUInt24(),
+                NRSSI2 = reader.ReadByte(),
+                NLAC3 = reader.ReadByte(),
+                NCI3 = reader.ReadUInt24(),
+                NRSSI3 = reader.ReadByte(),
+                NLAC4 = reader.ReadByte(),
+                NCI4 = reader.ReadUInt24(),
+                NRSSI4 = reader.ReadByte(),
+                NLAC5 = reader.ReadByte(),
+                NCI5 = reader.ReadUInt24(),
+                NRSSI5 = reader.ReadByte(),
+                NLAC6 = reader.ReadByte(),
+                NCI6 = reader.ReadUInt24(),
+                NRSSI6 = reader.ReadByte()
+            };
+
+            return nb0X28;
         }
         /// <summary>
         /// 

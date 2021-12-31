@@ -9,7 +9,7 @@ namespace NbazhGPS.Protocol.Models
     /// <summary>
     /// 终端信息内容
     /// </summary>
-    public class TerminalInfo
+    public partial class TerminalInfo0X13
     {
         /// <summary>
         /// 油电断开
@@ -88,7 +88,7 @@ namespace NbazhGPS.Protocol.Models
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public TerminalInfo ToObject(byte data)
+        public TerminalInfo0X13 ToObject(byte data)
         {
             OilAndElectricityDisConnected = (data & Oaed) > 0;
             GpsConnected = (data & Gps) > 0;

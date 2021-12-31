@@ -25,7 +25,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 终端信息内容
         /// </summary>
-        public TerminalInfo TerminalInfo { get; set; }
+        public TerminalInfo0X13 TerminalInfo { get; set; }
 
         /// <summary>
         /// 电量等级
@@ -63,7 +63,7 @@ namespace NbazhGPS.Protocol.MessageBody
         {
             Nbazh0X13 nb0X13 = new Nbazh0X13()
             {
-                TerminalInfo = reader.ReadByte().ToTerminalInfo(),
+                TerminalInfo = reader.ReadByte().ToTerminalInfo0X13(),
                 VoltageLevel = (VoltageLevel)reader.ReadByte(),
                 GsmSignalStrength = (GsmSignalStrength)reader.ReadByte(),
                 LanguageExtensionPortStatus = (LanguageExtensionPortStatus)reader.ReadUInt16()

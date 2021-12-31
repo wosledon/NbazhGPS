@@ -14,20 +14,20 @@ namespace NbazhGPS.Protocol.Models
         /// <summary>
         /// 实时GPS
         /// </summary>
-        public GpsLocatedFunc GpsLocatedFunc { get; set; }
+        public HeadingAndStatusEnums0X22.GpsLocatedFunc GpsLocatedFunc { get; set; }
         /// <summary>
         /// GPS定位已否
         /// </summary>
-        public IsGpsLocated IsGpsLocated { get; set; }
+        public HeadingAndStatusEnums0X22.IsGpsLocated IsGpsLocated { get; set; }
         /// <summary>
         /// 东经或者西经
         /// </summary>
         /// <remarks>true: 西经 false: 东经</remarks>
-        public EorWLon EorWLon { get; set; }
+        public HeadingAndStatusEnums0X22.EorWLon EorWLon { get; set; }
         /// <summary>
         /// 南纬或者北纬
         /// </summary>
-        public SorNLat SorNLat { get; set; }
+        public HeadingAndStatusEnums0X22.SorNLat SorNLat { get; set; }
 
         /// <summary>
         /// 航向
