@@ -31,7 +31,7 @@ namespace NbazhGPS.Protocol.Extensions
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static ushort HeadingAndStatusToUInt16(this HeadingAndStatus data)
+        public static ushort ToUInt16(this HeadingAndStatus data)
         {
             ushort res = 0;
             res |= data.GpsLocatedFunc.ToUInt16Value();

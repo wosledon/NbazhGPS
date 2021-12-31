@@ -90,7 +90,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 报警
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public Alarm0X26 Alarm { get; set; }
+        public Alarm0X26 Alarm { get; set; } = Alarm0X26.正常;
         /// <summary>
         /// 语言
         /// </summary>
