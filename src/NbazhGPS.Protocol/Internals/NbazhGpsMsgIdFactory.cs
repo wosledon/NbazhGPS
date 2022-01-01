@@ -31,7 +31,8 @@ namespace NbazhGPS.Protocol.Internals
                 {
                     msgId = (byte)type.GetProperty(nameof(NbazhGpsBodies.MsgId))!.GetValue(instance);
                 }
-                catch (Exception ex)
+                // catch (Exception ex)
+                catch
                 {
                     continue;
                 }
