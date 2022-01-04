@@ -12,7 +12,7 @@ namespace NbazhGPS.Protocol.MessageBody
     {
         /// <summary>
         /// </summary>
-        public override byte MsgId => 0x17;
+        public override byte MsgId => 0x97;
 
         /// <summary>
         /// </summary>

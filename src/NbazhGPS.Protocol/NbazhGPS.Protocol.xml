@@ -188,71 +188,6 @@
             
             </summary>
         </member>
-        <member name="T:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.GpsLocatedFunc">
-            <summary>
-            GPS实时/差分定位
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.GpsLocatedFunc.Gps实时定位">
-            <summary>
-            实时GPS定位
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.GpsLocatedFunc.Gps差分定位">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.IsGpsLocated">
-            <summary>
-            GPS定位已否
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.IsGpsLocated.已定位">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.IsGpsLocated.未定位">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.EorWLon">
-            <summary>
-            东经或者西经
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.EorWLon.东经">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.EorWLon.西经">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.SorNLat">
-            <summary>
-            南纬或者北纬
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.SorNLat.南纬">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:NbazhGPS.Protocol.Enums.HeadingAndStatusEnums0X22.SorNLat.北纬">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:NbazhGPS.Protocol.Enums.LanguageExtensionPortStatus">
             <summary>
             语言/扩展口状态
@@ -357,6 +292,76 @@
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.串口透传服务器下发">
             <summary>
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageEnums0X22">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageEnums0X22.GpsRealTimeHeadIn">
+            <summary>
+            GPS实时补传
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageEnums0X22.GpsLocatedFunc">
+            <summary>
+            GPS实时/差分定位
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.GpsLocatedFunc.Gps实时定位">
+            <summary>
+            实时GPS定位
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.GpsLocatedFunc.Gps差分定位">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageEnums0X22.IsGpsLocated">
+            <summary>
+            GPS定位已否
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.IsGpsLocated.已定位">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.IsGpsLocated.未定位">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageEnums0X22.EorWLon">
+            <summary>
+            东经或者西经
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.EorWLon.东经">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.EorWLon.西经">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageEnums0X22.SorNLat">
+            <summary>
+            南纬或者北纬
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.SorNLat.南纬">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.PackageEnums0X22.SorNLat.北纬">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.Enums.PackageType">
@@ -1472,7 +1477,7 @@
             日期时间
             </summary>
         </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.GpsSatelliteCount">
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.GpsSatelliteInfo">
             <summary>
             Gps卫星数
             </summary>
@@ -2793,6 +2798,16 @@
         <member name="P:NbazhGPS.Protocol.Models.DataContent0X94Models.DataContent0A.ICCID">
             <summary>
             BCD 20
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.GpsSatelliteInfo0X22.GpsInfoLength">
+            <summary>
+            GPS信息长度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.GpsSatelliteInfo0X22.GpsSatelliteCount">
+            <summary>
+            参与卫星定位数
             </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.Models.HeadingAndStatus">

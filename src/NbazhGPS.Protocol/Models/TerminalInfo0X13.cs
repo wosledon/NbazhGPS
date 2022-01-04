@@ -15,44 +15,44 @@ namespace NbazhGPS.Protocol.Models
         /// 油电断开
         /// </summary>
         [Description("油电断开/接通")]
-        public bool OilAndElectricityDisConnected { get; set; }
+        public bool OilAndElectricityDisConnected { get; set; } = false;
 
         /// <summary>
         /// GPS已定位
         /// </summary>
         [Description("GPS已定位")]
-        public bool GpsConnected { get; set; }
+        public bool GpsConnected { get; set; } = false;
         /// <summary>
         /// 扩展位 bit5
         /// </summary>
         [Description("扩展位 bit5")]
-        public bool ExtensionBits5 { get; set; }
+        public bool ExtensionBits5 { get; set; } = false;
         /// <summary>
         /// 扩展位 bit4
         /// </summary>
         [Description("扩展位 bit4")]
-        public bool ExtensionBits4 { get; set; }
+        public bool ExtensionBits4 { get; set; } = false;
         /// <summary>
         /// 扩展位 bit3
         /// </summary>
         [Description("扩展位 bit3")]
-        public bool ExtensionBits3 { get; set; }
+        public bool ExtensionBits3 { get; set; } = false;
 
         /// <summary>
         /// 已接电源充电
         /// </summary>
         [Description("已接电源充电")]
-        public bool PowerChargingConnected { get; set; }
+        public bool PowerChargingConnected { get; set; } = false;
         /// <summary>
         /// true: ACC High false: ACC Low
         /// </summary>
         [Description("ACC High")]
-        public bool AccHigh { get; set; }
+        public bool AccHigh { get; set; } = false;
         /// <summary>
         /// 设防
         /// </summary>
         [Description("设防")]
-        public bool Fortification { get; set; }
+        public bool Fortification { get; set; } = false;
 
         private const byte Oaed = 1 << 7;
         private const byte Gps = 1 << 6;

@@ -33,7 +33,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// Gps卫星数
         /// </summary>
-        public byte GpsSatelliteCount { get; set; }
+        public GpsSatelliteInfo0X22 GpsSatelliteInfo { get; set; }
 
         /// <summary>
         /// 经度
@@ -79,7 +79,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// GPS实时补传
         /// </summary>
-        public byte GpsRealTimeHeadIn { get; set; }
+        public PackageEnums0X22.GpsRealTimeHeadIn GpsRealTimeHeadIn { get; set; }
 
         /// <summary>
         /// 里程
@@ -98,7 +98,7 @@ namespace NbazhGPS.Protocol.MessageBody
         public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X22 value)
         {
             writer.WriteDateTime6(value.DateTime);
-            writer.WriteByte(value.GpsSatelliteCount);
+            writer.WriteByte(value.GpsSatelliteInfo.ToByte());
             writer.WriteUInt32((uint)(value.Lon * 1800000));
             writer.WriteUInt32((uint)(value.Lat * 1800000));
             writer.WriteByte(value.Speed);
@@ -109,7 +109,7 @@ namespace NbazhGPS.Protocol.MessageBody
             writer.WriteByte3(CellId);
             writer.WriteByte(value.AccState.ToByteValue());
             writer.WriteByte(value.DataReportingMode.ToByteValue());
-            writer.WriteByte(GpsRealTimeHeadIn);
+            writer.WriteByte((byte)GpsRealTimeHeadIn);
             if (value.Mileage.HasValue)
             {
                 writer.WriteUInt32(value.Mileage.Value);
@@ -124,9 +124,9 @@ namespace NbazhGPS.Protocol.MessageBody
         {
             Nbazh0X22 nb0X022 = new Nbazh0X22()
             {
-                IsSupportMileage = reader.SrcBuffer.Length > 30,
+                IsSupportMileage = reader.SrcBuffer.Length > 40,
                 DateTime = reader.ReadDateTime6(),
-                GpsSatelliteCount = reader.ReadByte(),
+                GpsSatelliteInfo = reader.ReadByte().ToGpsSatelliteInfoObject(),
                 Lon = (decimal)reader.ReadUInt32() / 1800000,
                 Lat = (decimal)reader.ReadUInt32() / 1800000,
                 Speed = reader.ReadByte(),
@@ -137,9 +137,9 @@ namespace NbazhGPS.Protocol.MessageBody
                 CellId = reader.ReadByte3(),
                 AccState = (AccState)reader.ReadByte(),
                 DataReportingMode = (DataReportingMode)reader.ReadByte(),
-                GpsRealTimeHeadIn = reader.ReadByte(),
+                GpsRealTimeHeadIn = (PackageEnums0X22.GpsRealTimeHeadIn)reader.ReadByte(),
                 // 如果包长度不包含里程则不解析
-                Mileage = IsSupportMileage ? reader.ReadUInt32() : 0
+                Mileage = reader.SrcBuffer.Length > 40 ? reader.ReadUInt32() : 0
             };
             return nb0X022;
         }

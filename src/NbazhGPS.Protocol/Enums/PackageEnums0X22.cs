@@ -4,8 +4,17 @@ namespace NbazhGPS.Protocol.Enums
     /// <summary>
     /// 
     /// </summary>
-    public partial class HeadingAndStatusEnums0X22
+    public partial class PackageEnums0X22
     {
+        /// <summary>
+        /// GPS实时补传
+        /// </summary>
+        public enum GpsRealTimeHeadIn
+        {
+            实时上传 = 0x00,
+            补传 = 0x01
+        }
+
         /// <summary>
         /// GPS实时/差分定位
         /// </summary>

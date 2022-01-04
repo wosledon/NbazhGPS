@@ -17,10 +17,10 @@ namespace NbazhGPS.Protocol.Extensions
         {
             var has = new HeadingAndStatus()
             {
-                GpsLocatedFunc = (HeadingAndStatusEnums0X22.GpsLocatedFunc)(data & (1 << 13)),
-                IsGpsLocated = (HeadingAndStatusEnums0X22.IsGpsLocated)(data & (1 << 12)),
-                EorWLon = (HeadingAndStatusEnums0X22.EorWLon)(data & (1 << 11)),
-                SorNLat = (HeadingAndStatusEnums0X22.SorNLat)(data & (1 << 10)),
+                GpsLocatedFunc = (PackageEnums0X22.GpsLocatedFunc)(data & (1 << 13)),
+                IsGpsLocated = (PackageEnums0X22.IsGpsLocated)(data & (1 << 12)),
+                EorWLon = (PackageEnums0X22.EorWLon)(data & (1 << 11)),
+                SorNLat = (PackageEnums0X22.SorNLat)(data & (1 << 10)),
                 Heading = (ushort)((ushort)(data << 6) >> 6)
             };
 

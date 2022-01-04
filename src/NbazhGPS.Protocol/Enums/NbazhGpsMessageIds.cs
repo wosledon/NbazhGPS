@@ -15,7 +15,7 @@
 
         /// <summary>
         /// </summary>
-        心跳包 = 0x23,
+        心跳包 = 0x13,
 
         /// <summary>
         /// </summary>

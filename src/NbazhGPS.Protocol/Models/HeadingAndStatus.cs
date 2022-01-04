@@ -17,23 +17,23 @@ namespace NbazhGPS.Protocol.Models
         /// 实时GPS
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public HeadingAndStatusEnums0X22.GpsLocatedFunc GpsLocatedFunc { get; set; }
+        public PackageEnums0X22.GpsLocatedFunc GpsLocatedFunc { get; set; }
         /// <summary>
         /// GPS定位已否
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public HeadingAndStatusEnums0X22.IsGpsLocated IsGpsLocated { get; set; }
+        public PackageEnums0X22.IsGpsLocated IsGpsLocated { get; set; }
         /// <summary>
         /// 东经或者西经
         /// </summary>
         /// <remarks>true: 西经 false: 东经</remarks>
         [JsonConverter(typeof(StringEnumConverter))]
-        public HeadingAndStatusEnums0X22.EorWLon EorWLon { get; set; }
+        public PackageEnums0X22.EorWLon EorWLon { get; set; }
         /// <summary>
         /// 南纬或者北纬
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public HeadingAndStatusEnums0X22.SorNLat SorNLat { get; set; }
+        public PackageEnums0X22.SorNLat SorNLat { get; set; }
 
         /// <summary>
         /// 航向
