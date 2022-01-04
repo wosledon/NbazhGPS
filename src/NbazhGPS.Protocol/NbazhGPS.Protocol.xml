@@ -68,6 +68,11 @@
             报警
             </summary>
         </member>
+        <member name="T:NbazhGPS.Protocol.Enums.DataContent0X94Enums">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:NbazhGPS.Protocol.Enums.DataReportingMode">
             <summary>
             数据上报模式
@@ -361,12 +366,15 @@
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.PackageType.Type1">
             <summary>
-            
             </summary>
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.PackageType.Type2">
             <summary>
-            
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.PackageType0X17">
+            <summary>
+            0x17包类型
             </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.Enums.TerminalInfoEnums0X26">
@@ -1263,7 +1271,6 @@
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X17">
             <summary>
-            服务器报警包中文地址回复
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.MsgId">
@@ -1274,45 +1281,8 @@
             <summary>
             </summary>
         </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.CommandLength">
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.PackageType0X17">
             <summary>
-            指令长度
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.ServerFlagBits">
-            <summary>
-            服务器标志位
-            </summary>
-            <remarks> 服务器标志位用于标志是哪个报警的标志 </remarks>
-        </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.ALARMSMS">
-            <summary>
-            报警编码标志
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Flag1">
-            <summary>
-            分隔符1
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.AddressContent">
-            <summary>
-            地址内容
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Flag2">
-            <summary>
-            分隔符2
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.TelephoneNumber">
-            <summary>
-            电话号码
-            </summary>
-        </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Flag3">
-            <summary>
-            分隔符3
             </summary>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X17)">
@@ -1320,14 +1290,93 @@
             </summary>
             <param name="writer"> </param>
             <param name="value">  </param>
+            <exception cref="T:System.NotImplementedException"> </exception>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
             <summary>
             </summary>
             <param name="reader"> </param>
             <returns> </returns>
+            <exception cref="T:System.NotImplementedException"> </exception>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
+            <exception cref="T:System.NotImplementedException"> </exception>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1">
+            <summary>
+            服务器报警包中文地址回复
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.MsgId">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Description">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.PackageType0X17">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.CommandLength">
+            <summary>
+            指令长度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.ServerFlagBits">
+            <summary>
+            服务器标志位
+            </summary>
+            <remarks> 服务器标志位用于标志是哪个报警的标志 </remarks>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.ALARMSMS">
+            <summary>
+            报警编码标志
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Flag1">
+            <summary>
+            分隔符1
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.AddressContent">
+            <summary>
+            地址内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Flag2">
+            <summary>
+            分隔符2
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.TelephoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Flag3">
+            <summary>
+            分隔符3
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X17_1)">
+            <summary>
+            </summary>
+            <param name="writer"> </param>
+            <param name="value">  </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
             </summary>
             <param name="reader"> </param>
@@ -1340,12 +1389,14 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Description">
             <summary>
-            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.PackageType0X17">
+            <summary>
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.MCC">
@@ -1385,24 +1436,21 @@
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X17_2)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X22">
             <summary>
@@ -1895,24 +1943,152 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X80.MsgId">
             <summary>
-            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X80.CommandLength">
+            <summary>
+            指令长度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X80.ServerFlagBits">
+            <summary>
+            服务器标记位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X80.CommandContext">
+            <summary>
+            指令内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Alarm">
+            <summary>
+            报警
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X80.LanguageExtensionPortStatus">
+            <summary>
+            语言
             </summary>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X80)">
+            <summary>
+            </summary>
+            <param name="writer"> </param>
+            <param name="value">  </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            </summary>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X8A">
+            <summary>
+            校时包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.DateTime">
+            <summary>
+            时间日期, 终端请求时没有该字段
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X8A)">
             <summary>
             
             </summary>
             <param name="writer"></param>
             <param name="value"></param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
             <summary>
             
             </summary>
             <param name="reader"></param>
             <returns></returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="writer"></param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X94">
+            <summary>
+            信息传输通用包
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.MsgId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.InfoType">
+            <summary>
+            信息类型
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.DataContent00">
+            <summary>
+            类型为00时
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.DataContent04">
+            <summary>
+            类型为04时
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.DataContent05">
+            <summary>
+            类型为05时
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.DataContent09">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.DataContent0A">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X94)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
             
             </summary>
@@ -2602,6 +2778,21 @@
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter.WriteEncode">
             <summary>
             编码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.DataContent0X94Models.DataContent0A.IMEI">
+            <summary>
+            BCD 16
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.DataContent0X94Models.DataContent0A.IMSI">
+            <summary>
+            BCD 16
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Models.DataContent0X94Models.DataContent0A.ICCID">
+            <summary>
+            BCD 20
             </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.Models.HeadingAndStatus">
