@@ -334,6 +334,13 @@ namespace NbazhGPS.Protocol.MessagePack
             return value;
         }
 
+        public string ReadUnicode(int len)
+        {
+            var readOnlySpan = GetReadOnlySpan(len);
+            string value = Encoding.BigEndianUnicode.GetString(readOnlySpan.Slice(0, len).ToArray());
+            return value;
+        }
+
         /// <summary>
         /// 读取16进制编码
         /// </summary>

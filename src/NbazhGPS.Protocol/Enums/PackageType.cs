@@ -23,7 +23,7 @@ namespace NbazhGPS.Protocol.Enums
     /// </summary>
     public enum PackageType0X17
     {
-        终端地址请求包 = 31,
+        终端地址请求包 = 41,
         服务器地址请求包中文回复 = 39
     }
 }

@@ -53,7 +53,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <exception cref="System.NotImplementedException"> </exception>
         public Nbazh0X17 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
-            if (reader.SrcBuffer.Length <= PackageType0X17.服务器地址请求包中文回复.ToUInt16Value())
+            if (reader.SrcBuffer.Length != PackageType0X17.终端地址请求包.ToUInt16Value())
             {
                 return new Nbazh0X17_1().Deserialize(ref reader);
             }

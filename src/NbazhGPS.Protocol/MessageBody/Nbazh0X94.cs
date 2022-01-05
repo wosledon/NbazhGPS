@@ -115,7 +115,7 @@ namespace NbazhGPS.Protocol.MessageBody
                 case InfoType.终端状态同步:
                     nb0X94.DataContent04 = new DataContent0X94Models.DataContent04()
                     {
-                        SourceData = reader.ReadAscii(reader.SrcBuffer.Length - 11),
+                        SourceData = reader.ReadAscii(reader.SrcBuffer.Length - 12),
                     };
                     break;
                 case InfoType.边门状态:
@@ -124,7 +124,7 @@ namespace NbazhGPS.Protocol.MessageBody
                 case InfoType.自检参数:
                     break;
                 case InfoType.定位卫星信息:
-                    nb0X94.DataContent09 = reader.ReadArray(reader.SrcBuffer.Length - 11).ToDataContent09();
+                    nb0X94.DataContent09 = reader.ReadArray(reader.SrcBuffer.Length - 12).ToDataContent09();
                     break;
                 case InfoType.ICCID信息:
                     nb0X94.DataContent0A = new DataContent0X94Models.DataContent0A()

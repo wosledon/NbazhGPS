@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using NbazhGPS.Protocol.Enums;
+using NbazhGPS.Protocol.Extensions;
 using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
@@ -10,7 +11,7 @@ namespace NbazhGPS.Protocol.MessageBody
     /// 服务器报警包中文地址回复
     /// </summary>
     // ReSharper disable once InconsistentNaming
-    public class Nbazh0X17_1 : Nbazh0X17
+    public class Nbazh0X17_1 : Nbazh0X17, INbazhGpsMessagePackageFormatter<Nbazh0X17_1>
     {
         /// <summary>
         /// </summary>
@@ -88,15 +89,16 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"> </param>
         /// <returns> </returns>
-        public Nbazh0X17_1 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public new Nbazh0X17_1 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
+            var commandLen = reader.ReadByte();
             Nbazh0X17_1 nb0X17 = new Nbazh0X17_1()
             {
-                CommandLength = reader.ReadByte(),
+                CommandLength = commandLen,
                 ServerFlagBits = reader.ReadUInt32(),
                 ALARMSMS = reader.ReadAscii(8),
                 Flag1 = reader.ReadAscii(2),
-                AddressContent = reader.ReadAscii(CommandLength - reader.ReaderCount - 25),
+                AddressContent = reader.ReadUnicode(commandLen - (4+8+2+2+2+21)),
                 Flag2 = reader.ReadAscii(2),
                 TelephoneNumber = reader.ReadAscii(21),
                 Flag3 = reader.ReadAscii(2)
@@ -108,7 +110,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"> </param>
         /// <param name="writer"> </param>
-        public void Analyze(ref NbazhGpsMessagePackReader reader, Utf8JsonWriter writer)
+        public new void Analyze(ref NbazhGpsMessagePackReader reader, Utf8JsonWriter writer)
         {
             throw new System.NotImplementedException();
         }

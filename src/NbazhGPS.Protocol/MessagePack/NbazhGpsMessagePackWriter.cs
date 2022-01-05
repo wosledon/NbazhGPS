@@ -618,7 +618,7 @@ namespace NbazhGPS.Protocol.MessagePack
         public void WriteUniCode(in string value)
         {
             var spanFree = _writer.Free;
-            var bytes = Encoding.Unicode.GetBytes(value).AsSpan();
+            var bytes = Encoding.BigEndianUnicode.GetBytes(value).AsSpan();
             bytes.CopyTo(spanFree);
             _writer.Advance(bytes.Length);
         }
@@ -644,7 +644,7 @@ namespace NbazhGPS.Protocol.MessagePack
         {
             var spanFree = _writer.Free;
             var temp = new byte[length];
-            var bytes = new Span<byte>(Encoding.ASCII.GetBytes(value), 0, length);
+            var bytes = new Span<byte>(Encoding.ASCII.GetBytes(value), 0, Encoding.ASCII.GetBytes(value).Length);
             bytes.CopyTo(temp);
             temp.CopyTo(spanFree);
             _writer.Advance(length);

@@ -33,7 +33,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// Gps卫星数
         /// </summary>
-        public byte GpsSatelliteCount { get; set; }
+        public GpsSatelliteInfo0X22 GpsSatelliteInfo { get; set; }
 
         /// <summary>
         /// 经度
@@ -75,7 +75,7 @@ namespace NbazhGPS.Protocol.MessageBody
         public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X2A value)
         {
             writer.WriteDateTime6(value.DateTime);
-            writer.WriteByte(value.GpsSatelliteCount);
+            writer.WriteByte(value.GpsSatelliteInfo.ToByte());
             writer.WriteUInt32((uint)(value.Lon * 1800000));
             writer.WriteUInt32((uint)(Lat * 1800000));
             writer.WriteUInt16(value.HeadingAndStatus.ToUInt16());
@@ -93,7 +93,7 @@ namespace NbazhGPS.Protocol.MessageBody
             Nbazh0X2A nb0X2A = new Nbazh0X2A()
             {
                 DateTime = reader.ReadDateTime6(),
-                GpsSatelliteCount = reader.ReadByte(),
+                GpsSatelliteInfo = reader.ReadByte().ToGpsSatelliteInfoObject(),
                 Lon = (decimal)reader.ReadUInt32() / 1800000,
                 Lat = (decimal)reader.ReadUInt32() / 1800000,
                 Speed = reader.ReadByte(),

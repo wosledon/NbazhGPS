@@ -14,7 +14,7 @@ namespace NbazhGPS.Protocol.MessageBody
     /// LBS地址请求包
     /// </summary>
     // ReSharper disable once InconsistentNaming
-    public class Nbazh0X17_2 : Nbazh0X17
+    public class Nbazh0X17_2 : Nbazh0X17, INbazhGpsMessagePackageFormatter<Nbazh0X17_2>
     {
         /// <summary>
         /// </summary>

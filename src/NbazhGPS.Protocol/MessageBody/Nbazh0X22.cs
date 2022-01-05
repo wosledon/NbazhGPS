@@ -38,11 +38,11 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 经度
         /// </summary>
-        public decimal Lon { get; set; }
+        public decimal Lon { get => HeadingAndStatus.EorWLon == PackageEnums0X22.EorWLon.东经 ? Lon : -Lon; set => Lon = value; }
         /// <summary>
         /// 纬度
         /// </summary>
-        public decimal Lat { get; set; }
+        public decimal Lat { get => HeadingAndStatus.SorNLat == PackageEnums0X22.SorNLat.北纬 ? Lat : -Lat; set => Lat = value; }
         /// <summary>
         /// 速度
         /// </summary>

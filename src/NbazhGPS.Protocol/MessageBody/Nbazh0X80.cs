@@ -68,11 +68,12 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <returns> </returns>
         public Nbazh0X80 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
+            var commandLen = reader.ReadByte();
             Nbazh0X80 nb0X80 = new Nbazh0X80()
             {
-                CommandLength = reader.ReadByte(),
+                CommandLength = commandLen,
                 ServerFlagBits = reader.ReadUInt32(),
-                CommandContext = reader.ReadAscii(CommandLength - 6),
+                CommandContext = reader.ReadAscii(commandLen - 6),
                 Alarm = (Alarm0X26)reader.ReadByte(),
                 LanguageExtensionPortStatus = (LanguageExtensionPortStatus)reader.ReadByte()
             };

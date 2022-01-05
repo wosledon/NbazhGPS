@@ -250,12 +250,22 @@
             <summary>
             </summary>
         </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.Lbs多基站扩展包">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.终端在线指令回复">
             <summary>
             </summary>
         </member>
-        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.报警数据">
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.报警包_单围栏">
             <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.报警包_多围栏">
+            <summary>
+            
             </summary>
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.Gps地址请求包">
@@ -1588,7 +1598,7 @@
             日期时间
             </summary>
         </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X26.GpsSatelliteCount">
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X26.GpsSatelliteInfo">
             <summary>
             Gps卫星数
             </summary>
@@ -1693,6 +1703,101 @@
             </summary>
             <param name="reader"></param>
             <param name="writer"></param>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.DateTime">
+            <summary>
+            日期时间
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.GpsSatelliteInfo">
+            <summary>
+            Gps卫星数
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.Lon">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.Lat">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.Speed">
+            <summary>
+            速度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.HeadingAndStatus">
+            <summary>
+            航向, 状态
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.LBSLength">
+            <summary>
+            LBS长度  自身+MCC+MNC+CellID
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.MCC">
+            <summary>
+            国家代号
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.MNC">
+            <summary>
+            移动网号码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.LAC">
+            <summary>
+            位置区码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.CellId">
+            <summary>
+            移动基站
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.TerminalInfo">
+            <summary>
+            终端信息
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.VoltageLevel">
+            <summary>
+            电压等级
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.GsmSignalStrength">
+            <summary>
+            GSM信号等级
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.Alarm">
+            <summary>
+            报警
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.LanguageExtensionPortStatus">
+            <summary>
+            语言
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.FenceNumber">
+            <summary>
+            围栏编号
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.Mileage">
+            <summary>
+            里程
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.MessageBody.Nbazh0X27.IsSupportMileage">
+            <summary>
+            是否支持里程
+            </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X28">
             <summary>
@@ -1880,7 +1985,7 @@
             日期时间
             </summary>
         </member>
-        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.GpsSatelliteCount">
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.GpsSatelliteInfo">
             <summary>
             Gps卫星数
             </summary>

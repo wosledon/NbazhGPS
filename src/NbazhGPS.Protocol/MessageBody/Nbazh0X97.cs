@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Text.Json;
 using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
@@ -8,6 +9,7 @@ namespace NbazhGPS.Protocol.MessageBody
     /// <summary>
     /// 服务器报警包英文地址回复
     /// </summary>
+    [Obsolete("0x97协议中文档有错误", false)]
     public class Nbazh0X97 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X97>, INbazhGpsAnalyze
     {
         /// <summary>
@@ -83,16 +85,25 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <returns> </returns>
         public Nbazh0X97 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
+            var commandLen = reader.ReadByte();
+            CommandLength = commandLen;
+            ServerFlagBits = reader.ReadUInt32();
+            ALARMSMS = reader.ReadAscii(8);
+            Flag1 = reader.ReadAscii(2);
+            AddressContent = reader.ReadUnicode(commandLen - (4 + 8 + 2 + 2 + 2 + 21));
+            Flag2 = reader.ReadAscii(2);
+            TelephoneNumber = reader.ReadAscii(21);
+            Flag3 = reader.ReadAscii(2);
             Nbazh0X97 nb0X97 = new Nbazh0X97()
             {
-                CommandLength = reader.ReadByte(),
-                ServerFlagBits = reader.ReadUInt32(),
-                ALARMSMS = reader.ReadAscii(8),
-                Flag1 = reader.ReadAscii(2),
-                AddressContent = reader.ReadAscii(CommandLength - reader.ReaderCount - 25),
-                Flag2 = reader.ReadAscii(2),
-                TelephoneNumber = reader.ReadAscii(21),
-                Flag3 = reader.ReadAscii(2)
+                //CommandLength = commandLen,
+                //ServerFlagBits = reader.ReadUInt32(),
+                //ALARMSMS = reader.ReadAscii(8),
+                //Flag1 = reader.ReadAscii(2),
+                //AddressContent = reader.ReadUnicode(commandLen - (4 + 8 + 2 + 2 + 2 + 21)),
+                //Flag2 = reader.ReadAscii(2),
+                //TelephoneNumber = reader.ReadAscii(21),
+                //Flag3 = reader.ReadAscii(2)
             };
             return nb0X97;
         }

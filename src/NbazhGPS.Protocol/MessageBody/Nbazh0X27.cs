@@ -12,19 +12,11 @@ using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.MessageBody
 {
-    /// <summary>
-    /// 报警包
-    /// </summary>
-    public class Nbazh0X26 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X26>, INbazhGpsAnalyze
+    public class Nbazh0X27 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X27>, INbazhGpsAnalyze
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public override byte MsgId => 0x26;
-        /// <summary>
-        /// 
-        /// </summary>
-        public override string Description => "报警包";
+        public override byte MsgId => 0x27;
+        public override string Description => "报警包(多围栏)";
+
         /// <summary>
         /// 日期时间
         /// </summary>
@@ -96,6 +88,11 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public LanguageExtensionPortStatus LanguageExtensionPortStatus { get; set; }
+
+        /// <summary>
+        /// 围栏编号
+        /// </summary>
+        public byte FenceNumber { get; set; }
         /// <summary>
         /// 里程
         /// </summary>
@@ -104,12 +101,8 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 是否支持里程
         /// </summary>
         public bool IsSupportMileage = false;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="value"></param>
-        public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X26 value)
+
+        public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X27 value)
         {
             writer.WriteDateTime6(value.DateTime);
             writer.WriteByte(value.GpsSatelliteInfo.ToByte());
@@ -127,21 +120,18 @@ namespace NbazhGPS.Protocol.MessageBody
             writer.WriteByte(value.GsmSignalStrength.ToByteValue());
             writer.WriteByte(value.Alarm.ToByteValue());
             writer.WriteByte(value.LanguageExtensionPortStatus.ToByteValue());
+            writer.WriteByte(value.FenceNumber);
             if (value.Mileage.HasValue)
             {
                 writer.WriteUInt32(value.Mileage.Value);
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
-        public Nbazh0X26 Deserialize(ref NbazhGpsMessagePackReader reader)
+
+        public Nbazh0X27 Deserialize(ref NbazhGpsMessagePackReader reader)
         {
-            Nbazh0X26 nb0X26 = new Nbazh0X26()
+            Nbazh0X27 nb0X27 = new Nbazh0X27()
             {
-                IsSupportMileage = reader.SrcBuffer.Length > 42,
+                IsSupportMileage = reader.SrcBuffer.Length > 46,
                 DateTime = reader.ReadDateTime6(),
                 GpsSatelliteInfo = reader.ReadByte().ToGpsSatelliteInfoObject(),
                 Lon = (decimal)reader.ReadUInt32() / 1800000,
@@ -158,16 +148,13 @@ namespace NbazhGPS.Protocol.MessageBody
                 GsmSignalStrength = (GsmSignalStrength)reader.ReadByte(),
                 Alarm = (Alarm0X26)reader.ReadByte(),
                 LanguageExtensionPortStatus = (LanguageExtensionPortStatus)reader.ReadByte(),
-                Mileage = reader.SrcBuffer.Length > 42 ? reader.ReadUInt32() : 0
+                FenceNumber = reader.ReadByte(),
+                Mileage = reader.SrcBuffer.Length > 46 ? reader.ReadUInt32() : 0
             };
 
-            return nb0X26;
+            return nb0X27;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="writer"></param>
+
         public void Analyze(ref NbazhGpsMessagePackReader reader, Utf8JsonWriter writer)
         {
             throw new System.NotImplementedException();
