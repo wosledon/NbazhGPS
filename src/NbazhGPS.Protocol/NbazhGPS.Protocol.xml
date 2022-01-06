@@ -3312,9 +3312,11 @@
             序列化器
             </summary>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor(System.Boolean)">
             <summary>
+            解码是否需要头尾标识
             </summary>
+            <param name="isNeedStartEnd"></param>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor(NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory,NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory)">
             <summary>
@@ -3338,11 +3340,10 @@
             <param name="minBufferSize"> </param>
             <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
             </summary>
             <param name="bytes">          </param>
-            <param name="isNeedStartEnd"> 是否需要解码头尾标识 </param>
             <param name="packageType">    </param>
             <param name="minBufferSize">  </param>
             <returns> </returns>
@@ -3365,12 +3366,11 @@
             <param name="minBufferSize"> </param>
             <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte},System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
             </summary>
             <typeparam name="T"> </typeparam>
             <param name="bytes">         </param>
-            <param name="isNeedSartEnd"> </param>
             <param name="packageType">   </param>
             <param name="minBufferSize"> </param>
             <returns> </returns>
@@ -3381,7 +3381,7 @@
             <param name="type"> </param>
             <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.HeaderDeserialize(System.ReadOnlySpan{System.Byte},System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.HeaderDeserialize(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
             用于负载或者分布式的时候，在网关只需要解到头部。 根据头部的消息Id进行分发处理，可以防止小部分性能损耗。
             </summary>
@@ -3390,12 +3390,11 @@
             <param name="minBufferSize"> </param>
             <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Type,System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Type,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
             </summary>
             <param name="bytes">          </param>
             <param name="type">           </param>
-            <param name="isNeedStartEnd"> </param>
             <param name="packageType">    </param>
             <param name="minBufferSize">  </param>
             <returns> </returns>

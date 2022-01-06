@@ -65,7 +65,7 @@ namespace NbazhGPS.Protocol.MessagePack
         /// <param name="allocateBuffer"> </param>
         public void Decode(Span<byte> allocateBuffer)
         {
-            ReadOnlySpan<byte> crcCode = SrcBuffer.Slice(SrcBuffer.Length - 4, 2);
+            ReadOnlySpan<byte> crcCode = SrcBuffer.Slice(SrcBuffer.Length - (IsNeedStartEnd?4:2), 2);
             _checkCrcVerify = SrcBuffer.AuthCrc(crcCode.ToCrc(), IsNeedStartEnd);
         }
 

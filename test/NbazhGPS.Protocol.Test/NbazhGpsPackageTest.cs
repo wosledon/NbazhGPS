@@ -79,5 +79,31 @@ namespace NbazhGPS.Protocol.Test
             Assert.Equal(0x0001, packet.Header.MsgNum);
             Assert.Equal(0xEA75, packet.Header.Crc);
         }
+
+        [Fact]
+        public void Test5()
+        {
+            NbazhGpsSerializer nbazhGpsSerializer = new NbazhGpsSerializer(false);
+            var hex = "05 01 0001 D9DC".ToHexBytes();
+            var packet = nbazhGpsSerializer.Deserialize(hex);
+
+            Assert.Equal(0x0005, packet.Header.Length);
+            Assert.Equal(0x01, packet.Header.MsgId);
+            Assert.Equal(0x0001, packet.Header.MsgNum);
+            Assert.Equal(0xD9DC, packet.Header.Crc);
+        }
+
+        [Fact]
+        public void Test6()
+        {
+            NbazhGpsSerializer nbazhGpsSerializer = new NbazhGpsSerializer(false);
+            var hex = "0005 01 0001 EA75".ToHexBytes();
+            var packet = nbazhGpsSerializer.Deserialize(hex, PackageType.Type2);
+
+            Assert.Equal(0x0005, packet.Header.Length);
+            Assert.Equal(0x01, packet.Header.MsgId);
+            Assert.Equal(0x0001, packet.Header.MsgNum);
+            Assert.Equal(0xEA75, packet.Header.Crc);
+        }
     }
 }
