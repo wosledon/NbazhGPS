@@ -17,14 +17,13 @@ namespace NbazhGPS.Protocol.MessageBody
     public class Nbazh0X2A : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X2A>, INbazhGpsAnalyze
     {
         /// <summary>
-        /// 
         /// </summary>
         public override byte MsgId => 0x2A;
 
         /// <summary>
-        /// 
         /// </summary>
         public override string Description => "GPS地址请求包";
+
         /// <summary>
         /// 日期时间
         /// </summary>
@@ -39,18 +38,22 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 经度
         /// </summary>
         public decimal Lon { get; set; }
+
         /// <summary>
         /// 纬度
         /// </summary>
         public decimal Lat { get; set; }
+
         /// <summary>
         /// 速度
         /// </summary>
         public byte Speed { get; set; }
+
         /// <summary>
         /// 航向, 状态
         /// </summary>
         public HeadingAndStatus HeadingAndStatus { get; set; }
+
         /// <summary>
         /// 电话号码
         /// </summary>
@@ -61,6 +64,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public Alarm0X26 Alarm { get; set; } = Alarm0X26.正常;
+
         /// <summary>
         /// 语言
         /// </summary>
@@ -68,10 +72,9 @@ namespace NbazhGPS.Protocol.MessageBody
         public LanguageExtensionPortStatus LanguageExtensionPortStatus { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="value"></param>
+        /// <param name="writer"> </param>
+        /// <param name="value">  </param>
         public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X2A value)
         {
             writer.WriteDateTime6(value.DateTime);
@@ -83,12 +86,12 @@ namespace NbazhGPS.Protocol.MessageBody
             writer.WriteByte(value.Alarm.ToByteValue());
             writer.WriteByte(value.LanguageExtensionPortStatus.ToByteValue());
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
-        public Nbazh0X2A Deserialize(ref NbazhGpsMessagePackReader reader)
+        /// <param name="reader"> </param>
+        /// <returns> </returns>
+        public Nbazh0X2A Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             Nbazh0X2A nb0X2A = new Nbazh0X2A()
             {
@@ -105,11 +108,11 @@ namespace NbazhGPS.Protocol.MessageBody
 
             return nb0X2A;
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="writer"></param>
+        /// <param name="reader"> </param>
+        /// <param name="writer"> </param>
         public void Analyze(ref NbazhGpsMessagePackReader reader, Utf8JsonWriter writer)
         {
             throw new System.NotImplementedException();

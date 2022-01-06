@@ -84,7 +84,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"> </param>
         /// <returns> </returns>
-        public Nbazh0X17_2 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X17_2 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             Nbazh0X17_2 nb0X17 = new Nbazh0X17_2()
             {

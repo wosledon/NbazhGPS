@@ -51,7 +51,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <param name="reader"> </param>
         /// <returns> </returns>
         /// <exception cref="System.NotImplementedException"> </exception>
-        public Nbazh0X17 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X17 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             if (reader.SrcBuffer.Length != PackageType0X17.终端地址请求包.ToUInt16Value())
             {

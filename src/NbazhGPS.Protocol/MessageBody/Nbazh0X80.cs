@@ -66,7 +66,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"> </param>
         /// <returns> </returns>
-        public Nbazh0X80 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X80 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             var commandLen = reader.ReadByte();
             Nbazh0X80 nb0X80 = new Nbazh0X80()

@@ -134,10 +134,10 @@ namespace NbazhGPS.Protocol.Helpers
         /// </summary>
         /// <param name="buffer"></param>
         /// <returns></returns>
-        public static ushort GetCrc16(ReadOnlySpan<byte> buffer)
+        public static ushort GetCrc16(ReadOnlySpan<byte> buffer, bool isNeedStartEnd = true)
         {
-            int length = buffer.Length - 6;
-            buffer = buffer.Slice(2, length);
+            int length = isNeedStartEnd ? buffer.Length - 6 : buffer.Length - 2;
+            buffer = isNeedStartEnd ? buffer.Slice(2, length) : buffer.Slice(0, length);
             ushort fcs = 0xffff;
             int index = 0;
             while (length > 0)

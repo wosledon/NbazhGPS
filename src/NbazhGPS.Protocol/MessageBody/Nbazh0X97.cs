@@ -55,6 +55,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 电话号码
         /// </summary>
         public string TelephoneNumber { get; set; } = "";
+
         /// <summary>
         /// 分隔符3
         /// </summary>
@@ -83,7 +84,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"> </param>
         /// <returns> </returns>
-        public Nbazh0X97 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X97 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             var commandLen = reader.ReadByte();
             CommandLength = commandLen;

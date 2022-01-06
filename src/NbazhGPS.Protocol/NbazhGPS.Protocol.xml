@@ -588,7 +588,7 @@
             <param name="crc"></param>
             <returns></returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.Extensions.CrcExtensions.AuthCrc(System.ReadOnlySpan{System.Byte},System.UInt16)">
+        <member name="M:NbazhGPS.Protocol.Extensions.CrcExtensions.AuthCrc(System.ReadOnlySpan{System.Byte},System.UInt16,System.Boolean)">
             <summary>
             校验Crc
             </summary>
@@ -868,17 +868,18 @@
             <summary>
             动态序列化
             </summary>
-            <param name="objFormatter"></param>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="objFormatter"> </param>
+            <param name="writer">       </param>
+            <param name="value">        </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsMessagePackFormatterResolverExtensions.NbazhDynamicDeserialize(System.Object,NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.Extensions.NbazhGpsMessagePackFormatterResolverExtensions.NbazhDynamicDeserialize(System.Object,NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             动态反序列化
             </summary>
-            <param name="objFormatter"></param>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="objFormatter">   </param>
+            <param name="reader">         </param>
+            <param name="isNeedStartEnd"> </param>
+            <returns> </returns>
         </member>
         <member name="T:NbazhGPS.Protocol.Extensions.TerminalInfoExtensions">
             <summary>
@@ -939,21 +940,22 @@
             <summary>
             序列化器
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T"> </typeparam>
         </member>
         <member name="M:NbazhGPS.Protocol.Formatters.INbazhGpsMessagePackageFormatter`1.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,`0)">
             <summary>
             序列化
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.Formatters.INbazhGpsMessagePackageFormatter`1.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.Formatters.INbazhGpsMessagePackageFormatter`1.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             反序列化
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader">         </param>
+            <param name="isNeedStartEnd"> 是否需要解码首位标识 </param>
+            <returns> </returns>
         </member>
         <member name="T:NbazhGPS.Protocol.Helpers.CrcHelper">
             <summary>
@@ -988,7 +990,7 @@
             <param name="buffer"></param>
             <returns></returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16(System.ReadOnlySpan{System.Byte})">
+        <member name="M:NbazhGPS.Protocol.Helpers.CrcHelper.GetCrc16(System.ReadOnlySpan{System.Byte},System.Boolean)">
             <summary>
             包长度 - 信息序列号的值
             </summary>
@@ -1216,10 +1218,11 @@
             <param name="writer"> </param>
             <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X01.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X01.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             </summary>
-            <param name="reader"> </param>
+            <param name="reader">         </param>
+            <param name="isNeedStartEnd"> </param>
             <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X01.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
@@ -1235,12 +1238,10 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Description">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X13.TerminalInfo">
@@ -1265,24 +1266,21 @@
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X13)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X13.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X17">
             <summary>
@@ -1307,7 +1305,7 @@
             <param name="value">  </param>
             <exception cref="T:System.NotImplementedException"> </exception>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             </summary>
             <param name="reader"> </param>
@@ -1385,7 +1383,7 @@
             <param name="writer"> </param>
             <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_1.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             </summary>
             <param name="reader"> </param>
@@ -1455,7 +1453,7 @@
             <param name="writer"> </param>
             <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X17_2.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             </summary>
             <param name="reader"> </param>
@@ -1474,12 +1472,10 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Description">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X22.DateTime">
@@ -1559,24 +1555,22 @@
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X22)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader">         </param>
+            <param name="isNeedStartEnd"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X22.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X26">
             <summary>
@@ -1585,12 +1579,10 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X26.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X26.Description">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X26.DateTime">
@@ -1625,7 +1617,7 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X26.LBSLength">
             <summary>
-            LBS长度  自身+MCC+MNC+CellID
+            LBS长度 自身+MCC+MNC+CellID
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X26.MCC">
@@ -1685,24 +1677,21 @@
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X26.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X26)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X26.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X26.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X26.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.DateTime">
             <summary>
@@ -1736,7 +1725,7 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.LBSLength">
             <summary>
-            LBS长度  自身+MCC+MNC+CellID
+            LBS长度 自身+MCC+MNC+CellID
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X27.MCC">
@@ -1806,12 +1795,10 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Description">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.DateTime">
@@ -1861,77 +1848,62 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC2">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI2">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI2">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC3">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI3">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI3">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC4">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI4">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI4">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC5">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI5">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI5">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NLAC6">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NCI6">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.NRSSI6">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X28.TimeAdvanceAmount">
@@ -1946,24 +1918,21 @@
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X28)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X28.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X2A">
             <summary>
@@ -1972,12 +1941,10 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Description">
             <summary>
-            
             </summary>
         </member>
         <member name="F:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.DateTime">
@@ -2027,24 +1994,21 @@
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X2A)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X2A.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X80">
             <summary>
@@ -2086,7 +2050,7 @@
             <param name="writer"> </param>
             <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X80.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             </summary>
             <param name="reader"> </param>
@@ -2105,12 +2069,10 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Description">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.DateTime">
@@ -2120,24 +2082,21 @@
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X8A)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X8A.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X94">
             <summary>
@@ -2146,12 +2105,10 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.MsgId">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Description">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.InfoType">
@@ -2176,34 +2133,29 @@
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.DataContent09">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X94.DataContent0A">
             <summary>
-            
             </summary>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.MessageBody.Nbazh0X94)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X94.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X97">
             <summary>
@@ -2265,7 +2217,7 @@
             <param name="writer"> </param>
             <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.MessageBody.Nbazh0X97.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             </summary>
             <param name="reader"> </param>
@@ -2302,7 +2254,7 @@
             包类型
             </summary>
         </member>
-        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.#ctor(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType)">
+        <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.#ctor(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Boolean)">
             <summary>
             </summary>
             <param name="srcBuffer"> </param>
@@ -3220,7 +3172,7 @@
             <param name="writer"></param>
             <param name="value"></param>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsHeader.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsHeader.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
             
             </summary>
@@ -3286,14 +3238,12 @@
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.#ctor(NbazhGPS.Protocol.Enums.PackageType)">
             <summary>
-            
             </summary>
-            <param name="type">协议类型</param>
+            <param name="type"> 协议类型 </param>
         </member>
         <member name="F:NbazhGPS.Protocol.NbazhGpsPackage.EndFlag">
             <summary>
@@ -3324,14 +3274,14 @@
             <summary>
             获取起始位
             </summary>
-            <param name="type"></param>
-            <returns></returns>
+            <param name="type"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.SetBeginFlag(NbazhGPS.Protocol.Enums.PackageType)">
             <summary>
             设置头尾
             </summary>
-            <param name="type"></param>
+            <param name="type"> </param>
         </member>
         <member name="P:NbazhGPS.Protocol.NbazhGpsPackage.PackageType">
             <summary>
@@ -3340,24 +3290,22 @@
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.Serialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackWriter@,NbazhGPS.Protocol.NbazhGpsPackage)">
             <summary>
-            
             </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
+            <param name="writer"> </param>
+            <param name="value">  </param>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.Deserialize(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Boolean)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <returns></returns>
+            <param name="reader">         </param>
+            <param name="isNeedStartEnd"> 是否需要解码收尾标识 </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.Analyze(NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader@,System.Text.Json.Utf8JsonWriter)">
             <summary>
-            
             </summary>
-            <param name="reader"></param>
-            <param name="writer"></param>
+            <param name="reader"> </param>
+            <param name="writer"> </param>
         </member>
         <member name="T:NbazhGPS.Protocol.NbazhGpsSerializer">
             <summary>
@@ -3366,163 +3314,151 @@
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor(NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory,NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory)">
             <summary>
-            
             </summary>
-            <param name="nbazhGpsMsgIdFactory"></param>
-            <param name="nbazhGpsFormatterFactory"></param>
+            <param name="nbazhGpsMsgIdFactory">     </param>
+            <param name="nbazhGpsFormatterFactory"> </param>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Serialize(NbazhGPS.Protocol.NbazhGpsPackage,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            
             </summary>
-            <param name="package"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <param name="package">       </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.SerializeReadOnlySpan(NbazhGPS.Protocol.NbazhGpsPackage,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            
             </summary>
-            <param name="package"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <param name="package">       </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            
             </summary>
-            <param name="bytes"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <param name="bytes">          </param>
+            <param name="isNeedStartEnd"> 是否需要解码头尾标识 </param>
+            <param name="packageType">    </param>
+            <param name="minBufferSize">  </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Serialize``1(``0,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="obj"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <typeparam name="T"> </typeparam>
+            <param name="obj">           </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.SerializeReadOnlySpan``1(``0,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="obj"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <typeparam name="T"> </typeparam>
+            <param name="obj">           </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte},System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="bytes"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <typeparam name="T"> </typeparam>
+            <param name="bytes">         </param>
+            <param name="isNeedSartEnd"> </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.CheckPackageType(System.Type)">
             <summary>
-            
             </summary>
-            <param name="type"></param>
-            <returns></returns>
+            <param name="type"> </param>
+            <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.HeaderDeserialize(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.HeaderDeserialize(System.ReadOnlySpan{System.Byte},System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            用于负载或者分布式的时候，在网关只需要解到头部。
-            根据头部的消息Id进行分发处理，可以防止小部分性能损耗。
+            用于负载或者分布式的时候，在网关只需要解到头部。 根据头部的消息Id进行分发处理，可以防止小部分性能损耗。
             </summary>
-            <param name="bytes"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <param name="bytes">         </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Type,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
+        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Type,System.Boolean,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
-            
             </summary>
-            <param name="bytes"></param>
-            <param name="type"></param>
-            <param name="packageType"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <param name="bytes">          </param>
+            <param name="type">           </param>
+            <param name="isNeedStartEnd"> </param>
+            <param name="packageType">    </param>
+            <param name="minBufferSize">  </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
-            
             </summary>
-            <param name="bytes"></param>
-            <param name="packageType"></param>
-            <param name="options"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <param name="bytes">         </param>
+            <param name="packageType">   </param>
+            <param name="options">       </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze``1(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
-            
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="bytes"></param>
-            <param name="packageType"></param>
-            <param name="options"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <typeparam name="T"> </typeparam>
+            <param name="bytes">         </param>
+            <param name="packageType">   </param>
+            <param name="options">       </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze(System.Byte,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
             用于分包组合
             </summary>
-            <param name="msgid">对应消息id</param>
-            <param name="bytes">组合的数据体</param>
-            <param name="packageType">对应版本号</param>
-            <param name="options">序列化选项</param>
-            <param name="minBufferSize">默认65535</param>
-            <returns></returns>
+            <param name="msgid">         对应消息id </param>
+            <param name="bytes">         组合的数据体 </param>
+            <param name="packageType">   对应版本号 </param>
+            <param name="options">       序列化选项 </param>
+            <param name="minBufferSize"> 默认65535 </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer(System.Byte,System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
             用于分包组合
             </summary>
-            <param name="msgid">对应消息id</param>
-            <param name="bytes">组合的数据体</param>
-            <param name="packageType">对应版本号</param>
-            <param name="options">序列化选项</param>
-            <param name="minBufferSize">默认65535</param>
-            <returns></returns>
+            <param name="msgid">         对应消息id </param>
+            <param name="bytes">         组合的数据体 </param>
+            <param name="packageType">   对应版本号 </param>
+            <param name="options">       序列化选项 </param>
+            <param name="minBufferSize"> 默认65535 </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
-            
             </summary>
-            <param name="bytes"></param>
-            <param name="packageType"></param>
-            <param name="options"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <param name="bytes">         </param>
+            <param name="packageType">   </param>
+            <param name="options">       </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.AnalyzeJsonBuffer``1(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">
             <summary>
-            
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="bytes"></param>
-            <param name="packageType"></param>
-            <param name="options"></param>
-            <param name="minBufferSize"></param>
-            <returns></returns>
+            <typeparam name="T"> </typeparam>
+            <param name="bytes">         </param>
+            <param name="packageType">   </param>
+            <param name="options">       </param>
+            <param name="minBufferSize"> </param>
+            <returns> </returns>
         </member>
     </members>
 </doc>

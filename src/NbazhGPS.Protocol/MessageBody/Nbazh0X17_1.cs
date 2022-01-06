@@ -89,7 +89,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// </summary>
         /// <param name="reader"> </param>
         /// <returns> </returns>
-        public new Nbazh0X17_1 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public new Nbazh0X17_1 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             var commandLen = reader.ReadByte();
             Nbazh0X17_1 nb0X17 = new Nbazh0X17_1()
@@ -98,7 +98,7 @@ namespace NbazhGPS.Protocol.MessageBody
                 ServerFlagBits = reader.ReadUInt32(),
                 ALARMSMS = reader.ReadAscii(8),
                 Flag1 = reader.ReadAscii(2),
-                AddressContent = reader.ReadUnicode(commandLen - (4+8+2+2+2+21)),
+                AddressContent = reader.ReadUnicode(commandLen - (4 + 8 + 2 + 2 + 2 + 21)),
                 Flag2 = reader.ReadAscii(2),
                 TelephoneNumber = reader.ReadAscii(21),
                 Flag3 = reader.ReadAscii(2)

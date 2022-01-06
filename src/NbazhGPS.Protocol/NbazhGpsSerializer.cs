@@ -19,19 +19,26 @@ namespace NbazhGPS.Protocol
         private static readonly NbazhGpsPackage packet = new NbazhGpsPackage();
         private readonly NbazhGpsMsgIdFactory _nbazhGpsMsgIdFactory;
         private readonly NbazhGpsFormatterFactory _nbazhGpsFormatterFactory;
+
+
+        private bool IsNeedStartEnd { get; set; }
+        
         /// <summary>
-        /// 
+        /// 解码是否需要头尾标识
         /// </summary>
-        public NbazhGpsSerializer()
+        /// <param name="isNeedStartEnd"></param>
+        public NbazhGpsSerializer(bool isNeedStartEnd = true)
         {
             _nbazhGpsMsgIdFactory = new NbazhGpsMsgIdFactory();
             _nbazhGpsFormatterFactory = new NbazhGpsFormatterFactory();
+
+            IsNeedStartEnd = isNeedStartEnd;
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="nbazhGpsMsgIdFactory"></param>
-        /// <param name="nbazhGpsFormatterFactory"></param>
+        /// <param name="nbazhGpsMsgIdFactory">     </param>
+        /// <param name="nbazhGpsFormatterFactory"> </param>
         public NbazhGpsSerializer(NbazhGpsMsgIdFactory nbazhGpsMsgIdFactory, NbazhGpsFormatterFactory nbazhGpsFormatterFactory)
         {
             _nbazhGpsMsgIdFactory = nbazhGpsMsgIdFactory;
@@ -39,12 +46,11 @@ namespace NbazhGPS.Protocol
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="package"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <param name="package">       </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public byte[] Serialize(NbazhGpsPackage package, PackageType packageType = PackageType.Type1,
             int minBufferSize = 4096)
         {
@@ -62,12 +68,11 @@ namespace NbazhGPS.Protocol
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="package"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <param name="package">       </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public ReadOnlySpan<byte> SerializeReadOnlySpan(NbazhGpsPackage package,
             PackageType packageType = PackageType.Type1, int minBufferSize = 4096)
         {
@@ -85,37 +90,34 @@ namespace NbazhGPS.Protocol
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bytes"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <param name="bytes">          </param>
+        /// <param name="packageType">    </param>
+        /// <param name="minBufferSize">  </param>
+        /// <returns> </returns>
         public NbazhGpsPackage Deserialize(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1,
             int minBufferSize = 4096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
             try
             {
-                NbazhGpsMessagePackReader reader = new NbazhGpsMessagePackReader(bytes, packageType);
+                NbazhGpsMessagePackReader reader = new NbazhGpsMessagePackReader(bytes, packageType, IsNeedStartEnd);
                 reader.Decode(buffer);
-                return (NbazhGpsPackage)packet.Deserialize(ref reader);
+                return (NbazhGpsPackage)packet.Deserialize(ref reader, IsNeedStartEnd);
             }
             finally
             {
                 NbazhGpsArrayPool.Return(buffer);
-
             }
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <typeparam name="T"> </typeparam>
+        /// <param name="obj">           </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public byte[] Serialize<T>(T obj, PackageType packageType = PackageType.Type1, int minBufferSize = 4096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
@@ -131,14 +133,14 @@ namespace NbazhGPS.Protocol
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <typeparam name="T"> </typeparam>
+        /// <param name="obj">           </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public ReadOnlySpan<byte> SerializeReadOnlySpan<T>(T obj, PackageType packageType = PackageType.Type1, int minBufferSize = 4096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
@@ -154,55 +156,54 @@ namespace NbazhGPS.Protocol
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="bytes"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <typeparam name="T"> </typeparam>
+        /// <param name="bytes">         </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public T Deserialize<T>(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, int minBufferSize = 4096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
             try
             {
-                NbazhGpsMessagePackReader NbazhGpsMessagePackReader = new NbazhGpsMessagePackReader(bytes, packageType);
+                NbazhGpsMessagePackReader NbazhGpsMessagePackReader = new NbazhGpsMessagePackReader(bytes, packageType, IsNeedStartEnd);
                 if (CheckPackageType(typeof(T)))
                     NbazhGpsMessagePackReader.Decode(buffer);
                 INbazhGpsFormatterFactory factory = new NbazhGpsFormatterFactory();
                 factory.FormatterDict.TryGetValue(typeof(T).GUID, out var formatter);
-                return ((INbazhGpsMessagePackageFormatter<T>)formatter)!.Deserialize(ref NbazhGpsMessagePackReader);
+                return ((INbazhGpsMessagePackageFormatter<T>)formatter)!.Deserialize(ref NbazhGpsMessagePackReader, IsNeedStartEnd);
             }
             finally
             {
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <param name="type"> </param>
+        /// <returns> </returns>
         private static bool CheckPackageType(Type type)
         {
             return type == typeof(NbazhGpsPackage) || type == typeof(NbazhGpsHeaderPackage);
         }
 
         /// <summary>
-        /// 用于负载或者分布式的时候，在网关只需要解到头部。
-        /// 根据头部的消息Id进行分发处理，可以防止小部分性能损耗。
+        /// 用于负载或者分布式的时候，在网关只需要解到头部。 根据头部的消息Id进行分发处理，可以防止小部分性能损耗。
         /// </summary>
-        /// <param name="bytes"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <param name="bytes">         </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public NbazhGpsHeaderPackage HeaderDeserialize(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, int minBufferSize = 4096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
             try
             {
-                NbazhGpsMessagePackReader NbazhGpsMessagePackReader = new NbazhGpsMessagePackReader(bytes, packageType);
+                NbazhGpsMessagePackReader NbazhGpsMessagePackReader = new NbazhGpsMessagePackReader(bytes, packageType, IsNeedStartEnd);
                 NbazhGpsMessagePackReader.Decode(buffer);
                 return new NbazhGpsHeaderPackage(ref NbazhGpsMessagePackReader);
             }
@@ -211,38 +212,38 @@ namespace NbazhGPS.Protocol
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bytes"></param>
-        /// <param name="type"></param>
-        /// <param name="packageType"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <param name="bytes">          </param>
+        /// <param name="type">           </param>
+        /// <param name="packageType">    </param>
+        /// <param name="minBufferSize">  </param>
+        /// <returns> </returns>
         public dynamic Deserialize(ReadOnlySpan<byte> bytes, Type type, PackageType packageType = PackageType.Type1, int minBufferSize = 4096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
             try
             {
                 _nbazhGpsFormatterFactory.FormatterDict.TryGetValue(type.GUID, out var formatter);
-                NbazhGpsMessagePackReader NbazhGpsMessagePackReader = new NbazhGpsMessagePackReader(bytes, packageType);
+                NbazhGpsMessagePackReader NbazhGpsMessagePackReader = new NbazhGpsMessagePackReader(bytes, packageType, IsNeedStartEnd);
                 if (CheckPackageType(type))
                     NbazhGpsMessagePackReader.Decode(buffer);
-                return NbazhGpsMessagePackFormatterResolverExtensions.NbazhDynamicDeserialize(formatter, ref NbazhGpsMessagePackReader);
+                return NbazhGpsMessagePackFormatterResolverExtensions.NbazhDynamicDeserialize(formatter, ref NbazhGpsMessagePackReader, IsNeedStartEnd);
             }
             finally
             {
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bytes"></param>
-        /// <param name="packageType"></param>
-        /// <param name="options"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <param name="bytes">         </param>
+        /// <param name="packageType">   </param>
+        /// <param name="options">       </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public string Analyze(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 8096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
@@ -262,15 +263,15 @@ namespace NbazhGPS.Protocol
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="bytes"></param>
-        /// <param name="packageType"></param>
-        /// <param name="options"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <typeparam name="T"> </typeparam>
+        /// <param name="bytes">         </param>
+        /// <param name="packageType">   </param>
+        /// <param name="options">       </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public string Analyze<T>(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 8096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
@@ -299,16 +300,16 @@ namespace NbazhGPS.Protocol
         /// <summary>
         /// 用于分包组合
         /// </summary>
-        /// <param name="msgid">对应消息id</param>
-        /// <param name="bytes">组合的数据体</param>
-        /// <param name="packageType">对应版本号</param>
-        /// <param name="options">序列化选项</param>
-        /// <param name="minBufferSize">默认65535</param>
-        /// <returns></returns>
+        /// <param name="msgid">         对应消息id </param>
+        /// <param name="bytes">         组合的数据体 </param>
+        /// <param name="packageType">   对应版本号 </param>
+        /// <param name="options">       序列化选项 </param>
+        /// <param name="minBufferSize"> 默认65535 </param>
+        /// <returns> </returns>
         public string Analyze(byte msgid, ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 65535)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
-            
+
             try
             {
                 if (_nbazhGpsMsgIdFactory.TryGetValue(msgid, out object msgHandle))
@@ -338,12 +339,12 @@ namespace NbazhGPS.Protocol
         /// <summary>
         /// 用于分包组合
         /// </summary>
-        /// <param name="msgid">对应消息id</param>
-        /// <param name="bytes">组合的数据体</param>
-        /// <param name="packageType">对应版本号</param>
-        /// <param name="options">序列化选项</param>
-        /// <param name="minBufferSize">默认65535</param>
-        /// <returns></returns>
+        /// <param name="msgid">         对应消息id </param>
+        /// <param name="bytes">         组合的数据体 </param>
+        /// <param name="packageType">   对应版本号 </param>
+        /// <param name="options">       序列化选项 </param>
+        /// <param name="minBufferSize"> 默认65535 </param>
+        /// <returns> </returns>
         public byte[] AnalyzeJsonBuffer(byte msgid, ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 65535)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
@@ -371,14 +372,14 @@ namespace NbazhGPS.Protocol
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bytes"></param>
-        /// <param name="packageType"></param>
-        /// <param name="options"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <param name="bytes">         </param>
+        /// <param name="packageType">   </param>
+        /// <param name="options">       </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public byte[] AnalyzeJsonBuffer(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 8096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);
@@ -397,15 +398,15 @@ namespace NbazhGPS.Protocol
                 NbazhGpsArrayPool.Return(buffer);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="bytes"></param>
-        /// <param name="packageType"></param>
-        /// <param name="options"></param>
-        /// <param name="minBufferSize"></param>
-        /// <returns></returns>
+        /// <typeparam name="T"> </typeparam>
+        /// <param name="bytes">         </param>
+        /// <param name="packageType">   </param>
+        /// <param name="options">       </param>
+        /// <param name="minBufferSize"> </param>
+        /// <returns> </returns>
         public byte[] AnalyzeJsonBuffer<T>(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1, JsonWriterOptions options = default, int minBufferSize = 8096)
         {
             byte[] buffer = NbazhGpsArrayPool.Rent(minBufferSize);

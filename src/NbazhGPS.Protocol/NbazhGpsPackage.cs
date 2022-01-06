@@ -15,10 +15,9 @@ namespace NbazhGPS.Protocol
     /// <summary>
     /// Nbazh数据包
     /// </summary>
-    public class NbazhGpsPackage: INbazhGpsPackage
+    public class NbazhGpsPackage : INbazhGpsPackage
     {
         /// <summary>
-        /// 
         /// </summary>
         public NbazhGpsPackage()
         {
@@ -27,9 +26,8 @@ namespace NbazhGPS.Protocol
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="type">协议类型</param>
+        /// <param name="type"> 协议类型 </param>
         public NbazhGpsPackage(PackageType type)
         {
             PackageType = type;
@@ -57,6 +55,7 @@ namespace NbazhGPS.Protocol
         /// 头数据
         /// </summary>
         public NbazhGpsHeader Header { get; set; }
+
         /// <summary>
         /// 数据体
         /// </summary>
@@ -66,11 +65,12 @@ namespace NbazhGPS.Protocol
         /// 停止位
         /// </summary>
         public ushort End { get; set; } = EndFlag;
+
         /// <summary>
         /// 获取起始位
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <param name="type"> </param>
+        /// <returns> </returns>
         public static ushort GetBeginFlag(PackageType type)
         {
             return type switch
@@ -83,10 +83,11 @@ namespace NbazhGPS.Protocol
                 _ => unchecked((ushort)((0x78 << 8) + 0x78)),
             };
         }
+
         /// <summary>
         /// 设置头尾
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type"> </param>
         public void SetBeginFlag(PackageType type)
         {
             Begin = type switch
@@ -100,22 +101,20 @@ namespace NbazhGPS.Protocol
             };
         }
 
-
         /// <summary>
         /// 协议类型
         /// </summary>
         public PackageType PackageType { get; set; } = PackageType.Type1;
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="value"></param>
+        /// <param name="writer"> </param>
+        /// <param name="value">  </param>
         public void Serialize(ref NbazhGpsMessagePackWriter writer, NbazhGpsPackage value)
         {
             var writeReturnPosition = 0;
             writer.WriteStart(value.PackageType);
-            // 写入header
-            // 跳过Length
+            // 写入header 跳过Length
             if (value.PackageType == PackageType.Type1)
             {
                 writer.Skip(1, out var pos);
@@ -157,11 +156,11 @@ namespace NbazhGPS.Protocol
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
-        public NbazhGpsPackage Deserialize(ref NbazhGpsMessagePackReader reader)
+        /// <param name="reader">         </param>
+        /// <param name="isNeedStartEnd"> 是否需要解码收尾标识 </param>
+        /// <returns> </returns>
+        public NbazhGpsPackage Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd)
         {
             INbazhGpsMsgIdFactory factory = new NbazhGpsMsgIdFactory();
 
@@ -171,7 +170,7 @@ namespace NbazhGPS.Protocol
             }
 
             NbazhGpsPackage packet = new NbazhGpsPackage(reader.Type);
-            packet.Begin = reader.ReadStart();
+            if(isNeedStartEnd) packet.Begin = reader.ReadStart();
             if (unchecked((ushort)((0x79 << 8) + 0x79)) == packet.Begin)
             {
                 packet.PackageType = PackageType.Type2;
@@ -192,7 +191,7 @@ namespace NbazhGPS.Protocol
                     try
                     {
                         packet.Bodies = NbazhGpsMessagePackFormatterResolverExtensions.NbazhDynamicDeserialize(
-                            instance, ref reader);
+                            instance, ref reader, isNeedStartEnd);
                     }
                     catch (Exception ex)
                     {
@@ -203,15 +202,18 @@ namespace NbazhGPS.Protocol
 
             packet.Header.MsgNum = reader.ReadUInt16();
             packet.Header.Crc = reader.ReadUInt16();
-            packet.End = reader.ReadEnd();
+            if (isNeedStartEnd)
+            {
+                packet.End = reader.ReadEnd();
+            }
 
             return packet;
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="writer"></param>
+        /// <param name="reader"> </param>
+        /// <param name="writer"> </param>
         public void Analyze(ref NbazhGpsMessagePackReader reader, Utf8JsonWriter writer)
         {
             throw new System.NotImplementedException();

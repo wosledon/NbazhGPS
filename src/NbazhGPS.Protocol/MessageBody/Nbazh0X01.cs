@@ -16,6 +16,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 消息Id
         /// </summary>
         public override byte MsgId => 0x01;
+
         /// <summary>
         /// 终端Id
         /// </summary>
@@ -30,7 +31,6 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 时区语言
         /// </summary>
         public TimeZoneLanguageModel TimeZoneLanguage { get; set; }
-        
 
         /// <summary>
         /// 描述
@@ -50,9 +50,10 @@ namespace NbazhGPS.Protocol.MessageBody
 
         /// <summary>
         /// </summary>
-        /// <param name="reader"> </param>
+        /// <param name="reader">         </param>
+        /// <param name="isNeedStartEnd"> </param>
         /// <returns> </returns>
-        public Nbazh0X01 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X01 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             Nbazh0X01 nb0X01 = new Nbazh0X01
             {

@@ -14,11 +14,10 @@ namespace NbazhGPS.Protocol.MessageBody
     public class Nbazh0X13 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X13>, INbazhGpsAnalyze
     {
         /// <summary>
-        /// 
         /// </summary>
         public override byte MsgId => 0x13;
+
         /// <summary>
-        /// 
         /// </summary>
         public override string Description => "心跳包";
 
@@ -43,10 +42,9 @@ namespace NbazhGPS.Protocol.MessageBody
         public LanguageExtensionPortStatus LanguageExtensionPortStatus { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="value"></param>
+        /// <param name="writer"> </param>
+        /// <param name="value">  </param>
         public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X13 value)
         {
             writer.WriteByte(value.TerminalInfo.ToByte());
@@ -54,12 +52,12 @@ namespace NbazhGPS.Protocol.MessageBody
             writer.WriteByte(value.GsmSignalStrength.ToByteValue());
             writer.WriteUInt16(value.LanguageExtensionPortStatus.ToUInt16Value());
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
-        public Nbazh0X13 Deserialize(ref NbazhGpsMessagePackReader reader)
+        /// <param name="reader"> </param>
+        /// <returns> </returns>
+        public Nbazh0X13 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             Nbazh0X13 nb0X13 = new Nbazh0X13()
             {
@@ -71,11 +69,11 @@ namespace NbazhGPS.Protocol.MessageBody
 
             return nb0X13;
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="writer"></param>
+        /// <param name="reader"> </param>
+        /// <param name="writer"> </param>
         public void Analyze(ref NbazhGpsMessagePackReader reader, Utf8JsonWriter writer)
         {
             throw new System.NotImplementedException();

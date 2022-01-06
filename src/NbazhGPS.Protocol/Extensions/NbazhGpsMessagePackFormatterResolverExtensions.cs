@@ -13,22 +13,22 @@ namespace NbazhGPS.Protocol.Extensions
     /// </summary>
     public static class NbazhGpsMessagePackFormatterResolverExtensions
     {
-        delegate void NbazhSerializeMethod(object dynamicFormatter, ref NbazhGpsMessagePackWriter writer, object value);
+        private delegate void NbazhSerializeMethod(object dynamicFormatter, ref NbazhGpsMessagePackWriter writer, object value);
 
-        delegate dynamic NbazhDeserializeMethod(object dynamicFormatter, ref NbazhGpsMessagePackReader reader);
+        private delegate dynamic NbazhDeserializeMethod(object dynamicFormatter, ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd);
 
-        static readonly ConcurrentDictionary<Type, (object Value, NbazhSerializeMethod SerializeMethod)> NbazhSerializers =
+        private static readonly ConcurrentDictionary<Type, (object Value, NbazhSerializeMethod SerializeMethod)> NbazhSerializers =
             new();
 
-        static readonly ConcurrentDictionary<Type, (object Value, NbazhDeserializeMethod DeserializeMethod)> NbazhDeserializes =
+        private static readonly ConcurrentDictionary<Type, (object Value, NbazhDeserializeMethod DeserializeMethod)> NbazhDeserializes =
             new();
 
         /// <summary>
         /// 动态序列化
         /// </summary>
-        /// <param name="objFormatter"></param>
-        /// <param name="writer"></param>
-        /// <param name="value"></param>
+        /// <param name="objFormatter"> </param>
+        /// <param name="writer">       </param>
+        /// <param name="value">        </param>
         public static void NbazhDynamicSerialize(object objFormatter, ref NbazhGpsMessagePackWriter writer,
             object value)
         {
@@ -42,8 +42,8 @@ namespace NbazhGPS.Protocol.Extensions
                     var formatterType = typeof(INbazhGpsMessagePackageFormatter<>).MakeGenericType(t);
                     var param0 = Expression.Parameter(typeof(object), "formatter");
                     var param1 = Expression.Parameter(typeof(NbazhGpsMessagePackWriter).MakeByRefType(), "writer");
-                    var param2 = Expression.Parameter(typeof(object), "value"); 
-                    var serializeMethodInfo = formatterType.GetRuntimeMethod("Serialize", new[] { typeof(NbazhGpsMessagePackWriter).MakeByRefType(), t});
+                    var param2 = Expression.Parameter(typeof(object), "value");
+                    var serializeMethodInfo = formatterType.GetRuntimeMethod("Serialize", new[] { typeof(NbazhGpsMessagePackWriter).MakeByRefType(), t });
                     var body = Expression.Call(
                         Expression.Convert(param0, formatterType),
                         serializeMethodInfo,
@@ -56,16 +56,18 @@ namespace NbazhGPS.Protocol.Extensions
             }
             formatterAndDelegate.SerializeMethod(formatterAndDelegate.Value, ref writer, value);
         }
+
         /// <summary>
         /// 动态反序列化
         /// </summary>
-        /// <param name="objFormatter"></param>
-        /// <param name="reader"></param>
-        /// <returns></returns>
-        public static dynamic NbazhDynamicDeserialize(object objFormatter, ref NbazhGpsMessagePackReader reader)
+        /// <param name="objFormatter">   </param>
+        /// <param name="reader">         </param>
+        /// <param name="isNeedStartEnd"> </param>
+        /// <returns> </returns>
+        public static dynamic NbazhDynamicDeserialize(object objFormatter, ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd)
         {
             var type = objFormatter.GetType();
-            //   (object Value, JT808DeserializeMethod DeserializeMethod) formatterAndDelegate;
+            // (object Value, JT808DeserializeMethod DeserializeMethod) formatterAndDelegate;
             if (!NbazhDeserializes.TryGetValue(type, out var formatterAndDelegate))
             {
                 var t = type;
@@ -73,7 +75,7 @@ namespace NbazhGPS.Protocol.Extensions
                     var formatterType = typeof(INbazhGpsMessagePackageFormatter<>).MakeGenericType(t);
                     ParameterExpression param0 = Expression.Parameter(typeof(object), "formatter");
                     ParameterExpression param1 = Expression.Parameter(typeof(NbazhGpsMessagePackReader).MakeByRefType(), "reader");
-                    var deserializeMethodInfo = type.GetRuntimeMethod("Deserialize", new[] { typeof(NbazhGpsMessagePackReader).MakeByRefType()});
+                    var deserializeMethodInfo = type.GetRuntimeMethod("Deserialize", new[] { typeof(NbazhGpsMessagePackReader).MakeByRefType() });
                     var body = Expression.Call(
                         Expression.Convert(param0, type),
                         deserializeMethodInfo,
@@ -83,7 +85,7 @@ namespace NbazhGPS.Protocol.Extensions
                 }
                 NbazhDeserializes.TryAdd(t, formatterAndDelegate);
             }
-            return formatterAndDelegate.DeserializeMethod(formatterAndDelegate.Value, ref reader);
+            return formatterAndDelegate.DeserializeMethod(formatterAndDelegate.Value, ref reader, isNeedStartEnd);
         }
     }
 }

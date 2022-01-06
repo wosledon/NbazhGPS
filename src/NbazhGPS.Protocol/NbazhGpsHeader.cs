@@ -112,7 +112,7 @@ namespace NbazhGPS.Protocol
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        public NbazhGpsHeader Deserialize(ref NbazhGpsMessagePackReader reader)
+        public NbazhGpsHeader Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             NbazhGpsHeader header = new NbazhGpsHeader(reader.Type);
             header.Length = header.PackageType switch

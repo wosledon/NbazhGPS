@@ -17,11 +17,10 @@ namespace NbazhGPS.Protocol.MessageBody
     public class Nbazh0X22 : NbazhGpsBodies, INbazhGpsMessagePackageFormatter<Nbazh0X22>, INbazhGpsAnalyze
     {
         /// <summary>
-        /// 
         /// </summary>
         public override byte MsgId => 0x22;
+
         /// <summary>
-        /// 
         /// </summary>
         public override string Description => "GPS定位包";
 
@@ -39,43 +38,53 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 经度
         /// </summary>
         public decimal Lon { get => HeadingAndStatus.EorWLon == PackageEnums0X22.EorWLon.东经 ? Lon : -Lon; set => Lon = value; }
+
         /// <summary>
         /// 纬度
         /// </summary>
         public decimal Lat { get => HeadingAndStatus.SorNLat == PackageEnums0X22.SorNLat.北纬 ? Lat : -Lat; set => Lat = value; }
+
         /// <summary>
         /// 速度
         /// </summary>
         public byte Speed { get; set; }
+
         /// <summary>
         /// 航向, 状态
         /// </summary>
         public HeadingAndStatus HeadingAndStatus { get; set; }
+
         /// <summary>
         /// 国家代号
         /// </summary>
         public ushort MCC { get; set; }
+
         /// <summary>
         /// 移动网号码
         /// </summary>
         public byte MNC { get; set; }
+
         /// <summary>
         /// 位置区码
         /// </summary>
         public ushort LAC { get; set; }
+
         /// <summary>
         /// 移动基站
         /// </summary>
         public int CellId { get; set; }
+
         /// <summary>
         /// Acc状态
         /// </summary>
         public AccState AccState { get; set; }
+
         /// <summary>
         /// 数据上报模式
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public DataReportingMode DataReportingMode { get; set; }
+
         /// <summary>
         /// GPS实时补传
         /// </summary>
@@ -85,16 +94,16 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 里程
         /// </summary>
         public uint? Mileage { get; set; } = null;
+
         /// <summary>
         /// 是否支持里程
         /// </summary>
         public bool IsSupportMileage = false;
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="value"></param>
+        /// <param name="writer"> </param>
+        /// <param name="value">  </param>
         public void Serialize(ref NbazhGpsMessagePackWriter writer, Nbazh0X22 value)
         {
             writer.WriteDateTime6(value.DateTime);
@@ -115,12 +124,13 @@ namespace NbazhGPS.Protocol.MessageBody
                 writer.WriteUInt32(value.Mileage.Value);
             }
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
-        public Nbazh0X22 Deserialize(ref NbazhGpsMessagePackReader reader)
+        /// <param name="reader">         </param>
+        /// <param name="isNeedStartEnd"> </param>
+        /// <returns> </returns>
+        public Nbazh0X22 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             Nbazh0X22 nb0X022 = new Nbazh0X22()
             {
@@ -143,11 +153,11 @@ namespace NbazhGPS.Protocol.MessageBody
             };
             return nb0X022;
         }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="writer"></param>
+        /// <param name="reader"> </param>
+        /// <param name="writer"> </param>
         public void Analyze(ref NbazhGpsMessagePackReader reader, Utf8JsonWriter writer)
         {
             throw new System.NotImplementedException();

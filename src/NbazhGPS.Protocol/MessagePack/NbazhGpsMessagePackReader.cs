@@ -43,17 +43,20 @@ namespace NbazhGPS.Protocol.MessagePack
 
         private static readonly byte[] decode7979 = { 0x79, 0x79 };
 
+        private bool IsNeedStartEnd { get; set; }
+
         /// <summary>
         /// </summary>
         /// <param name="srcBuffer"> </param>
         /// <param name="type">      </param>
-        public NbazhGpsMessagePackReader(ReadOnlySpan<byte> srcBuffer, PackageType type)
+        public NbazhGpsMessagePackReader(ReadOnlySpan<byte> srcBuffer, PackageType type, bool isNeedStartEnd = true)
         {
             SrcBuffer = srcBuffer;
             ReaderCount = 0;
             Type = type;
             Reader = srcBuffer;
             _checkCrcVerify = false;
+            IsNeedStartEnd = isNeedStartEnd;
         }
 
         /// <summary>
@@ -63,7 +66,7 @@ namespace NbazhGPS.Protocol.MessagePack
         public void Decode(Span<byte> allocateBuffer)
         {
             ReadOnlySpan<byte> crcCode = SrcBuffer.Slice(SrcBuffer.Length - 4, 2);
-            _checkCrcVerify = SrcBuffer.AuthCrc(crcCode.ToCrc());
+            _checkCrcVerify = SrcBuffer.AuthCrc(crcCode.ToCrc(), IsNeedStartEnd);
         }
 
         /// <summary>

@@ -36,9 +36,9 @@ namespace NbazhGPS.Protocol.Extensions
         /// <param name="buffer"></param>
         /// <param name="crc"></param>
         /// <returns></returns>
-        public static bool AuthCrc(this ReadOnlySpan<byte> buffer, ushort crc)
+        public static bool AuthCrc(this ReadOnlySpan<byte> buffer, ushort crc, bool isNeedStartEnd = true)
         {
-            return CrcHelper.GetCrc16(buffer).Equals(crc);
+            return CrcHelper.GetCrc16(buffer, isNeedStartEnd).Equals(crc);
         }
         /// <summary>
         /// 转化Crc

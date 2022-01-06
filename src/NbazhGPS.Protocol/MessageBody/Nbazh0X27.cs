@@ -31,58 +31,70 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 经度
         /// </summary>
         public decimal Lon { get; set; }
+
         /// <summary>
         /// 纬度
         /// </summary>
         public decimal Lat { get; set; }
+
         /// <summary>
         /// 速度
         /// </summary>
         public byte Speed { get; set; }
+
         /// <summary>
         /// 航向, 状态
         /// </summary>
         public HeadingAndStatus HeadingAndStatus { get; set; }
 
         /// <summary>
-        /// LBS长度  自身+MCC+MNC+CellID
+        /// LBS长度 自身+MCC+MNC+CellID
         /// </summary>
         public byte LBSLength { get; set; } = 9;
+
         /// <summary>
         /// 国家代号
         /// </summary>
         public ushort MCC { get; set; }
+
         /// <summary>
         /// 移动网号码
         /// </summary>
         public byte MNC { get; set; }
+
         /// <summary>
         /// 位置区码
         /// </summary>
         public ushort LAC { get; set; }
+
         /// <summary>
         /// 移动基站
         /// </summary>
         public UInt24 CellId { get; set; }
+
         /// <summary>
         /// 终端信息
         /// </summary>
         public TerminalInfo0X26 TerminalInfo { get; set; }
+
         /// <summary>
         /// 电压等级
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public VoltageLevel VoltageLevel { get; set; }
+
         /// <summary>
         /// GSM信号等级
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public GsmSignalStrength GsmSignalStrength { get; set; }
+
         /// <summary>
         /// 报警
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public Alarm0X26 Alarm { get; set; } = Alarm0X26.正常;
+
         /// <summary>
         /// 语言
         /// </summary>
@@ -93,10 +105,12 @@ namespace NbazhGPS.Protocol.MessageBody
         /// 围栏编号
         /// </summary>
         public byte FenceNumber { get; set; }
+
         /// <summary>
         /// 里程
         /// </summary>
         public uint? Mileage { get; set; } = null;
+
         /// <summary>
         /// 是否支持里程
         /// </summary>
@@ -127,7 +141,7 @@ namespace NbazhGPS.Protocol.MessageBody
             }
         }
 
-        public Nbazh0X27 Deserialize(ref NbazhGpsMessagePackReader reader)
+        public Nbazh0X27 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             Nbazh0X27 nb0X27 = new Nbazh0X27()
             {
