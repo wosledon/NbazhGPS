@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Dynamic;
+using System.Linq;
 using System.Text.Json;
 using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Exceptions;
@@ -65,6 +66,11 @@ namespace NbazhGPS.Protocol
         /// 停止位
         /// </summary>
         public ushort End { get; set; } = EndFlag;
+
+        /// <summary>
+        /// 原始数据
+        /// </summary>
+        public byte[] OriginalPackage { get; set; }
 
         /// <summary>
         /// 获取起始位
@@ -170,7 +176,7 @@ namespace NbazhGPS.Protocol
             }
 
             NbazhGpsPackage packet = new NbazhGpsPackage(reader.Type);
-            if(isNeedStartEnd) packet.Begin = reader.ReadStart();
+            if (isNeedStartEnd) packet.Begin = reader.ReadStart();
             if (unchecked((ushort)((0x79 << 8) + 0x79)) == packet.Begin)
             {
                 packet.PackageType = PackageType.Type2;
@@ -206,6 +212,13 @@ namespace NbazhGPS.Protocol
             {
                 packet.End = reader.ReadEnd();
             }
+
+            packet.OriginalPackage = packet.PackageType switch
+            {
+                PackageType.Type1 => isNeedStartEnd ? reader.SrcBuffer.ToArray() : $"7878{reader.SrcBuffer.ToArray().ToHexString()}0D0A".ToHexBytes(),
+                PackageType.Type2 => isNeedStartEnd ? reader.SrcBuffer.ToArray() : $"7979{reader.SrcBuffer.ToArray().ToHexString()}0D0A".ToHexBytes(),
+                _ => reader.SrcBuffer.ToArray()
+            };
 
             return packet;
         }
