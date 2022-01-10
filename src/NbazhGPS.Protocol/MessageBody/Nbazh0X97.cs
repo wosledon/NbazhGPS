@@ -87,24 +87,16 @@ namespace NbazhGPS.Protocol.MessageBody
         public Nbazh0X97 Deserialize(ref NbazhGpsMessagePackReader reader, bool isNeedStartEnd = true)
         {
             var commandLen = reader.ReadByte();
-            CommandLength = commandLen;
-            ServerFlagBits = reader.ReadUInt32();
-            ALARMSMS = reader.ReadAscii(8);
-            Flag1 = reader.ReadAscii(2);
-            AddressContent = reader.ReadUnicode(commandLen - (4 + 8 + 2 + 2 + 2 + 21));
-            Flag2 = reader.ReadAscii(2);
-            TelephoneNumber = reader.ReadAscii(21);
-            Flag3 = reader.ReadAscii(2);
             Nbazh0X97 nb0X97 = new Nbazh0X97()
             {
-                //CommandLength = commandLen,
-                //ServerFlagBits = reader.ReadUInt32(),
-                //ALARMSMS = reader.ReadAscii(8),
-                //Flag1 = reader.ReadAscii(2),
-                //AddressContent = reader.ReadUnicode(commandLen - (4 + 8 + 2 + 2 + 2 + 21)),
-                //Flag2 = reader.ReadAscii(2),
-                //TelephoneNumber = reader.ReadAscii(21),
-                //Flag3 = reader.ReadAscii(2)
+                CommandLength = commandLen,
+                ServerFlagBits = reader.ReadUInt32(),
+                ALARMSMS = reader.ReadAscii(8),
+                Flag1 = reader.ReadAscii(2),
+                AddressContent = reader.ReadUnicode(commandLen - (4 + 8 + 2 + 2 + 2 + 21)),
+                Flag2 = reader.ReadAscii(2),
+                TelephoneNumber = reader.ReadAscii(21),
+                Flag3 = reader.ReadAscii(2)
             };
             return nb0X97;
         }

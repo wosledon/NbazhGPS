@@ -75,12 +75,14 @@ namespace NbazhGPS.Protocol.Extensions
                     var formatterType = typeof(INbazhGpsMessagePackageFormatter<>).MakeGenericType(t);
                     ParameterExpression param0 = Expression.Parameter(typeof(object), "formatter");
                     ParameterExpression param1 = Expression.Parameter(typeof(NbazhGpsMessagePackReader).MakeByRefType(), "reader");
-                    var deserializeMethodInfo = type.GetRuntimeMethod("Deserialize", new[] { typeof(NbazhGpsMessagePackReader).MakeByRefType() });
+                    ParameterExpression param2 = Expression.Parameter(typeof(bool), "isNeedStartEnd");
+                    var deserializeMethodInfo = type.GetRuntimeMethod("Deserialize", new[] { typeof(NbazhGpsMessagePackReader).MakeByRefType(), typeof(bool) });
                     var body = Expression.Call(
                         Expression.Convert(param0, type),
                         deserializeMethodInfo,
-                        param1);
-                    var lambda = Expression.Lambda<NbazhDeserializeMethod>(body, param0, param1).Compile();
+                        param1,
+                        param2);
+                    var lambda = Expression.Lambda<NbazhDeserializeMethod>(body, param0, param1, param2).Compile();
                     formatterAndDelegate = (objFormatter, lambda);
                 }
                 NbazhDeserializes.TryAdd(t, formatterAndDelegate);

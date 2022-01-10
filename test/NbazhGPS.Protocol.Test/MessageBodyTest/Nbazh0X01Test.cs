@@ -11,7 +11,7 @@ namespace NbazhGPS.Protocol.Test.MessageBodyTest
     public class Nbazh0X01Test
     {
         private readonly ITestOutputHelper _testOutputHelper;
-        NbazhGpsSerializer NbazhGpsSerializer = new NbazhGpsSerializer();
+        private NbazhGpsSerializer NbazhGpsSerializer = new NbazhGpsSerializer();
 
         public Nbazh0X01Test(ITestOutputHelper testOutputHelper)
         {
@@ -21,8 +21,6 @@ namespace NbazhGPS.Protocol.Test.MessageBodyTest
         [Fact]
         public void Test1()
         {
-            
-
             //78 78 11 01 07 52 53 36 78 90 02 42 70 00 32 01 00 05 12 79 0D 0A
 
             var hex = "7878 11 01 07 52 53 36 78 90 02 42 7000 3201 0005 1279 0D0A".ToHexBytes();
@@ -44,9 +42,31 @@ namespace NbazhGPS.Protocol.Test.MessageBodyTest
         }
 
         [Fact]
+        public void Test1_1()
+        {
+            //78 78 11 01 07 52 53 36 78 90 02 42 70 00 32 01 00 05 12 79 0D 0A
+            NbazhGpsSerializer Serializer = new NbazhGpsSerializer(false);
+            var hex = "11 01 07 52 53 36 78 90 02 42 7000 3201 0005 1279".ToHexBytes();
+
+            var packet = Serializer.Deserialize(hex);
+            Nbazh0X01 body = (Nbazh0X01)packet.Bodies;
+
+            Assert.Equal(0x11, packet.Header.Length);
+            Assert.Equal(0x01, packet.Header.MsgId);
+
+            Assert.Equal("7 52 53 36 78 90 02 42".Replace(" ", ""), body.TerminalId);
+            Assert.Equal(0x7000, body.TerminalType);
+            //Assert.Equal(0x3201, body.TimeZoneLanguage.Serialize());
+
+            Assert.Equal(0x0005, packet.Header.MsgNum);
+            Assert.Equal(0x1279, packet.Header.Crc);
+
+            // 时区 0011 001000000001
+        }
+
+        [Fact]
         public void Test2()
         {
-
             NbazhGpsPackage packet = new NbazhGpsPackage();
             packet.Header = new NbazhGpsHeader()
             {
@@ -77,7 +97,6 @@ namespace NbazhGPS.Protocol.Test.MessageBodyTest
         [Fact]
         public void Test3()
         {
-
             NbazhGpsPackage packet = new NbazhGpsPackage(PackageType.Type2);
             packet.Header = new NbazhGpsHeader()
             {
@@ -108,7 +127,6 @@ namespace NbazhGPS.Protocol.Test.MessageBodyTest
         [Fact]
         public void Test4()
         {
-
             //7979 0011 01 0752533678900242 7000 3201 0005 75CC 0D0A
 
             var hex = "7979001101075253367890024270003201000575CC0D0A".ToHexBytes();

@@ -1,7 +1,10 @@
 ﻿#nullable enable
+
 using System;
 using System.Collections.Generic;
 using NbazhGPS.Protocol.Enums;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.Models
 {
@@ -40,15 +43,22 @@ namespace NbazhGPS.Protocol.Models
 
         public class DataContent05
         {
+            [JsonConverter(typeof(StringEnumConverter))]
             public DataContent0X94Enums.DataContent05Enums.IOState IOState { get; set; }
+
+            [JsonConverter(typeof(StringEnumConverter))]
             public DataContent0X94Enums.DataContent05Enums.TriggerState TriggerState { get; set; }
 
+            [JsonConverter(typeof(StringEnumConverter))]
             public DataContent0X94Enums.DataContent05Enums.DoorState DoorState { get; set; }
         }
 
         public class DataContent09
         {
+            [JsonConverter(typeof(StringEnumConverter))]
             public SatelliteState Gps { get; set; } = null!;
+
+            [JsonConverter(typeof(StringEnumConverter))]
             public SatelliteState BeiDou { get; set; } = null!;
 
             public byte ExtensionLength { get; set; } = 0x00;
@@ -62,7 +72,9 @@ namespace NbazhGPS.Protocol.Models
 
         public class SatelliteState
         {
+            [JsonConverter(typeof(StringEnumConverter))]
             public DataContent0X94Enums.DataContent09Enums.GpsModuleState ModuleState { get; set; }
+
             public byte LocatedStars { get; set; }
             public byte[]? Strengths { get; set; }
             public byte VisibleNotParticipateStars { get; set; }
@@ -86,10 +98,12 @@ namespace NbazhGPS.Protocol.Models
             /// BCD 16
             /// </summary>
             public string IMEI { get; set; } = null!;
+
             /// <summary>
             /// BCD 16
             /// </summary>
             public string IMSI { get; set; } = null!;
+
             /// <summary>
             /// BCD 20
             /// </summary>

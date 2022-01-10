@@ -37,12 +37,12 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 经度
         /// </summary>
-        public decimal Lon { get => HeadingAndStatus.EorWLon == PackageEnums0X22.EorWLon.东经 ? Lon : -Lon; set => Lon = value; }
+        public decimal Lon { get; set; }
 
         /// <summary>
         /// 纬度
         /// </summary>
-        public decimal Lat { get => HeadingAndStatus.SorNLat == PackageEnums0X22.SorNLat.北纬 ? Lat : -Lat; set => Lat = value; }
+        public decimal Lat { get; set; }
 
         /// <summary>
         /// 速度
@@ -88,6 +88,7 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// GPS实时补传
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public PackageEnums0X22.GpsRealTimeHeadIn GpsRealTimeHeadIn { get; set; }
 
         /// <summary>
@@ -151,6 +152,16 @@ namespace NbazhGPS.Protocol.MessageBody
                 // 如果包长度不包含里程则不解析
                 Mileage = reader.SrcBuffer.Length > 40 ? reader.ReadUInt32() : 0
             };
+
+            if (nb0X022.HeadingAndStatus.EorWLon.Equals(PackageEnums0X22.EorWLon.西经))
+            {
+                nb0X022.Lon = -nb0X022.Lon;
+            }
+
+            if (nb0X022.HeadingAndStatus.SorNLat.Equals(PackageEnums0X22.SorNLat.南纬))
+            {
+                nb0X022.Lat = -nb0X022.Lat;
+            }
             return nb0X022;
         }
 

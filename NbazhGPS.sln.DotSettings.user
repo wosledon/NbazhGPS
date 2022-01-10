@@ -1,10 +1,17 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Boolean x:Key="/Default/CodeStyle/Naming/CSharpNaming/ApplyAutoDetectedRules/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\pm011\AppData\Local\Temp\JetBrains\ReSharperPlatformVs16\vAny_94c7d35d\CoverageData\_NbazhGPS.402328438\Snapshot\snapshot.utdcvr</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4c6d585c_002D6212_002D4435_002D97f7_002Dea7d7ce340f3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="E:\CCSource\NbazhGPS\test\NbazhGPS.Protocol.Test" Presentation="&amp;lt;test&amp;gt;\&amp;lt;NbazhGPS.Protocol.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5751a290_002Dfbbe_002D4a1b_002D8584_002D5d7d37f6079e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5751a290_002Dfbbe_002D4a1b_002D8584_002D5d7d37f6079e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="E:\CCSource\NbazhGPS\test\NbazhGPS.Protocol.Test" Presentation="&amp;lt;test&amp;gt;\&amp;lt;NbazhGPS.Protocol.Test&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fdfddc90_002D7991_002D4cd0_002D96b4_002D7a877e3d64fa/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Test&gt;&#xD;
+    &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X22Test.Test1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X22Test&lt;/TestId&gt;&#xD;
+  &lt;/Test&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=ICCID/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=IMEI/@EntryIndexedValue">True</s:Boolean>

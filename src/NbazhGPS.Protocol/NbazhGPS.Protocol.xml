@@ -3270,6 +3270,11 @@
             停止位
             </summary>
         </member>
+        <member name="P:NbazhGPS.Protocol.NbazhGpsPackage.OriginalPackage">
+            <summary>
+            原始数据
+            </summary>
+        </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsPackage.GetBeginFlag(NbazhGPS.Protocol.Enums.PackageType)">
             <summary>
             获取起始位
@@ -3316,13 +3321,7 @@
             <summary>
             解码是否需要头尾标识
             </summary>
-            <param name="isNeedStartEnd"></param>
-        </member>
-        <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.#ctor(NbazhGPS.Protocol.Internals.NbazhGpsMsgIdFactory,NbazhGPS.Protocol.Internals.NbazhGpsFormatterFactory)">
-            <summary>
-            </summary>
-            <param name="nbazhGpsMsgIdFactory">     </param>
-            <param name="nbazhGpsFormatterFactory"> </param>
+            <param name="isNeedStartEnd"> </param>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Serialize(NbazhGPS.Protocol.NbazhGpsPackage,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
@@ -3343,9 +3342,9 @@
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
             </summary>
-            <param name="bytes">          </param>
-            <param name="packageType">    </param>
-            <param name="minBufferSize">  </param>
+            <param name="bytes">         </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
             <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Serialize``1(``0,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
@@ -3393,10 +3392,10 @@
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Deserialize(System.ReadOnlySpan{System.Byte},System.Type,NbazhGPS.Protocol.Enums.PackageType,System.Int32)">
             <summary>
             </summary>
-            <param name="bytes">          </param>
-            <param name="type">           </param>
-            <param name="packageType">    </param>
-            <param name="minBufferSize">  </param>
+            <param name="bytes">         </param>
+            <param name="type">          </param>
+            <param name="packageType">   </param>
+            <param name="minBufferSize"> </param>
             <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.NbazhGpsSerializer.Analyze(System.ReadOnlySpan{System.Byte},NbazhGPS.Protocol.Enums.PackageType,System.Text.Json.JsonWriterOptions,System.Int32)">

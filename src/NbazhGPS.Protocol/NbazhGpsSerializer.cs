@@ -20,13 +20,12 @@ namespace NbazhGPS.Protocol
         private readonly NbazhGpsMsgIdFactory _nbazhGpsMsgIdFactory;
         private readonly NbazhGpsFormatterFactory _nbazhGpsFormatterFactory;
 
-
         private bool IsNeedStartEnd { get; set; }
-        
+
         /// <summary>
         /// 解码是否需要头尾标识
         /// </summary>
-        /// <param name="isNeedStartEnd"></param>
+        /// <param name="isNeedStartEnd"> </param>
         public NbazhGpsSerializer(bool isNeedStartEnd = true)
         {
             _nbazhGpsMsgIdFactory = new NbazhGpsMsgIdFactory();
@@ -35,15 +34,15 @@ namespace NbazhGPS.Protocol
             IsNeedStartEnd = isNeedStartEnd;
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="nbazhGpsMsgIdFactory">     </param>
-        /// <param name="nbazhGpsFormatterFactory"> </param>
-        public NbazhGpsSerializer(NbazhGpsMsgIdFactory nbazhGpsMsgIdFactory, NbazhGpsFormatterFactory nbazhGpsFormatterFactory)
-        {
-            _nbazhGpsMsgIdFactory = nbazhGpsMsgIdFactory;
-            _nbazhGpsFormatterFactory = nbazhGpsFormatterFactory;
-        }
+        ///// <summary>
+        ///// </summary>
+        ///// <param name="nbazhGpsMsgIdFactory">     </param>
+        ///// <param name="nbazhGpsFormatterFactory"> </param>
+        //public NbazhGpsSerializer(NbazhGpsMsgIdFactory nbazhGpsMsgIdFactory, NbazhGpsFormatterFactory nbazhGpsFormatterFactory)
+        //{
+        //    _nbazhGpsMsgIdFactory = nbazhGpsMsgIdFactory;
+        //    _nbazhGpsFormatterFactory = nbazhGpsFormatterFactory;
+        //}
 
         /// <summary>
         /// </summary>
@@ -91,9 +90,9 @@ namespace NbazhGPS.Protocol
 
         /// <summary>
         /// </summary>
-        /// <param name="bytes">          </param>
-        /// <param name="packageType">    </param>
-        /// <param name="minBufferSize">  </param>
+        /// <param name="bytes">         </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
         /// <returns> </returns>
         public NbazhGpsPackage Deserialize(ReadOnlySpan<byte> bytes, PackageType packageType = PackageType.Type1,
             int minBufferSize = 4096)
@@ -215,10 +214,10 @@ namespace NbazhGPS.Protocol
 
         /// <summary>
         /// </summary>
-        /// <param name="bytes">          </param>
-        /// <param name="type">           </param>
-        /// <param name="packageType">    </param>
-        /// <param name="minBufferSize">  </param>
+        /// <param name="bytes">         </param>
+        /// <param name="type">          </param>
+        /// <param name="packageType">   </param>
+        /// <param name="minBufferSize"> </param>
         /// <returns> </returns>
         public dynamic Deserialize(ReadOnlySpan<byte> bytes, Type type, PackageType packageType = PackageType.Type1, int minBufferSize = 4096)
         {

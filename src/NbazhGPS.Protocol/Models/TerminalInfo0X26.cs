@@ -1,5 +1,7 @@
 ﻿using NbazhGPS.Protocol.Enums;
 using NbazhGPS.Protocol.Extensions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.Models
 {
@@ -9,35 +11,38 @@ namespace NbazhGPS.Protocol.Models
     public class TerminalInfo0X26
     {
         /// <summary>
-        /// 
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public TerminalInfoEnums0X26.OilAndElectricity OilAndElectricity { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public TerminalInfoEnums0X26.GpsConnected GpsConnected { get; set; }
+
         /// <summary>
-        /// 
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public TerminalInfoEnums0X26.Alarm Alarm { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public TerminalInfoEnums0X26.PowerCharging PowerCharging { get; set; }
+
         /// <summary>
-        /// 
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public TerminalInfoEnums0X26.AccState Acc { get; set; }
+
         /// <summary>
-        /// 
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public TerminalInfoEnums0X26.Fortification Fortification { get; set; }
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public byte ToByte()
         {
             byte res = 0;
@@ -52,10 +57,9 @@ namespace NbazhGPS.Protocol.Models
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="data"> </param>
+        /// <returns> </returns>
         public TerminalInfo0X26 ToObject(byte data)
         {
             OilAndElectricity = (TerminalInfoEnums0X26.OilAndElectricity)(data & (1 << 7));
