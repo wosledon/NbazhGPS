@@ -18,7 +18,6 @@
         心跳包 = 0x13,
 
         /// <summary>
-        /// 
         /// </summary>
         Lbs多基站扩展包 = 0x28,
 
@@ -29,10 +28,14 @@
         /// <summary>
         /// </summary>
         // ReSharper disable once InconsistentNaming
+        终端在线指令回复_旧版 = 0x15,
+
+        /// <summary>
+        /// </summary>
+        // ReSharper disable once InconsistentNaming
         报警包_单围栏 = 0x26,
 
         /// <summary>
-        /// 
         /// </summary>
         // ReSharper disable once InconsistentNaming
         报警包_多围栏 = 0x27,

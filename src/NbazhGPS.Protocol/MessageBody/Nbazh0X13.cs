@@ -5,6 +5,8 @@ using NbazhGPS.Protocol.Formatters;
 using NbazhGPS.Protocol.Interfaces;
 using NbazhGPS.Protocol.MessagePack;
 using NbazhGPS.Protocol.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NbazhGPS.Protocol.MessageBody
 {
@@ -29,16 +31,19 @@ namespace NbazhGPS.Protocol.MessageBody
         /// <summary>
         /// 电量等级
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public VoltageLevel VoltageLevel { get; set; }
 
         /// <summary>
         /// GSM信号强度
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public GsmSignalStrength GsmSignalStrength { get; set; }
 
         /// <summary>
         /// 语言/扩展口状态
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public LanguageExtensionPortStatus LanguageExtensionPortStatus { get; set; }
 
         /// <summary>

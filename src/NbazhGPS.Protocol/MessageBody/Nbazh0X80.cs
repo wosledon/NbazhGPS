@@ -56,10 +56,10 @@ namespace NbazhGPS.Protocol.MessageBody
 
             writer.WriteUInt32(value.ServerFlagBits);
             writer.WriteAscii(value.CommandContext);
-            writer.WriteByte(value.Alarm.ToByteValue());
-            writer.WriteByte(value.LanguageExtensionPortStatus.ToByteValue());
             int len = writer.GetCurrentPosition() - localPos;
             writer.WriteByteReturn((byte)len, pos);
+            writer.WriteByte(value.Alarm.ToByteValue());
+            writer.WriteByte(value.LanguageExtensionPortStatus.ToByteValue());
         }
 
         /// <summary>
