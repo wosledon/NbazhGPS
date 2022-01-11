@@ -135,7 +135,7 @@ namespace NbazhGPS.Protocol.MessageBody
         {
             Nbazh0X22 nb0X022 = new Nbazh0X22()
             {
-                IsSupportMileage = reader.SrcBuffer.Length > 40,
+                IsSupportMileage = reader.SrcBuffer.Length > (isNeedStartEnd ? 40 : 35),
                 DateTime = reader.ReadDateTime6(),
                 GpsSatelliteInfo = reader.ReadByte().ToGpsSatelliteInfoObject(),
                 Lon = (decimal)reader.ReadUInt32() / 1800000,
@@ -150,7 +150,7 @@ namespace NbazhGPS.Protocol.MessageBody
                 DataReportingMode = (DataReportingMode)reader.ReadByte(),
                 GpsRealTimeHeadIn = (PackageEnums0X22.GpsRealTimeHeadIn)reader.ReadByte(),
                 // 如果包长度不包含里程则不解析
-                Mileage = reader.SrcBuffer.Length > 40 ? reader.ReadUInt32() : 0
+                Mileage = reader.SrcBuffer.Length > (isNeedStartEnd ? 40 : 35) ? reader.ReadUInt32() : 0
             };
 
             if (nb0X022.HeadingAndStatus.EorWLon.Equals(PackageEnums0X22.EorWLon.西经))

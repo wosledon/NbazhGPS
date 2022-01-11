@@ -8,10 +8,15 @@
   &lt;Project Location="E:\CCSource\NbazhGPS\test\NbazhGPS.Protocol.Test" Presentation="&amp;lt;test&amp;gt;\&amp;lt;NbazhGPS.Protocol.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fdfddc90_002D7991_002D4cd0_002D96b4_002D7a877e3d64fa/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Test&gt;&#xD;
-    &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X22Test.Test1&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X22Test&lt;/TestId&gt;&#xD;
-  &lt;/Test&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Test&gt;&#xD;
+      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X22Test.Test1&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X22Test&lt;/TestId&gt;&#xD;
+    &lt;/Test&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X21Test&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=ICCID/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=IMEI/@EntryIndexedValue">True</s:Boolean>

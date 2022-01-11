@@ -48,6 +48,101 @@
             编码之前的写入位置
             </summary>
         </member>
+        <member name="T:NbazhGPS.Protocol.Commands.Command_EXBATALM.AlarmUploadFunc">
+            <summary>
+            警报上传方式
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Commands.Command_FENCE.Command_FENCE_Shape">
+            <summary>
+            围栏区域类型
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Commands.Command_FENCE.ONOFF">
+            <summary>
+            开启/关闭围栏报警
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Commands.Command_FENCE.AlarmFunc">
+            <summary>
+            报警方式
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Commands.Command_FENCE.AlarmFunc.IN">
+            <summary>
+            入围栏报警
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Commands.Command_FENCE.AlarmFunc.OUT">
+            <summary>
+            出围栏报警
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Commands.Command_FENCE.AlarmUploadFunc">
+            <summary>
+            警报上传方式
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Commands.Command_FENCE.#ctor(NbazhGPS.Protocol.Commands.Command_FENCE.ONOFF,System.Decimal,System.Decimal,System.Decimal,System.Nullable{NbazhGPS.Protocol.Commands.Command_FENCE.AlarmFunc},NbazhGPS.Protocol.Commands.Command_FENCE.AlarmUploadFunc)">
+            <summary>
+            圆形区域
+            </summary>
+            <param name="b"> 开启/关闭围栏报警 </param>
+            <param name="d"> </param>
+            <param name="e"> </param>
+            <param name="f"> </param>
+            <param name="x"> 报警方式 </param>
+            <param name="m"> 报警上报方式 </param>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Commands.Command_FENCE.#ctor(NbazhGPS.Protocol.Commands.Command_FENCE.ONOFF,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Nullable{NbazhGPS.Protocol.Commands.Command_FENCE.AlarmFunc},NbazhGPS.Protocol.Commands.Command_FENCE.AlarmUploadFunc)">
+            <summary>
+            方形区域
+            </summary>
+            <param name="b"> 开启/关闭围栏报警 </param>
+            <param name="d"> </param>
+            <param name="e"> </param>
+            <param name="f"> </param>
+            <param name="x"> 报警方式 </param>
+            <param name="m"> 报警上报方式 </param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Commands.Command_SENALM.AlarmUploadFunc">
+            <summary>
+            警报上传方式
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Commands.Command_SOS.Command_SOS_Func.A">
+            <summary>
+            添加
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Commands.Command_SOS.Command_SOS_Func.D">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Commands.Command_SOS.Command_SOS_Func.DF">
+            <summary>
+            全匹配删除
+            </summary>
+        </member>
+        <member name="M:NbazhGPS.Protocol.Commands.Command_SOS.#ctor(NbazhGPS.Protocol.Commands.Command_SOS.Command_SOS_Func,System.String,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="commandSosFunc"> </param>
+            <param name="phoneNumber1">   </param>
+            <param name="phoneNumber2">   </param>
+            <param name="phoneNumber3">   </param>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Commands.Command_TIMER.T1">
+            <summary>
+            ACC ON状态下上传间隔
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.Commands.Command_TIMER.T2">
+            <summary>
+            ACC OFF状态下上传间隔
+            </summary>
+        </member>
         <member name="T:NbazhGPS.Protocol.Enums.AccState">
             <summary>
             Acc状态
@@ -66,6 +161,11 @@
         <member name="T:NbazhGPS.Protocol.Enums.Alarm0X26">
             <summary>
             报警
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.ContentEncodeEnums0X21">
+            <summary>
+            内容编码
             </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.Enums.DataContent0X94Enums">
@@ -156,6 +256,166 @@
         <member name="F:NbazhGPS.Protocol.Enums.DataReportingMode.上报模式_退出追踪模式">
             <summary>
             
+            </summary>
+        </member>
+        <member name="T:NbazhGPS.Protocol.Enums.EV26Commands">
+            <summary>
+            EV26功能指令表
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.VERSION">
+            <summary>
+            版本查询
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.PARAM">
+            <summary>
+            查询参数设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.SCXSZ">
+            <summary>
+            精简参数查询
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.GPRSSET">
+            <summary>
+            查询GPRS参数
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.STATUS">
+            <summary>
+            查询状态
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.DW">
+            <summary>
+            地址查询
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.FENCE">
+            <summary>
+            围栏状态查询
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.MOVING">
+            <summary>
+            位移状态查询
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.FACTORY">
+            <summary>
+            恢复出厂设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.SOS">
+            <summary>
+            SOS设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.TIMER">
+            <summary>
+            北斗模块,数据定时发送间隔
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.DEFEMSE">
+            <summary>
+            延时设防设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.DSRESET">
+            <summary>
+            撤防指令
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.FENCE_SET">
+            <summary>
+            设置围栏报警
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.SENALM">
+            <summary>
+            震动报警设置指令
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.EXBATALM">
+            <summary>
+            外部电源低电报警
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.EXBATCUT">
+            <summary>
+            外部低电保护电压提醒
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.MOVING_SET">
+            <summary>
+            位移报警设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.SPEED">
+            <summary>
+            超速提醒设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.C111">
+            <summary>
+            手动设防
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.C000">
+            <summary>
+            手动撤防
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.DEFMODE">
+            <summary>
+            设防模式
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.GPSON">
+            <summary>
+            激活北斗模块指令
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.LBS">
+            <summary>
+            点名上报LBS位置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.FLYCUT">
+            <summary>
+            低电保护触发飞行模式设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.SPEEDCHECK">
+            <summary>
+            变速报警
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.SWERVE">
+            <summary>
+            急转弯报警
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.COLLIDE">
+            <summary>
+            碰撞报警
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.ROLLVER">
+            <summary>
+            侧翻报警
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.LBSON">
+            <summary>
+            LBS传点设置
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.EV26Commands.ICCID">
+            <summary>
+            ICCID号点名查询
             </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.Enums.GsmSignalStrength">
@@ -252,10 +512,13 @@
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.Lbs多基站扩展包">
             <summary>
-            
             </summary>
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.终端在线指令回复">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.终端在线指令回复_旧版">
             <summary>
             </summary>
         </member>
@@ -265,7 +528,6 @@
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.报警包_多围栏">
             <summary>
-            
             </summary>
         </member>
         <member name="F:NbazhGPS.Protocol.Enums.NbazhGpsMessageIds.Gps地址请求包">
@@ -1282,6 +1544,26 @@
             <param name="reader"> </param>
             <param name="writer"> </param>
         </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X15.CommandLength">
+            <summary>
+            指令长度
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X15.ServerFlagBits">
+            <summary>
+            服务器标志位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X15.CommandContent">
+            <summary>
+            指令内容
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X15.LanguageExtensionPortStatus">
+            <summary>
+            语言
+            </summary>
+        </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X17">
             <summary>
             </summary>
@@ -1464,6 +1746,26 @@
             </summary>
             <param name="reader"> </param>
             <param name="writer"> </param>
+        </member>
+        <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X21">
+            <summary>
+            终端在线指令回复
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X21.ServerFlagBits">
+            <summary>
+            服务器标记位
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X21.ContentEncode">
+            <summary>
+            内容编码
+            </summary>
+        </member>
+        <member name="P:NbazhGPS.Protocol.MessageBody.Nbazh0X21.Content">
+            <summary>
+            内容
+            </summary>
         </member>
         <member name="T:NbazhGPS.Protocol.MessageBody.Nbazh0X22">
             <summary>
@@ -2963,46 +3265,38 @@
         </member>
         <member name="P:NbazhGPS.Protocol.Models.TerminalInfo0X26.OilAndElectricity">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.Models.TerminalInfo0X26.GpsConnected">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.Models.TerminalInfo0X26.Alarm">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.Models.TerminalInfo0X26.PowerCharging">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.Models.TerminalInfo0X26.Acc">
             <summary>
-            
             </summary>
         </member>
         <member name="P:NbazhGPS.Protocol.Models.TerminalInfo0X26.Fortification">
             <summary>
-            
             </summary>
         </member>
         <member name="M:NbazhGPS.Protocol.Models.TerminalInfo0X26.ToByte">
             <summary>
-            
             </summary>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.Models.TerminalInfo0X26.ToObject(System.Byte)">
             <summary>
-            
             </summary>
-            <param name="data"></param>
-            <returns></returns>
+            <param name="data"> </param>
+            <returns> </returns>
         </member>
         <member name="T:NbazhGPS.Protocol.Models.TimeZoneLanguageModel">
             <summary>

@@ -57,7 +57,7 @@ namespace NbazhGPS.Protocol.MessageBody
                 ContentEncode = (ContentEncodeEnums0X21)reader.ReadByte()
             };
 
-            var len = reader.SrcBuffer.Length - 5;
+            var len = reader.SrcBuffer.Length - 5 - ((isNeedStartEnd ? 4 : 0) + 2 + 1 + 2 + 2);
 
             nb0X21.Content = nb0X21.ContentEncode switch
             {
