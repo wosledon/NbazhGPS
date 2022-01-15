@@ -65,7 +65,7 @@ namespace NbazhGPS.Protocol.MessagePack
         /// <param name="allocateBuffer"> </param>
         public void Decode(Span<byte> allocateBuffer)
         {
-            ReadOnlySpan<byte> crcCode = SrcBuffer.Slice(SrcBuffer.Length - (IsNeedStartEnd?4:2), 2);
+            ReadOnlySpan<byte> crcCode = SrcBuffer.Slice(SrcBuffer.Length - (IsNeedStartEnd ? 4 : 2), 2);
             _checkCrcVerify = SrcBuffer.AuthCrc(crcCode.ToCrc(), IsNeedStartEnd);
         }
 
@@ -233,7 +233,7 @@ namespace NbazhGPS.Protocol.MessagePack
         /// <summary>
         /// 读取三字节
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public int ReadByte3()
         {
             var spans = GetReadOnlySpan(3);
@@ -243,7 +243,7 @@ namespace NbazhGPS.Protocol.MessagePack
         /// <summary>
         /// 读取三字节
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public UInt24 ReadUInt24()
         {
             return new UInt24(GetReadOnlySpan(3));
@@ -252,15 +252,16 @@ namespace NbazhGPS.Protocol.MessagePack
         /// <summary>
         /// 虚拟的获取三字节
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public UInt24 GetVirtualUInt24()
         {
             return new UInt24(GetVirtualReadOnlySpan(3));
         }
+
         /// <summary>
         /// 虚拟的获取三字节
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public int GetVirtualByte3()
         {
             var spans = GetVirtualReadOnlySpan(3);
@@ -394,7 +395,7 @@ namespace NbazhGPS.Protocol.MessagePack
                 formatter.ShortDatePattern = "yy/MM/dd HH:mm:ss";
                 return Convert.ToDateTime(
                     $"{readOnlySpan[0]}-{readOnlySpan[1]}-{readOnlySpan[2]} {readOnlySpan[3]}:{readOnlySpan[4]}:{readOnlySpan[5]}"
-                    , formatter);
+                    , formatter).ToLocalTime();
             }
             catch (Exception)
             {
@@ -405,8 +406,8 @@ namespace NbazhGPS.Protocol.MessagePack
         /// <summary>
         /// 16进制的BCD BYTE转成整型
         /// </summary>
-        /// <param name="value">16进制的BCD BYTE转成整型</param>
-        /// <returns></returns>
+        /// <param name="value"> 16进制的BCD BYTE转成整型 </param>
+        /// <returns> </returns>
         public int BcdToInt(byte value)
         {
             int high = value >> 4;
@@ -453,7 +454,7 @@ namespace NbazhGPS.Protocol.MessagePack
         /// <returns> </returns>
         public ReadOnlySpan<byte> ReadContent(int count)
         {
-            return Reader.Slice(ReaderCount, count-ReaderCount);
+            return Reader.Slice(ReaderCount, count - ReaderCount);
         }
 
         /// <summary>

@@ -15,6 +15,7 @@
     &lt;/Test&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.MessageBodyTest.Nbazh0X21Test&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8D845431-0197-444D-8F52-4B26222EE256::net5.0::NbazhGPS.Protocol.Test.UnitTest1.Test1&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
