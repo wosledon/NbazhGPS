@@ -2685,25 +2685,25 @@
             <summary>
             读取三字节
             </summary>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadUInt24">
             <summary>
             读取三字节
             </summary>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetVirtualUInt24">
             <summary>
             虚拟的获取三字节
             </summary>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetVirtualByte3">
             <summary>
             虚拟的获取三字节
             </summary>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.GetReadOnlySpan(System.Int32)">
             <summary>
@@ -2771,8 +2771,8 @@
             <summary>
             16进制的BCD BYTE转成整型
             </summary>
-            <param name="value">16进制的BCD BYTE转成整型</param>
-            <returns></returns>
+            <param name="value"> 16进制的BCD BYTE转成整型 </param>
+            <returns> </returns>
         </member>
         <member name="M:NbazhGPS.Protocol.MessagePack.NbazhGpsMessagePackReader.ReadTimeZoneLanguage">
             <summary>
