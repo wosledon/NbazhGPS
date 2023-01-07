@@ -95,6 +95,48 @@ namespace NbazhGPS.Protocol.Test.MessageBodyTest
         }
 
         [Fact]
+        public void Test2_1()
+        {
+            NbazhGpsPackage packet = new NbazhGpsPackage();
+            packet.Header = new NbazhGpsHeader()
+            {
+                MsgId = 0x01,
+                MsgNum = 0x0005
+            };
+            packet.Bodies = new Nbazh0X01()
+            {
+                TerminalId = "8 52 53 36 78 90 02 42".Replace(" ", ""),
+                TerminalType = 0x7000,
+                TimeZoneLanguage = new TimeZoneLanguageModel()
+                {
+                    TimeZoneTime = 5.13f,
+                    TimeZone = TimeZones.西,
+                    ReservedBits = true,
+                    LanguageChoose2 = false,
+                    LanguageChoose1 = false,
+                }
+            };
+
+            var hex = NbazhGpsSerializer.Serialize(packet).ToHexString();
+            _testOutputHelper.WriteLine(hex);
+            Assert.Equal(hex, "7878 11 01 07 52 53 36 78 90 02 42 7000 3201 0005 1279 0D0A".Replace(" ", ""));
+            //Expected: 78780D01 75253367700 0320 10005 30B7 0D0A
+            //Actual:   787811010752533678900242700 0320 10005 1279 0D0A
+        }
+
+        [Fact]
+        public void Test2_2()
+        {
+            var hex = "7878110108525336789002427000320100058D9D0D0A".ToHexBytes();
+
+            var packet = NbazhGpsSerializer.Deserialize(hex);
+
+            byte v = (byte)141;
+
+            _testOutputHelper.WriteLine(v + "");
+        }
+
+        [Fact]
         public void Test3()
         {
             NbazhGpsPackage packet = new NbazhGpsPackage(PackageType.Type2);
